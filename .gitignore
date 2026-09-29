@@ -1,0 +1,27 @@
+# === Λειτουργικό σύστημα ===
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === Editors / IDE ===
+.vscode/
+.idea/
+*.swp
+
+# === Node / build (για μελλοντικά projects με Astro κ.λπ.) ===
+node_modules/
+dist/
+.cache/
+
+# === Μυστικά / περιβάλλον (ΠΟΤΕ στο git!) ===
+.env
+.env.local
+*.key
+
+# === Logs ===
+*.log
+npm-debug.log*
+
+# === Εσωτερικά αρχεία project — μένουν ΤΟΠΙΚΑ, ΕΚΤΟΣ GitHub ===
+# (context/στρατηγική/leads — μόνο για εμάς, όχι για το repo)
+CLAUDE.md

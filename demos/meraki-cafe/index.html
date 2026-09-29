@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meraki Coffee & Brunch — All-day café στην Αθήνα</title>
+  <meta name="description" content="Meraki Coffee & Brunch: specialty καφές, all-day brunch και χειροποίητα γλυκά στην καρδιά της πόλης. Κάνε την κράτησή σου σήμερα." />
+
+  <!-- Tailwind (CDN) — χωρίς build, ιδανικό για γρήγορα demo -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <script>
+    // Ρυθμίσεις θέματος (χρώματα brand + γραμματοσειρές)
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            espresso: '#2e211a',
+            coffee: '#5b4636',
+            caramel: '#c17c48',
+            cream: '#f7f1e7',
+            sand: '#efe4d3',
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    .hero-overlay { background: linear-gradient(180deg, rgba(46,33,26,.55) 0%, rgba(46,33,26,.35) 40%, rgba(46,33,26,.75) 100%); }
+    .img-fallback { background: linear-gradient(135deg,#5b4636,#2e211a); }
+    .fade-up { opacity: 0; transform: translateY(24px); transition: all .7s ease; }
+    .fade-up.show { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+
+<body class="font-sans text-espresso bg-cream antialiased">
+
+  <!-- ===== HEADER / NAV ===== -->
+  <header id="top" class="fixed top-0 inset-x-0 z-50 transition-all duration-300" data-nav>
+    <nav class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-2">
+        <span class="text-2xl">☕</span>
+        <span class="font-display text-xl font-700 tracking-wide" data-logo>Meraki</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8 text-sm font-500" data-links>
+        <a href="#about" class="hover:text-caramel transition">Το café</a>
+        <a href="#menu" class="hover:text-caramel transition">Μενού</a>
+        <a href="#gallery" class="hover:text-caramel transition">Gallery</a>
+        <a href="#visit" class="hover:text-caramel transition">Πού θα μας βρεις</a>
+        <a href="#contact" class="hover:text-caramel transition">Επικοινωνία</a>
+      </div>
+
+      <a href="#contact" class="hidden md:inline-block bg-caramel text-white text-sm font-600 px-5 py-2.5 rounded-full hover:bg-espresso transition">
+        Κράτηση
+      </a>
+
+      <!-- Mobile toggle -->
+      <button class="md:hidden text-2xl" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" aria-label="Μενού">☰</button>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-cream border-t border-sand">
+      <div class="px-5 py-4 flex flex-col gap-4 text-sm font-500">
+        <a href="#about" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Το café</a>
+        <a href="#menu" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Μενού</a>
+        <a href="#gallery" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Gallery</a>
+        <a href="#visit" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Πού θα μας βρεις</a>
+        <a href="#contact" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="text-caramel font-600">Κράτηση</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="relative h-screen min-h-[600px] flex items-center justify-center text-center text-white img-fallback">
+    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1920&q=80"
+         alt="Εσωτερικό της καφετέριας Meraki" class="absolute inset-0 w-full h-full object-cover" />
+    <div class="absolute inset-0 hero-overlay"></div>
+
+    <div class="relative z-10 px-5 max-w-3xl">
+      <p class="uppercase tracking-[0.3em] text-sm text-cream/90 mb-5">All-day café · brunch · specialty coffee</p>
+      <h1 class="font-display text-5xl md:text-7xl font-700 leading-tight mb-6">Meraki Coffee&nbsp;&amp;&nbsp;Brunch</h1>
+      <p class="text-lg md:text-xl text-cream/90 mb-9 font-300 max-w-xl mx-auto">
+        Ένας ζεστός χώρος στην καρδιά της πόλης — για τον καφέ σου το πρωί,
+        το brunch σου το μεσημέρι και το κρασί σου το βράδυ.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#menu" class="bg-caramel text-white font-600 px-8 py-3.5 rounded-full hover:bg-white hover:text-espresso transition">
+          Δες το μενού
+        </a>
+        <a href="#contact" class="border border-white/70 text-white font-600 px-8 py-3.5 rounded-full hover:bg-white hover:text-espresso transition">
+          Κράτηση τραπεζιού
+        </a>
+      </div>
+    </div>
+
+    <a href="#highlights" class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-white/80 text-sm animate-bounce">▼</a>
+  </section>
+
+  <!-- ===== HIGHLIGHTS ===== -->
+  <section id="highlights" class="max-w-6xl mx-auto px-5 py-20 grid md:grid-cols-3 gap-8">
+    <div class="fade-up text-center p-6">
+      <div class="text-4xl mb-4">☕</div>
+      <h3 class="font-display text-xl font-600 mb-2">Specialty Coffee</h3>
+      <p class="text-coffee/80 font-300">Φρεσκοκαβουρδισμένοι κόκκοι, single origin επιλογές και baristas με μεράκι σε κάθε φλιτζάνι.</p>
+    </div>
+    <div class="fade-up text-center p-6">
+      <div class="text-4xl mb-4">🥑</div>
+      <h3 class="font-display text-xl font-600 mb-2">All-day Brunch</h3>
+      <p class="text-coffee/80 font-300">Χορταστικό brunch όλη μέρα — από avocado toast μέχρι σπιτικές πίτες και υγιεινά bowls.</p>
+    </div>
+    <div class="fade-up text-center p-6">
+      <div class="text-4xl mb-4">🍰</div>
+      <h3 class="font-display text-xl font-600 mb-2">Χειροποίητα Γλυκά</h3>
+      <p class="text-coffee/80 font-300">Cheesecake, cookies και ζυμωτά κρουασάν φτιαγμένα καθημερινά στην κουζίνα μας.</p>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="bg-sand/60">
+    <div class="max-w-6xl mx-auto px-5 py-20 grid md:grid-cols-2 gap-12 items-center">
+      <div class="fade-up">
+        <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1200&q=80"
+             alt="Barista ετοιμάζει καφέ" class="rounded-2xl shadow-xl w-full h-[420px] object-cover img-fallback" />
+      </div>
+      <div class="fade-up">
+        <p class="uppercase tracking-[0.25em] text-xs text-caramel font-600 mb-4">Η ιστορία μας</p>
+        <h2 class="font-display text-4xl font-700 mb-6 leading-snug">Φτιαγμένο με μεράκι, από το 2018</h2>
+        <p class="text-coffee/90 font-300 mb-4 leading-relaxed">
+          Το Meraki ξεκίνησε σαν ένα μικρό όνειρο: ένας χώρος όπου ο καλός καφές
+          συναντά το ζεστό καλωσόρισμα. Σήμερα είμαστε το αγαπημένο στέκι της
+          γειτονιάς — για δουλειά, για συνάντηση, για μια στιγμή ηρεμίας.
+        </p>
+        <p class="text-coffee/90 font-300 leading-relaxed">
+          Χρησιμοποιούμε αγνά, τοπικά υλικά και ψήνουμε τα γλυκά μας κάθε πρωί.
+          Γιατί πιστεύουμε ότι η διαφορά κρύβεται στη λεπτομέρεια.
+        </p>
+        <div class="flex gap-10 mt-8">
+          <div><div class="font-display text-3xl font-700 text-caramel">7</div><div class="text-sm text-coffee/70">χρόνια αγάπης</div></div>
+          <div><div class="font-display text-3xl font-700 text-caramel">40+</div><div class="text-sm text-coffee/70">επιλογές μενού</div></div>
+          <div><div class="font-display text-3xl font-700 text-caramel">4.9★</div><div class="text-sm text-coffee/70">στο Google</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MENU ===== -->
+  <section id="menu" class="max-w-6xl mx-auto px-5 py-20">
+    <div class="text-center mb-14 fade-up">
+      <p class="uppercase tracking-[0.25em] text-xs text-caramel font-600 mb-3">Το μενού μας</p>
+      <h2 class="font-display text-4xl font-700">Μια γεύση από αυτά που αγαπάμε</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-10">
+      <!-- Καφές -->
+      <div class="fade-up">
+        <h3 class="font-display text-2xl font-600 mb-6 pb-3 border-b-2 border-caramel/40">Καφές</h3>
+        <ul class="space-y-4">
+          <li class="flex justify-between gap-4"><span>Espresso</span><span class="text-caramel font-600">2,00€</span></li>
+          <li class="flex justify-between gap-4"><span>Cappuccino</span><span class="text-caramel font-600">3,20€</span></li>
+          <li class="flex justify-between gap-4"><span>Flat white</span><span class="text-caramel font-600">3,50€</span></li>
+          <li class="flex justify-between gap-4"><span>Filter / V60</span><span class="text-caramel font-600">3,80€</span></li>
+          <li class="flex justify-between gap-4"><span>Iced latte</span><span class="text-caramel font-600">3,60€</span></li>
+        </ul>
+      </div>
+      <!-- Brunch -->
+      <div class="fade-up">
+        <h3 class="font-display text-2xl font-600 mb-6 pb-3 border-b-2 border-caramel/40">Brunch</h3>
+        <ul class="space-y-4">
+          <li class="flex justify-between gap-4"><span>Avocado toast</span><span class="text-caramel font-600">7,50€</span></li>
+          <li class="flex justify-between gap-4"><span>Eggs Benedict</span><span class="text-caramel font-600">8,90€</span></li>
+          <li class="flex justify-between gap-4"><span>Pancakes με σιρόπι</span><span class="text-caramel font-600">6,80€</span></li>
+          <li class="flex justify-between gap-4"><span>Granola bowl</span><span class="text-caramel font-600">6,00€</span></li>
+          <li class="flex justify-between gap-4"><span>Club sandwich</span><span class="text-caramel font-600">7,20€</span></li>
+        </ul>
+      </div>
+      <!-- Γλυκά -->
+      <div class="fade-up">
+        <h3 class="font-display text-2xl font-600 mb-6 pb-3 border-b-2 border-caramel/40">Γλυκά</h3>
+        <ul class="space-y-4">
+          <li class="flex justify-between gap-4"><span>Cheesecake</span><span class="text-caramel font-600">4,50€</span></li>
+          <li class="flex justify-between gap-4"><span>Καρότο cake</span><span class="text-caramel font-600">4,20€</span></li>
+          <li class="flex justify-between gap-4"><span>Cookies (2 τμχ)</span><span class="text-caramel font-600">3,00€</span></li>
+          <li class="flex justify-between gap-4"><span>Κρουασάν βουτύρου</span><span class="text-caramel font-600">2,80€</span></li>
+          <li class="flex justify-between gap-4"><span>Brownie</span><span class="text-caramel font-600">3,90€</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="text-center text-coffee/60 text-sm mt-12 fade-up">*Ενδεικτικό μενού demo. Το πλήρες μενού διαθέσιμο στο κατάστημα.</p>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section id="gallery" class="bg-espresso py-20">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="text-center mb-14 fade-up">
+        <p class="uppercase tracking-[0.25em] text-xs text-caramel font-600 mb-3">Στιγμές</p>
+        <h2 class="font-display text-4xl font-700 text-cream">Μια ματιά στον χώρο μας</h2>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=800&q=80" alt="Brunch" class="rounded-xl h-56 w-full object-cover img-fallback hover:scale-105 transition duration-500" />
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80" alt="Καφές" class="rounded-xl h-56 w-full object-cover img-fallback hover:scale-105 transition duration-500" />
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80" alt="Latte art" class="rounded-xl h-56 w-full object-cover img-fallback hover:scale-105 transition duration-500" />
+        <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&q=80" alt="Χώρος καφετέριας" class="rounded-xl h-56 w-full object-cover img-fallback hover:scale-105 transition duration-500" />
+        <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80" alt="Γλυκά" class="rounded-xl h-56 w-full object-cover img-fallback hover:scale-105 transition duration-500" />
+        <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=800&q=80" alt="Τραπέζι με φαγητό" class="rounded-xl h-56 w-full object-cover img-fallback hover:scale-105 transition duration-500" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VISIT (ΩΡΕΣ & ΤΟΠΟΘΕΣΙΑ) ===== -->
+  <section id="visit" class="max-w-6xl mx-auto px-5 py-20 grid md:grid-cols-2 gap-12">
+    <div class="fade-up">
+      <p class="uppercase tracking-[0.25em] text-xs text-caramel font-600 mb-4">Ωράριο</p>
+      <h2 class="font-display text-4xl font-700 mb-8">Πότε θα μας βρεις</h2>
+      <ul class="space-y-3 text-coffee/90">
+        <li class="flex justify-between border-b border-sand pb-3"><span>Δευτέρα – Παρασκευή</span><span class="font-600">07:30 – 23:00</span></li>
+        <li class="flex justify-between border-b border-sand pb-3"><span>Σάββατο</span><span class="font-600">08:30 – 00:00</span></li>
+        <li class="flex justify-between border-b border-sand pb-3"><span>Κυριακή</span><span class="font-600">09:00 – 22:00</span></li>
+      </ul>
+      <div class="mt-8">
+        <p class="uppercase tracking-[0.25em] text-xs text-caramel font-600 mb-3">Διεύθυνση</p>
+        <p class="text-coffee/90">Ερμού 24, Αθήνα 105 63</p>
+        <a href="https://maps.google.com/?q=Ermou+24+Athens" target="_blank" rel="noopener"
+           class="inline-block mt-3 text-caramel font-600 hover:text-espresso transition">📍 Άνοιγμα σε Google Maps →</a>
+      </div>
+    </div>
+    <div class="fade-up rounded-2xl overflow-hidden shadow-xl h-[420px] img-fallback">
+      <iframe
+        title="Χάρτης τοποθεσίας"
+        class="w-full h-full border-0"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.openstreetmap.org/export/embed.html?bbox=23.724%2C37.975%2C23.734%2C37.981&layer=mapnik&marker=37.978%2C23.729">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT / CTA ===== -->
+  <section id="contact" class="bg-sand/60">
+    <div class="max-w-5xl mx-auto px-5 py-20 grid md:grid-cols-2 gap-12 items-start">
+      <div class="fade-up">
+        <p class="uppercase tracking-[0.25em] text-xs text-caramel font-600 mb-4">Επικοινωνία</p>
+        <h2 class="font-display text-4xl font-700 mb-6 leading-snug">Κλείσε τραπέζι ή πες μας ένα γεια</h2>
+        <p class="text-coffee/90 font-300 mb-8">Είμαστε εδώ για κρατήσεις, ιδιωτικές εκδηλώσεις ή απλά για μια καλή κουβέντα.</p>
+
+        <div class="space-y-4">
+          <a href="tel:+302100000000" class="flex items-center gap-3 text-coffee hover:text-caramel transition">
+            <span class="text-xl">📞</span> 210 000 0000
+          </a>
+          <a href="https://wa.me/302100000000" target="_blank" rel="noopener" class="flex items-center gap-3 text-coffee hover:text-caramel transition">
+            <span class="text-xl">💬</span> WhatsApp
+          </a>
+          <a href="mailto:hello@meraki-cafe.gr" class="flex items-center gap-3 text-coffee hover:text-caramel transition">
+            <span class="text-xl">✉️</span> hello@meraki-cafe.gr
+          </a>
+          <div class="flex items-center gap-4 pt-2 text-2xl">
+            <a href="#" aria-label="Instagram" class="hover:text-caramel transition">📷</a>
+            <a href="#" aria-label="Facebook" class="hover:text-caramel transition">👍</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Φόρμα (demo) -->
+      <form class="fade-up bg-cream p-8 rounded-2xl shadow-lg space-y-4" onsubmit="event.preventDefault(); this.reset(); document.getElementById('formMsg').classList.remove('hidden');">
+        <div>
+          <label class="block text-sm font-500 mb-1">Όνομα</label>
+          <input type="text" required class="w-full px-4 py-3 rounded-lg border border-sand bg-white focus:border-caramel focus:outline-none" placeholder="Το όνομά σου" />
+        </div>
+        <div>
+          <label class="block text-sm font-500 mb-1">Τηλέφωνο</label>
+          <input type="tel" required class="w-full px-4 py-3 rounded-lg border border-sand bg-white focus:border-caramel focus:outline-none" placeholder="69........" />
+        </div>
+        <div>
+          <label class="block text-sm font-500 mb-1">Ημέρα & άτομα</label>
+          <input type="text" class="w-full px-4 py-3 rounded-lg border border-sand bg-white focus:border-caramel focus:outline-none" placeholder="π.χ. Σάββατο, 4 άτομα" />
+        </div>
+        <button type="submit" class="w-full bg-caramel text-white font-600 py-3.5 rounded-lg hover:bg-espresso transition">
+          Στείλε αίτημα κράτησης
+        </button>
+        <p id="formMsg" class="hidden text-green-700 text-sm text-center">✓ Ευχαριστούμε! Θα επικοινωνήσουμε σύντομα μαζί σου.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-espresso text-cream/80">
+    <div class="max-w-6xl mx-auto px-5 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-2">
+        <span class="text-2xl">☕</span>
+        <span class="font-display text-xl font-700 text-cream">Meraki Coffee & Brunch</span>
+      </div>
+      <p class="text-sm text-center">Ερμού 24, Αθήνα · 210 000 0000 · Ανοιχτά κάθε μέρα</p>
+      <p class="text-xs text-cream/50">© 2026 Meraki. Demo site.</p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/302100000000" target="_blank" rel="noopener"
+     class="fixed bottom-6 right-6 z-50 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg hover:scale-110 transition"
+     aria-label="WhatsApp">💬</a>
+
+  <script>
+    // Header: αλλάζει σε συμπαγές background μόλις κάνεις scroll
+    const header = document.querySelector('[data-nav]');
+    const logo = document.querySelector('[data-logo]');
+    const links = document.querySelector('[data-links]');
+    function onScroll() {
+      if (window.scrollY > 40) {
+        header.classList.add('bg-cream', 'shadow-md');
+        header.classList.remove('text-white');
+      } else {
+        header.classList.remove('bg-cream', 'shadow-md');
+      }
+    }
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+
+    // Fade-up animations με IntersectionObserver
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('show'); });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.fade-up').forEach((el) => io.observe(el));
+  </script>
+</body>
+</html>

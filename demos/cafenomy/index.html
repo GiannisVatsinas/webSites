@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cafenomy — Specialty Coffee στη Νέα Σμύρνη</title>
+  <meta name="description" content="Cafenomy: specialty coffee, φρέσκο χαρμάνι και χειροποίητα γλυκά στη Νέα Σμύρνη. Freddo espresso, κουραμπιέδες & take-away με 4,8★ στο Google." />
+
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            espresso: '#2a1e17', coffee: '#5b4636', caramel: '#c17c48',
+            cream: '#f7f1e7', sand: '#efe4d3',
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    .hero-overlay { background: linear-gradient(180deg, rgba(42,30,23,.60) 0%, rgba(42,30,23,.40) 40%, rgba(42,30,23,.80) 100%); }
+    .img-fallback { background: linear-gradient(135deg,#5b4636,#2a1e17); }
+    .fade-up { opacity: 0; transform: translateY(24px); transition: all .7s ease; }
+    .fade-up.show { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+
+<body class="font-sans text-espresso bg-cream antialiased">
+
+  <!-- Demo banner -->
+  <div class="bg-espresso text-cream/80 text-center text-xs py-1.5 px-4">
+    ✦ Demo / πρόταση σχεδιασμού — δεν είναι το επίσημο website του καταστήματος
+  </div>
+
+  <!-- ===== HEADER / NAV ===== -->
+  <header id="top" class="sticky top-0 z-50 transition-all duration-300" data-nav>
+    <nav class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-2">
+        <span class="text-2xl">☕</span>
+        <span class="font-display text-xl font-700 tracking-wide">Cafenomy</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm font-500">
+        <a href="#about" class="hover:text-caramel transition">Το μαγαζί</a>
+        <a href="#menu" class="hover:text-caramel transition">Μενού</a>
+        <a href="#reviews" class="hover:text-caramel transition">Κριτικές</a>
+        <a href="#visit" class="hover:text-caramel transition">Πού θα μας βρεις</a>
+      </div>
+      <a href="tel:+302109345875" class="hidden md:inline-block bg-caramel text-white text-sm font-600 px-5 py-2.5 rounded-full hover:bg-espresso transition">
+        📞 Κάλεσέ μας
+      </a>
+      <button class="md:hidden text-2xl" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" aria-label="Μενού">☰</button>
+    </nav>
+    <div id="mobileMenu" class="hidden md:hidden bg-cream border-t border-sand">
+      <div class="px-5 py-4 flex flex-col gap-4 text-sm font-500">
+        <a href="#about" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Το μαγαζί</a>
+        <a href="#menu" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Μενού</a>
+        <a href="#reviews" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Κριτικές</a>
+        <a href="#visit" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Πού θα μας βρεις</a>
+        <a href="tel:+302109345875" class="text-caramel font-600">📞 21 0934 5875</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="relative h-[92vh] min-h-[560px] flex items-center justify-center text-center text-white img-fallback">
+    <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1920&q=80"
+         alt="Specialty καφές στο Cafenomy" class="absolute inset-0 w-full h-full object-cover" />
+    <div class="absolute inset-0 hero-overlay"></div>
+    <div class="relative z-10 px-5 max-w-3xl">
+      <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur px-4 py-1.5 rounded-full text-sm mb-6">
+        <span class="text-caramel">★</span> 4,8 στο Google · 165 κριτικές
+      </div>
+      <h1 class="font-display text-5xl md:text-7xl font-700 leading-tight mb-5">Cafenomy</h1>
+      <p class="text-lg md:text-xl text-cream/90 mb-9 font-300 max-w-xl mx-auto">
+        Specialty coffee, φρέσκο χαρμάνι και χειροποίητα γλυκά — στην καρδιά της Νέας Σμύρνης.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#menu" class="bg-caramel text-white font-600 px-8 py-3.5 rounded-full hover:bg-white hover:text-espresso transition">Δες το μενού</a>
+        <a href="tel:+302109345875" class="border border-white/70 text-white font-600 px-8 py-3.5 rounded-full hover:bg-white hover:text-espresso transition">📞 Κάλεσέ μας</a>
+      </div>
+    </div>
+    <a href="#highlights" class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-white/80 text-sm animate-bounce">▼</a>
+  </section>
+
+  <!-- ===== HIGHLIGHTS ===== -->
+  <section id="highlights" class="max-w-6xl mx-auto px-5 py-20 grid md:grid-cols-3 gap-8">
+    <div class="fade-up text-center p-6">
+      <div class="text-4xl mb-4">☕</div>
+      <h3 class="font-display text-xl font-600 mb-2">Specialty Coffee</h3>
+      <p class="text-coffee/80 font-300">Φρεσκοκαβουρδισμένο χαρμάνι σε σύγχρονες μηχανές modbar — ποιότητα σε κάθε φλιτζάνι.</p>
+    </div>
+    <div class="fade-up text-center p-6">
+      <div class="text-4xl mb-4">🍪</div>
+      <h3 class="font-display text-xl font-600 mb-2">Χειροποίητα Γλυκά</h3>
+      <p class="text-coffee/80 font-300">Κουραμπιέδες, μπισκότα και υγιεινές μπάρες — φτιαγμένα με αγνά υλικά.</p>
+    </div>
+    <div class="fade-up text-center p-6">
+      <div class="text-4xl mb-4">🥤</div>
+      <h3 class="font-display text-xl font-600 mb-2">Take-away & Delivery</h3>
+      <p class="text-coffee/80 font-300">Ο καφές σου γρήγορα, όπως σου αρέσει — για τον δρόμο ή delivery χωρίς επαφή.</p>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="bg-sand/60">
+    <div class="max-w-6xl mx-auto px-5 py-20 grid md:grid-cols-2 gap-12 items-center">
+      <div class="fade-up">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80"
+             alt="Barista ετοιμάζει specialty καφέ" class="rounded-2xl shadow-xl w-full h-[420px] object-cover img-fallback" />
+      </div>
+      <div class="fade-up">
+        <p class="uppercase tracking-[0.25em] text-xs text-caramel font-600 mb-4">Το μαγαζί μας</p>
+        <h2 class="font-display text-4xl font-700 mb-6 leading-snug">Καφές στα όρθια, φτιαγμένος με μεράκι</h2>
+        <p class="text-coffee/90 font-300 mb-4 leading-relaxed">
+          Στο Cafenomy πιστεύουμε ότι ένας καλός καφές αξίζει χρόνο και προσοχή.
+          Επιλέγουμε προσεκτικά τα χαρμάνια μας και επενδύουμε σε σύγχρονο εξοπλισμό,
+          για να απολαμβάνεις σταθερά έναν καφέ που ξεχωρίζει.
+        </p>
+        <p class="text-coffee/90 font-300 leading-relaxed">
+          Είτε τον πάρεις στα όρθια, είτε τον απολαύσεις με ένα σπιτικό γλυκό,
+          θα σε υποδεχτούμε πάντα με ένα ζεστό χαμόγελο.
+        </p>
+        <div class="flex gap-10 mt-8">
+          <div><div class="font-display text-3xl font-700 text-caramel">4,8★</div><div class="text-sm text-coffee/70">στο Google</div></div>
+          <div><div class="font-display text-3xl font-700 text-caramel">165</div><div class="text-sm text-coffee/70">κριτικές</div></div>
+          <div><div class="font-display text-3xl font-700 text-caramel">1–5€</div><div class="text-sm text-coffee/70">τιμές</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MENU ===== -->
+  <section id="menu" class="max-w-6xl mx-auto px-5 py-20">
+    <div class="text-center mb-14 fade-up">
+      <p class="uppercase tracking-[0.25em] text-xs text-caramel font-600 mb-3">Το μενού μας</p>
+      <h2 class="font-display text-4xl font-700">Αυτά που θα αγαπήσεις</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-10">
+      <div class="fade-up">
+        <h3 class="font-display text-2xl font-600 mb-6 pb-3 border-b-2 border-caramel/40">Espresso Bar</h3>
+        <ul class="space-y-4">
+          <li class="flex justify-between gap-4"><span>Espresso</span><span class="text-caramel font-600">1,80€</span></li>
+          <li class="flex justify-between gap-4"><span>Freddo Espresso</span><span class="text-caramel font-600">2,80€</span></li>
+          <li class="flex justify-between gap-4"><span>Cappuccino</span><span class="text-caramel font-600">2,80€</span></li>
+          <li class="flex justify-between gap-4"><span>Freddo Cappuccino</span><span class="text-caramel font-600">3,00€</span></li>
+          <li class="flex justify-between gap-4"><span>Filter / V60</span><span class="text-caramel font-600">3,00€</span></li>
+        </ul>
+      </div>
+      <div class="fade-up">
+        <h3 class="font-display text-2xl font-600 mb-6 pb-3 border-b-2 border-caramel/40">Ροφήματα</h3>
+        <ul class="space-y-4">
+          <li class="flex justify-between gap-4"><span>Ζεστή σοκολάτα</span><span class="text-caramel font-600">3,20€</span></li>
+          <li class="flex justify-between gap-4"><span>Cappuccino βανίλια</span><span class="text-caramel font-600">3,20€</span></li>
+          <li class="flex justify-between gap-4"><span>Τσάι / αφέψημα</span><span class="text-caramel font-600">2,50€</span></li>
+          <li class="flex justify-between gap-4"><span>Χυμός φρέσκος</span><span class="text-caramel font-600">3,50€</span></li>
+          <li class="flex justify-between gap-4"><span>Νερό</span><span class="text-caramel font-600">0,50€</span></li>
+        </ul>
+      </div>
+      <div class="fade-up">
+        <h3 class="font-display text-2xl font-600 mb-6 pb-3 border-b-2 border-caramel/40">Γλυκά</h3>
+        <ul class="space-y-4">
+          <li class="flex justify-between gap-4"><span>Κουραμπιέδες</span><span class="text-caramel font-600">1,50€</span></li>
+          <li class="flex justify-between gap-4"><span>Μπισκότα ημέρας</span><span class="text-caramel font-600">1,50€</span></li>
+          <li class="flex justify-between gap-4"><span>Ενεργειακές μπάρες</span><span class="text-caramel font-600">2,00€</span></li>
+          <li class="flex justify-between gap-4"><span>Κρουασάν βουτύρου</span><span class="text-caramel font-600">2,20€</span></li>
+          <li class="flex justify-between gap-4"><span>Cookie σοκολάτας</span><span class="text-caramel font-600">2,00€</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="text-center text-coffee/60 text-sm mt-12 fade-up">*Ενδεικτικό μενού & τιμές (demo) — προς επιβεβαίωση με το κατάστημα.</p>
+  </section>
+
+  <!-- ===== REVIEWS ===== -->
+  <section id="reviews" class="bg-espresso py-20">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="text-center mb-14 fade-up">
+        <p class="uppercase tracking-[0.25em] text-xs text-caramel font-600 mb-3">★ 4,8 / 5 στο Google</p>
+        <h2 class="font-display text-4xl font-700 text-cream">Τι λένε οι πελάτες μας</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="fade-up bg-cream/5 border border-cream/10 rounded-2xl p-7">
+          <div class="text-caramel mb-3">★★★★★</div>
+          <p class="text-cream/90 font-300 leading-relaxed mb-5">«Πολύ ωραία ποικιλία καφέ, ευγενέστατο και πρόσχαρο προσωπικό. Αρκετή ποικιλία σε μπισκότα και μπάρες.»</p>
+          <p class="text-cream/60 text-sm font-500">— Ευαγγελία Ν. · Τοπικός οδηγός</p>
+        </div>
+        <div class="fade-up bg-cream/5 border border-cream/10 rounded-2xl p-7">
+          <div class="text-caramel mb-3">★★★★★</div>
+          <p class="text-cream/90 font-300 leading-relaxed mb-5">«Πολύ ωραίο χαρμάνι, εξαιρετική εξυπηρέτηση και καθαρός χώρος. Όποτε βρίσκομαι στη Νέα Σμύρνη περνάω για καφέ.»</p>
+          <p class="text-cream/60 text-sm font-500">— Ευαγγελία Δ. · Τοπικός οδηγός</p>
+        </div>
+        <div class="fade-up bg-cream/5 border border-cream/10 rounded-2xl p-7">
+          <div class="text-caramel mb-3">★★★★★</div>
+          <p class="text-cream/90 font-300 leading-relaxed mb-5">«Σταθερά καλός καφές και ζεστή εξυπηρέτηση. Ένα από τα αγαπημένα μου στέκια στη γειτονιά.»</p>
+          <p class="text-cream/60 text-sm font-500">— Πελάτης Google</p>
+        </div>
+      </div>
+      <p class="text-center mt-10 fade-up">
+        <a href="https://www.google.com/maps/place/Cafenomy" target="_blank" rel="noopener" class="text-caramel font-600 hover:text-cream transition">Δες όλες τις κριτικές στο Google →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== VISIT ===== -->
+  <section id="visit" class="max-w-6xl mx-auto px-5 py-20 grid md:grid-cols-2 gap-12">
+    <div class="fade-up">
+      <p class="uppercase tracking-[0.25em] text-xs text-caramel font-600 mb-4">Ωράριο</p>
+      <h2 class="font-display text-4xl font-700 mb-8">Πότε θα μας βρεις</h2>
+      <ul class="space-y-3 text-coffee/90">
+        <li class="flex justify-between border-b border-sand pb-3"><span>Δευτέρα – Παρασκευή</span><span class="font-600">07:00 – 21:00</span></li>
+        <li class="flex justify-between border-b border-sand pb-3"><span>Σάββατο</span><span class="font-600">08:00 – 21:00</span></li>
+        <li class="flex justify-between border-b border-sand pb-3"><span>Κυριακή</span><span class="font-600">08:00 – 21:00</span></li>
+      </ul>
+      <p class="text-coffee/50 text-xs mt-3">*Ενδεικτικό ωράριο (demo) — προς επιβεβαίωση.</p>
+      <div class="mt-8">
+        <p class="uppercase tracking-[0.25em] text-xs text-caramel font-600 mb-3">Διεύθυνση</p>
+        <p class="text-coffee/90">Λεωφ. Ελ. Βενιζέλου 90, Νέα Σμύρνη 171 22</p>
+        <a href="https://www.google.com/maps/place/Cafenomy/@37.9393898,23.7125219,17z" target="_blank" rel="noopener"
+           class="inline-block mt-3 text-caramel font-600 hover:text-espresso transition">📍 Άνοιγμα σε Google Maps →</a>
+      </div>
+    </div>
+    <div class="fade-up rounded-2xl overflow-hidden shadow-xl h-[420px] img-fallback">
+      <iframe title="Χάρτης — Cafenomy" class="w-full h-full border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.openstreetmap.org/export/embed.html?bbox=23.7075%2C37.9369%2C23.7175%2C37.9419&layer=mapnik&marker=37.9393898%2C23.7125219">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="bg-sand/60">
+    <div class="max-w-5xl mx-auto px-5 py-20 grid md:grid-cols-2 gap-12 items-start">
+      <div class="fade-up">
+        <p class="uppercase tracking-[0.25em] text-xs text-caramel font-600 mb-4">Επικοινωνία</p>
+        <h2 class="font-display text-4xl font-700 mb-6 leading-snug">Πες μας ένα γεια</h2>
+        <p class="text-coffee/90 font-300 mb-8">Για παραγγελίες, catering ή απλά μια καλή κουβέντα — είμαστε εδώ.</p>
+        <div class="space-y-4">
+          <a href="tel:+302109345875" class="flex items-center gap-3 text-coffee hover:text-caramel transition"><span class="text-xl">📞</span> 21 0934 5875</a>
+          <a href="https://wa.me/302109345875" target="_blank" rel="noopener" class="flex items-center gap-3 text-coffee hover:text-caramel transition"><span class="text-xl">💬</span> WhatsApp</a>
+          <div class="flex items-center gap-3 text-coffee"><span class="text-xl">📍</span> Λεωφ. Ελ. Βενιζέλου 90, Νέα Σμύρνη</div>
+          <div class="flex items-center gap-4 pt-2 text-2xl">
+            <a href="#" aria-label="Instagram" class="hover:text-caramel transition">📷</a>
+            <a href="#" aria-label="Facebook" class="hover:text-caramel transition">👍</a>
+          </div>
+        </div>
+      </div>
+      <form class="fade-up bg-cream p-8 rounded-2xl shadow-lg space-y-4" onsubmit="event.preventDefault(); this.reset(); document.getElementById('formMsg').classList.remove('hidden');">
+        <div>
+          <label class="block text-sm font-500 mb-1">Όνομα</label>
+          <input type="text" required class="w-full px-4 py-3 rounded-lg border border-sand bg-white focus:border-caramel focus:outline-none" placeholder="Το όνομά σου" />
+        </div>
+        <div>
+          <label class="block text-sm font-500 mb-1">Τηλέφωνο</label>
+          <input type="tel" required class="w-full px-4 py-3 rounded-lg border border-sand bg-white focus:border-caramel focus:outline-none" placeholder="69........" />
+        </div>
+        <div>
+          <label class="block text-sm font-500 mb-1">Μήνυμα</label>
+          <textarea rows="3" class="w-full px-4 py-3 rounded-lg border border-sand bg-white focus:border-caramel focus:outline-none" placeholder="Πες μας..."></textarea>
+        </div>
+        <button type="submit" class="w-full bg-caramel text-white font-600 py-3.5 rounded-lg hover:bg-espresso transition">Στείλε μήνυμα</button>
+        <p id="formMsg" class="hidden text-green-700 text-sm text-center">✓ Ευχαριστούμε! Θα επικοινωνήσουμε σύντομα.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-espresso text-cream/80">
+    <div class="max-w-6xl mx-auto px-5 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-2"><span class="text-2xl">☕</span><span class="font-display text-xl font-700 text-cream">Cafenomy</span></div>
+      <p class="text-sm text-center">Λεωφ. Ελ. Βενιζέλου 90, Νέα Σμύρνη · 21 0934 5875</p>
+      <p class="text-xs text-cream/50">Demo / πρόταση σχεδιασμού · © 2026</p>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/302109345875" target="_blank" rel="noopener"
+     class="fixed bottom-6 right-6 z-50 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg hover:scale-110 transition" aria-label="WhatsApp">💬</a>
+
+  <script>
+    const header = document.querySelector('[data-nav]');
+    function onScroll() {
+      if (window.scrollY > 40) header.classList.add('bg-cream', 'shadow-md');
+      else header.classList.remove('bg-cream', 'shadow-md');
+    }
+    window.addEventListener('scroll', onScroll); onScroll();
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('show'); });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.fade-up').forEach((el) => io.observe(el));
+  </script>
+</body>
+</html>
