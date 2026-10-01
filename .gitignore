@@ -25,3 +25,4 @@ npm-debug.log*
 # === Εσωτερικά αρχεία project — μένουν ΤΟΠΙΚΑ, ΕΚΤΟΣ GitHub ===
 # (context/στρατηγική/leads — μόνο για εμάς, όχι για το repo)
 CLAUDE.md
+.claude/

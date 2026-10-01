@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cafenomy — Specialty Coffee στη Νέα Σμύρνη</title>
-  <meta name="description" content="Cafenomy: specialty coffee, φρέσκο χαρμάνι και χειροποίητα γλυκά στη Νέα Σμύρνη. Freddo espresso, κουραμπιέδες & take-away με 4,8★ στο Google." />
+  <title>Coffee shop — Specialty Coffee στα Νότια Προάστια</title>
+  <meta name="description" content="Coffee shop: specialty coffee, φρέσκο χαρμάνι και χειροποίητα γλυκά στα Νότια Προάστια. Freddo espresso, κουραμπιέδες & take-away." />
 
   <!-- Tailwind (CDN) -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -33,8 +33,19 @@
     html { scroll-behavior: smooth; }
     .hero-overlay { background: linear-gradient(180deg, rgba(42,30,23,.60) 0%, rgba(42,30,23,.40) 40%, rgba(42,30,23,.80) 100%); }
     .img-fallback { background: linear-gradient(135deg,#5b4636,#2a1e17); }
-    .fade-up { opacity: 0; transform: translateY(24px); transition: all .7s ease; }
+    /* Scroll-reveal — κομψό & επαγγελματικό (fade + slide, με stagger) */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(42px);
+      transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);
+      transition-delay: var(--reveal-delay, 0s);
+      will-change: opacity, transform;
+    }
     .fade-up.show { opacity: 1; transform: translateY(0); }
+    /* Σεβασμός σε όσους έχουν «λιγότερη κίνηση» στις ρυθμίσεις τους */
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up { opacity: 1; transform: none; transition: none; }
+    }
   </style>
 </head>
 
@@ -50,7 +61,7 @@
     <nav class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
       <a href="#top" class="flex items-center gap-2">
         <span class="text-2xl">☕</span>
-        <span class="font-display text-xl font-700 tracking-wide">Cafenomy</span>
+        <span class="font-display text-xl font-700 tracking-wide">Coffee shop</span>
       </a>
       <div class="hidden md:flex items-center gap-8 text-sm font-500">
         <a href="#about" class="hover:text-caramel transition">Το μαγαζί</a>
@@ -58,8 +69,8 @@
         <a href="#reviews" class="hover:text-caramel transition">Κριτικές</a>
         <a href="#visit" class="hover:text-caramel transition">Πού θα μας βρεις</a>
       </div>
-      <a href="tel:+302109345875" class="hidden md:inline-block bg-caramel text-white text-sm font-600 px-5 py-2.5 rounded-full hover:bg-espresso transition">
-        📞 Κάλεσέ μας
+      <a href="#contact" class="hidden md:inline-block bg-caramel text-white text-sm font-600 px-5 py-2.5 rounded-full hover:bg-espresso transition">
+        Επικοινωνία
       </a>
       <button class="md:hidden text-2xl" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" aria-label="Μενού">☰</button>
     </nav>
@@ -69,7 +80,7 @@
         <a href="#menu" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Μενού</a>
         <a href="#reviews" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Κριτικές</a>
         <a href="#visit" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Πού θα μας βρεις</a>
-        <a href="tel:+302109345875" class="text-caramel font-600">📞 21 0934 5875</a>
+        <a href="#contact" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="text-caramel font-600">Επικοινωνία</a>
       </div>
     </div>
   </header>
@@ -77,19 +88,19 @@
   <!-- ===== HERO ===== -->
   <section class="relative h-[92vh] min-h-[560px] flex items-center justify-center text-center text-white img-fallback">
     <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1920&q=80"
-         alt="Specialty καφές στο Cafenomy" class="absolute inset-0 w-full h-full object-cover" />
+         alt="Specialty καφές στο Coffee shop" class="absolute inset-0 w-full h-full object-cover" />
     <div class="absolute inset-0 hero-overlay"></div>
     <div class="relative z-10 px-5 max-w-3xl">
       <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur px-4 py-1.5 rounded-full text-sm mb-6">
         <span class="text-caramel">★</span> 4,8 στο Google · 165 κριτικές
       </div>
-      <h1 class="font-display text-5xl md:text-7xl font-700 leading-tight mb-5">Cafenomy</h1>
+      <h1 class="font-display text-5xl md:text-7xl font-700 leading-tight mb-5">Coffee shop</h1>
       <p class="text-lg md:text-xl text-cream/90 mb-9 font-300 max-w-xl mx-auto">
-        Specialty coffee, φρέσκο χαρμάνι και χειροποίητα γλυκά — στην καρδιά της Νέας Σμύρνης.
+        Specialty coffee, φρέσκο χαρμάνι και χειροποίητα γλυκά — στα Νότια Προάστια.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="#menu" class="bg-caramel text-white font-600 px-8 py-3.5 rounded-full hover:bg-white hover:text-espresso transition">Δες το μενού</a>
-        <a href="tel:+302109345875" class="border border-white/70 text-white font-600 px-8 py-3.5 rounded-full hover:bg-white hover:text-espresso transition">📞 Κάλεσέ μας</a>
+        <a href="#contact" class="border border-white/70 text-white font-600 px-8 py-3.5 rounded-full hover:bg-white hover:text-espresso transition">Επικοινωνία</a>
       </div>
     </div>
     <a href="#highlights" class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-white/80 text-sm animate-bounce">▼</a>
@@ -125,7 +136,7 @@
         <p class="uppercase tracking-[0.25em] text-xs text-caramel font-600 mb-4">Το μαγαζί μας</p>
         <h2 class="font-display text-4xl font-700 mb-6 leading-snug">Καφές στα όρθια, φτιαγμένος με μεράκι</h2>
         <p class="text-coffee/90 font-300 mb-4 leading-relaxed">
-          Στο Cafenomy πιστεύουμε ότι ένας καλός καφές αξίζει χρόνο και προσοχή.
+          Στο Coffee shop πιστεύουμε ότι ένας καλός καφές αξίζει χρόνο και προσοχή.
           Επιλέγουμε προσεκτικά τα χαρμάνια μας και επενδύουμε σε σύγχρονο εξοπλισμό,
           για να απολαμβάνεις σταθερά έναν καφέ που ξεχωρίζει.
         </p>
@@ -198,7 +209,7 @@
         </div>
         <div class="fade-up bg-cream/5 border border-cream/10 rounded-2xl p-7">
           <div class="text-caramel mb-3">★★★★★</div>
-          <p class="text-cream/90 font-300 leading-relaxed mb-5">«Πολύ ωραίο χαρμάνι, εξαιρετική εξυπηρέτηση και καθαρός χώρος. Όποτε βρίσκομαι στη Νέα Σμύρνη περνάω για καφέ.»</p>
+          <p class="text-cream/90 font-300 leading-relaxed mb-5">«Πολύ ωραίο χαρμάνι, εξαιρετική εξυπηρέτηση και καθαρός χώρος. Όποτε βρίσκομαι στην περιοχή περνάω για καφέ.»</p>
           <p class="text-cream/60 text-sm font-500">— Ευαγγελία Δ. · Τοπικός οδηγός</p>
         </div>
         <div class="fade-up bg-cream/5 border border-cream/10 rounded-2xl p-7">
@@ -208,7 +219,7 @@
         </div>
       </div>
       <p class="text-center mt-10 fade-up">
-        <a href="https://www.google.com/maps/place/Cafenomy" target="_blank" rel="noopener" class="text-caramel font-600 hover:text-cream transition">Δες όλες τις κριτικές στο Google →</a>
+        <a href="#" class="text-caramel font-600 hover:text-cream transition">Δες όλες τις κριτικές στο Google →</a>
       </p>
     </div>
   </section>
@@ -226,14 +237,14 @@
       <p class="text-coffee/50 text-xs mt-3">*Ενδεικτικό ωράριο (demo) — προς επιβεβαίωση.</p>
       <div class="mt-8">
         <p class="uppercase tracking-[0.25em] text-xs text-caramel font-600 mb-3">Διεύθυνση</p>
-        <p class="text-coffee/90">Λεωφ. Ελ. Βενιζέλου 90, Νέα Σμύρνη 171 22</p>
-        <a href="https://www.google.com/maps/place/Cafenomy/@37.9393898,23.7125219,17z" target="_blank" rel="noopener"
-           class="inline-block mt-3 text-caramel font-600 hover:text-espresso transition">📍 Άνοιγμα σε Google Maps →</a>
+        <p class="text-coffee/90">Νότια Προάστια</p>
+        <a href="https://www.google.com/maps/search/καφετέρια+νότια+προάστια+Αθήνα" target="_blank" rel="noopener"
+           class="inline-block mt-3 text-caramel font-600 hover:text-espresso transition">📍 Δες στον χάρτη →</a>
       </div>
     </div>
     <div class="fade-up rounded-2xl overflow-hidden shadow-xl h-[420px] img-fallback">
-      <iframe title="Χάρτης — Cafenomy" class="w-full h-full border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-        src="https://www.openstreetmap.org/export/embed.html?bbox=23.7075%2C37.9369%2C23.7175%2C37.9419&layer=mapnik&marker=37.9393898%2C23.7125219">
+      <iframe title="Χάρτης — Νότια Προάστια" class="w-full h-full border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.openstreetmap.org/export/embed.html?bbox=23.68%2C37.83%2C23.78%2C37.95&layer=mapnik">
       </iframe>
     </div>
   </section>
@@ -246,9 +257,7 @@
         <h2 class="font-display text-4xl font-700 mb-6 leading-snug">Πες μας ένα γεια</h2>
         <p class="text-coffee/90 font-300 mb-8">Για παραγγελίες, catering ή απλά μια καλή κουβέντα — είμαστε εδώ.</p>
         <div class="space-y-4">
-          <a href="tel:+302109345875" class="flex items-center gap-3 text-coffee hover:text-caramel transition"><span class="text-xl">📞</span> 21 0934 5875</a>
-          <a href="https://wa.me/302109345875" target="_blank" rel="noopener" class="flex items-center gap-3 text-coffee hover:text-caramel transition"><span class="text-xl">💬</span> WhatsApp</a>
-          <div class="flex items-center gap-3 text-coffee"><span class="text-xl">📍</span> Λεωφ. Ελ. Βενιζέλου 90, Νέα Σμύρνη</div>
+          <div class="flex items-center gap-3 text-coffee"><span class="text-xl">📍</span> Νότια Προάστια</div>
           <div class="flex items-center gap-4 pt-2 text-2xl">
             <a href="#" aria-label="Instagram" class="hover:text-caramel transition">📷</a>
             <a href="#" aria-label="Facebook" class="hover:text-caramel transition">👍</a>
@@ -277,25 +286,37 @@
   <!-- ===== FOOTER ===== -->
   <footer class="bg-espresso text-cream/80">
     <div class="max-w-6xl mx-auto px-5 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
-      <div class="flex items-center gap-2"><span class="text-2xl">☕</span><span class="font-display text-xl font-700 text-cream">Cafenomy</span></div>
-      <p class="text-sm text-center">Λεωφ. Ελ. Βενιζέλου 90, Νέα Σμύρνη · 21 0934 5875</p>
+      <div class="flex items-center gap-2"><span class="text-2xl">☕</span><span class="font-display text-xl font-700 text-cream">Coffee shop</span></div>
+      <p class="text-sm text-center">Νότια Προάστια</p>
       <p class="text-xs text-cream/50">Demo / πρόταση σχεδιασμού · © 2026</p>
     </div>
   </footer>
 
-  <a href="https://wa.me/302109345875" target="_blank" rel="noopener"
-     class="fixed bottom-6 right-6 z-50 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg hover:scale-110 transition" aria-label="WhatsApp">💬</a>
-
-  <script>
+<script>
     const header = document.querySelector('[data-nav]');
     function onScroll() {
       if (window.scrollY > 40) header.classList.add('bg-cream', 'shadow-md');
       else header.classList.remove('bg-cream', 'shadow-md');
     }
     window.addEventListener('scroll', onScroll); onScroll();
+    // Scroll-reveal: εμφανίζει κάθε στοιχείο όταν μπαίνει στην οθόνη (μία φορά)
     const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('show'); });
-    }, { threshold: 0.15 });
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+    // Auto-stagger: αδέρφια στοιχεία εμφανίζονται ένα-ένα, με μικρή σειρά
+    const groups = new Map();
+    document.querySelectorAll('.fade-up').forEach((el) => {
+      const p = el.parentElement;
+      if (!groups.has(p)) groups.set(p, []);
+      groups.get(p).push(el);
+    });
+    groups.forEach((els) => {
+      if (els.length > 1) els.forEach((el, i) => el.style.setProperty('--reveal-delay', (i * 0.1) + 's'));
+    });
+
     document.querySelectorAll('.fade-up').forEach((el) => io.observe(el));
   </script>
 </body>
