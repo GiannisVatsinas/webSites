@@ -1,0 +1,8 @@
+{
+  // Ρύθμιση Cloudflare: σερβίρει το Coffee shop ως στατικό site (χωρίς κώδικα Worker)
+  "name": "websites",
+  "compatibility_date": "2024-11-01",
+  "assets": {
+    "directory": "./demos/cafenomy"
+  }
+}
