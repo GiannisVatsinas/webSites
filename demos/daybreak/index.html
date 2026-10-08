@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daybreak Café — Οι καλές μέρες ξεκινούν εδώ</title>
+  <meta name="description" content="Daybreak Café: Specialty καφές, φρέσκες γεύσεις και καλή ενέργεια στο Κολωνάκι, Αθήνα. Παραγγείλτε για take away ή επισκεφθείτε μας." />
+
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bark: '#30251e',
+            terra: '#dc4b30',
+            cream: '#f8f4eb',
+            warm: '#fffdf8',
+            muted: '#74685f',
+            border: '#ddd4c8',
+            tan: '#c7b9aa',
+            blush: '#f3e4d5',
+          },
+          fontFamily: {
+            serif: ['"DM Serif Display"', 'serif'],
+            sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background: #f8f4eb; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 18px;
+      padding: 0 26px; height: 54px; border-radius: 100px;
+      font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 15px;
+      white-space: nowrap; cursor: pointer; transition: opacity 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-primary:active { transform: translateY(0); }
+
+    .text-link {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 15px;
+      text-decoration: underline; text-underline-offset: 3px;
+      cursor: pointer; transition: opacity 0.2s;
+    }
+    .text-link:hover { opacity: 0.7; }
+
+    .category-pill {
+      display: inline-flex; padding: 11px 20px; border-radius: 100px;
+      font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 13px;
+      cursor: pointer; transition: all 0.2s; white-space: nowrap;
+    }
+    .category-pill.active { background: #30251e; color: #f8f4eb; }
+    .category-pill:not(.active) { border: 1px solid #ddd4c8; color: #74685f; }
+    .category-pill:not(.active):hover { background: #30251e; color: #f8f4eb; border-color: #30251e; }
+
+    .nav-link {
+      font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 15px;
+      color: #30251e; cursor: pointer; transition: opacity 0.2s; text-decoration: none;
+    }
+    .nav-link:hover { opacity: 0.6; }
+
+    .footer-link {
+      font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 14px;
+      color: #f8f4eb; cursor: pointer; transition: opacity 0.2s; text-decoration: none;
+    }
+    .footer-link:hover { opacity: 0.7; }
+
+    .review-card {
+      transition: transform 0.2s;
+    }
+    .review-card:hover { transform: translateY(-4px); }
+
+    .menu-photo { transition: transform 0.3s; }
+    .menu-photo:hover { transform: scale(1.02); }
+
+    .menu-item {
+      display: flex; align-items: baseline; justify-content: space-between;
+      padding: 14px 0; border-top: 1px solid #ddd4c8;
+    }
+
+    /* Scroll-reveal */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(42px);
+      transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);
+      transition-delay: var(--reveal-delay, 0s);
+      will-change: opacity, transform;
+    }
+    .fade-up.show { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body class="font-sans text-bark antialiased">
+
+  <!-- Navigation -->
+  <nav class="flex items-center justify-between px-[72px] h-[104px] border-b border-border">
+    <a href="#" class="flex items-center gap-[9px]">
+      <img src="assets/sunrise.svg" alt="" width="32" height="32" />
+      <span class="font-serif text-[36px] text-bark">daybreak</span>
+    </a>
+    <div class="flex items-center gap-[36px]">
+      <a href="#menu" class="nav-link">Μενού</a>
+      <a href="#story" class="nav-link">Η ιστορία μας</a>
+      <a href="#visit" class="nav-link">Επισκεφθείτε μας</a>
+      <a href="#order" class="btn-primary bg-terra text-warm">
+        Παραγγελία take away
+        <img src="assets/arrow-up-right-white.svg" alt="" width="18" height="18" />
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="flex gap-[64px] items-center px-[72px] pt-[44px] pb-[64px] overflow-hidden">
+    <div class="flex-1 flex flex-col gap-[28px] min-w-0 fade-up">
+      <p class="font-sans font-bold text-[12px] text-terra uppercase tracking-wide">Η ΓΕΙΤΟΝΙΑ ΣΟΥ, ΛΙΓΟ ΠΙΟ ΦΩΤΕΙΝΗ</p>
+      <h1 class="font-serif text-[112px] text-bark leading-[1.02]">Οι καλές μέρες<br>ξεκινούν εδώ.</h1>
+      <p class="text-muted text-[18px] leading-[1.6] max-w-[435px]">Σοβαρά καλός καφές. Φρεσκοφτιαγμένα σνακ. Ένα ζεστό καλημέρα. Η καθημερινή σου φωτεινή στιγμή, από την πρώτη γουλιά ως το τελευταίο ψίχουλο.</p>
+      <div class="flex items-center gap-[28px] pt-[6px]">
+        <a href="#menu" class="btn-primary bg-terra text-warm">
+          Δείτε το μενού
+          <img src="assets/arrow-up-right-white.svg" alt="" width="18" height="18" />
+        </a>
+        <a href="#order" class="text-link text-bark">
+          Προ-παραγγελία
+          <img src="assets/arrow-up-right-dark.svg" alt="" width="17" height="17" />
+        </a>
+      </div>
+      <div class="flex items-center gap-[10px] pt-[23px]">
+        <img src="assets/open-indicator.svg" alt="" width="7" height="7" />
+        <p class="text-muted text-[13px]">ΚΑΛΩΣ ΗΡΘΑΤΕ ΠΡΩΙΝΟΙ ΠΟΥΛΙΑ · ΚΑΘΗΜΕΡΙΝΕΣ ΑΠΟ ΤΙΣ 7 ΠΜ</p>
+      </div>
+    </div>
+    <div class="w-[616px] shrink-0 flex flex-col gap-[14px] fade-up">
+      <div class="relative">
+        <img src="assets/hero-coffee.png" alt="Καφές και κρουασάν" class="w-full h-[602px] object-cover rounded-tl-[180px] rounded-tr-[4px] rounded-bl-[4px] rounded-br-[4px]" />
+        <div class="absolute -left-[35px] top-[17px] -rotate-[8deg]">
+          <div class="bg-terra rounded-full w-[122px] h-[122px] flex flex-col items-center justify-center gap-[4px]">
+            <img src="assets/sun.svg" alt="" width="24" height="24" />
+            <p class="text-cream font-bold text-[12px] text-center leading-[1.3]">ΜΙΑ ΔΟΣΗ<br>ΚΑΛΟΥ</p>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-between text-muted text-[11px]">
+        <span>ΜΙΚΡΕΣ ΤΕΛΕΤΟΥΡΓΙΕΣ. ΜΕΓΑΛΑ ΣΥΝΑΙΣΘΗΜΑΤΑ.</span>
+        <span>ΑΠΟ ΤΟ 2021 / ΚΟΛΩΝΑΚΙ, ΑΘΗΝΑ</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brand Promise Bar -->
+  <section class="flex items-center justify-between px-[72px] py-[32px] border-t border-b border-border">
+    <div class="flex items-center gap-[14px] fade-up">
+      <img src="assets/coffee-icon.svg" alt="" width="24" height="24" />
+      <span class="font-medium text-[15px]">Specialty καφές, πάντα</span>
+    </div>
+    <div class="flex items-center gap-[14px] fade-up">
+      <img src="assets/sandwich-icon.svg" alt="" width="24" height="24" />
+      <span class="font-medium text-[15px]">Φρέσκο φαγητό. Χωρίς συμβιβασμούς.</span>
+    </div>
+    <div class="flex items-center gap-[14px] fade-up">
+      <img src="assets/clock-icon.svg" alt="" width="24" height="24" />
+      <span class="font-medium text-[15px]">Φτιαγμένο για την καθημερινότητά σου</span>
+    </div>
+    <div class="flex items-center gap-[14px] fade-up">
+      <img src="assets/heart-icon.svg" alt="" width="24" height="24" />
+      <span class="font-medium text-[15px]">Καλοί άνθρωποι. Καλή ενέργεια.</span>
+    </div>
+  </section>
+
+  <!-- Menu Favorites -->
+  <section id="menu" class="flex flex-col gap-[36px] px-[72px] py-[96px]">
+    <div class="flex flex-col gap-[18px] fade-up">
+      <p class="font-bold text-[12px] text-terra uppercase">ΤΑ ΚΛΑΣΙΚΑ, ΟΧΙ ΤΥΧΑΙΑ</p>
+      <div class="flex items-end justify-between">
+        <h2 class="font-serif text-[64px] text-bark leading-[1.02] max-w-[870px]">Γνωρίστε τα αγαπημένα σας.</h2>
+        <a href="#full-menu" class="text-link text-bark">
+          Δείτε ολόκληρο το μενού
+          <img src="assets/arrow-up-right-dark.svg" alt="" width="17" height="17" />
+        </a>
+      </div>
+    </div>
+
+    <!-- Category Pills -->
+    <div class="flex gap-[12px]">
+      <button class="category-pill active" onclick="setCategory(this)">Αγαπημένα όλη μέρα</button>
+      <button class="category-pill" onclick="setCategory(this)">Καφές &amp; ροφήματα</button>
+      <button class="category-pill" onclick="setCategory(this)">Γρήγορα σνακ</button>
+      <button class="category-pill" onclick="setCategory(this)">Φρέσκα ψημένα</button>
+    </div>
+
+    <!-- Menu Items -->
+    <div class="grid grid-cols-3 gap-[24px]">
+      <div class="flex flex-col gap-[20px] fade-up">
+        <div class="relative overflow-hidden rounded-[4px] menu-photo">
+          <img src="assets/menu-latte.png" alt="Latte μέλι & βρώμη" class="w-full h-[336px] object-cover" />
+          <span class="absolute top-[18px] left-[18px] bg-cream text-bark font-bold text-[10px] px-[12px] py-[8px] rounded-[4px]">ΤΟ ΑΓΑΠΗΜΕΝΟ ΜΑΣ</span>
+        </div>
+        <div class="flex flex-col gap-[10px]">
+          <div class="flex items-baseline justify-between">
+            <span class="font-semibold text-[22px]">Latte μέλι &amp; βρώμη</span>
+            <span class="text-[16px]">€4,80</span>
+          </div>
+          <p class="text-muted text-[14px] leading-[1.5]">Διπλός εσπρέσο, γάλα βρώμης &amp; λίγο τοπικό μέλι.</p>
+        </div>
+      </div>
+      <div class="flex flex-col gap-[20px] fade-up">
+        <div class="relative overflow-hidden rounded-[4px] menu-photo">
+          <img src="assets/menu-bun.png" alt="Το πρωινό μπριός" class="w-full h-[336px] object-cover" />
+          <span class="absolute top-[18px] left-[18px] bg-cream text-bark font-bold text-[10px] px-[12px] py-[8px] rounded-[4px]">ΠΡΩΙΝΟ, ΟΛΗ ΜΕΡΑ</span>
+        </div>
+        <div class="flex flex-col gap-[10px]">
+          <div class="flex items-baseline justify-between">
+            <span class="font-semibold text-[22px]">Το πρωινό μπριός</span>
+            <span class="text-[16px]">€7,50</span>
+          </div>
+          <p class="text-muted text-[14px] leading-[1.5]">Αυγά, γραβιέρα &amp; σπιτική μαρμελάδα τσίλι.</p>
+        </div>
+      </div>
+      <div class="flex flex-col gap-[20px] fade-up">
+        <div class="relative overflow-hidden rounded-[4px] menu-photo">
+          <img src="assets/menu-cookie.png" alt="Μπισκότο βουτύρου" class="w-full h-[336px] object-cover" />
+          <span class="absolute top-[18px] left-[18px] bg-cream text-bark font-bold text-[10px] px-[12px] py-[8px] rounded-[4px]">ΨΗΜΕΝΟ ΚΑΘΕ ΠΡΩΙ</span>
+        </div>
+        <div class="flex flex-col gap-[10px]">
+          <div class="flex items-baseline justify-between">
+            <span class="font-semibold text-[22px]">Μπισκότο βουτύρου</span>
+            <span class="text-[16px]">€3,50</span>
+          </div>
+          <p class="text-muted text-[14px] leading-[1.5]">Κομμάτια μαύρης σοκολάτας. Μια πρέζα θαλασσινό αλάτι.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Full Menu -->
+  <section id="full-menu" class="bg-warm px-[72px] py-[96px]">
+    <div class="flex flex-col gap-[48px]">
+      <div class="flex flex-col gap-[18px] fade-up">
+        <p class="font-bold text-[12px] text-terra uppercase">ΟΛΑ ΟΣΑ ΑΓΑΠΑΜΕ, ΣΕ ΜΙΑ ΣΕΛΙΔΑ</p>
+        <h2 class="font-serif text-[64px] text-bark leading-[1.02]">Το πλήρες μενού.</h2>
+      </div>
+
+      <div class="grid grid-cols-2 gap-x-[88px] gap-y-[56px]">
+
+        <!-- Καφέδες & Ροφήματα -->
+        <div class="flex flex-col gap-[8px] fade-up">
+          <h3 class="font-serif text-[32px] text-bark pb-[8px]">Καφέδες &amp; Ροφήματα</h3>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Εσπρέσο</span>
+              <span class="text-muted text-[12px]">Μονός ή διπλός, πλούσιος &amp; ισορροπημένος</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€2,50</span>
+          </div>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Φρέντο εσπρέσο</span>
+              <span class="text-muted text-[12px]">Χτυπητός, παγωμένος, κλασικός</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€3,00</span>
+          </div>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Φρέντο καπουτσίνο</span>
+              <span class="text-muted text-[12px]">Αφρώδης, κρεμώδης, παγωμένος</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€3,50</span>
+          </div>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Latte μέλι &amp; βρώμη</span>
+              <span class="text-muted text-[12px]">Διπλός εσπρέσο, γάλα βρώμης, τοπικό μέλι</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€4,80</span>
+          </div>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Φλατ ουάιτ</span>
+              <span class="text-muted text-[12px]">Διπλός, μεταξένιο αφρόγαλα</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€4,00</span>
+          </div>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Κρύα εκχύλιση 18 ωρών</span>
+              <span class="text-muted text-[12px]">Απαλός &amp; βελούδινος, χωρίς πικράδα</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€4,00</span>
+          </div>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Ελληνικός παραδοσιακός</span>
+              <span class="text-muted text-[12px]">Σκέτος, μέτριος ή γλυκός</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€2,50</span>
+          </div>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Matcha latte</span>
+              <span class="text-muted text-[12px]">Ceremonial grade, γάλα βρώμης ή αμυγδάλου</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€5,00</span>
+          </div>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Σοκολάτα ζεστή / κρύα</span>
+              <span class="text-muted text-[12px]">Βέλγικη σοκολάτα, σαντιγί σπιτική</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€4,50</span>
+          </div>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Φρέσκος χυμός πορτοκάλι</span>
+              <span class="text-muted text-[12px]">Στυμμένος εκείνη τη στιγμή</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€3,50</span>
+          </div>
+          <div class="pt-[8px]">
+            <span class="text-muted text-[12px]">Εναλλακτικά γάλατα (βρώμης, αμυγδάλου, καρύδας) +€0,50</span>
+          </div>
+        </div>
+
+        <!-- Πρωινά -->
+        <div class="flex flex-col gap-[8px] fade-up">
+          <h3 class="font-serif text-[32px] text-bark pb-[8px]">Πρωινά</h3>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Αυγά με στραγγιστό &amp; ντομάτα</span>
+              <span class="text-muted text-[12px]">Scrambled αυγά, γιαούρτι, ψητή ντομάτα, φρυγανισμένο ψωμί</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€8,50</span>
+          </div>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Το πρωινό μπριός</span>
+              <span class="text-muted text-[12px]">Αυγά, γραβιέρα, σπιτική μαρμελάδα τσίλι</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€7,50</span>
+          </div>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Τοστ αβοκάντο με αυγό</span>
+              <span class="text-muted text-[12px]">Προζύμι, αυγό ποσέ, σπόροι, chili flakes</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€9,00</span>
+          </div>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Γιαούρτι με granola &amp; μέλι</span>
+              <span class="text-muted text-[12px]">Στραγγιστό, σπιτική granola, εποχιακά φρούτα · V</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€6,50</span>
+          </div>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Pancakes μύρτιλα</span>
+              <span class="text-muted text-[12px]">Αφράτα, σιρόπι σφένδαμου, φρέσκα μύρτιλα</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€8,00</span>
+          </div>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Κρουασάν βουτύρου</span>
+              <span class="text-muted text-[12px]">Φρεσκοψημένο, τραγανό, βουτυράτο</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€3,00</span>
+          </div>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Ομελέτα Daybreak</span>
+              <span class="text-muted text-[12px]">Φέτα, ντομάτα, φρέσκα βότανα, ελιές Καλαμάτας</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€9,50</span>
+          </div>
+          <div class="pt-[8px]">
+            <span class="text-muted text-[12px]">Σερβίρονται μέχρι τις 2 μμ · V = Χορτοφαγικό</span>
+          </div>
+        </div>
+
+        <!-- Σνακ & Σαλάτες -->
+        <div class="flex flex-col gap-[8px] fade-up">
+          <h3 class="font-serif text-[32px] text-bark pb-[8px]">Σνακ &amp; Σαλάτες</h3>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Φοκάτσα πράσινη θεά</span>
+              <span class="text-muted text-[12px]">Αβοκάντο, φρέσκα χόρτα, τυρί κρέμα με βότανα · V</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€9,50</span>
+          </div>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Κοτόπουλο με μέλι &amp; γραβιέρα</span>
+              <span class="text-muted text-[12px]">Ψητό κοτόπουλο, γραβιέρα, πικάντικο μέλι, προζύμι</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€10,50</span>
+          </div>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Club σάντουιτς Daybreak</span>
+              <span class="text-muted text-[12px]">Γαλοπούλα, μπέικον, μαρούλι, ντομάτα, μαγιονέζα</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€11,00</span>
+          </div>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Σαλάτα Daybreak</span>
+              <span class="text-muted text-[12px]">Ρόκα, παξιμάδι, ντοματίνια, μυζήθρα, βινεγκρέτ λεμόνι · V</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€9,00</span>
+          </div>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Κρέπα αλμυρή με γραβιέρα</span>
+              <span class="text-muted text-[12px]">Γραβιέρα Κρήτης, μανιτάρια, θυμάρι</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€8,50</span>
+          </div>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Τυρόπιτα σπιτική</span>
+              <span class="text-muted text-[12px]">Κρητική, χειροποίητο φύλλο, φέτα &amp; ανθότυρο · V</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€4,00</span>
+          </div>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Wrap κοτόπουλο caesar</span>
+              <span class="text-muted text-[12px]">Κοτόπουλο σχάρας, παρμεζάνα, σος caesar, μαρούλι</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€9,50</span>
+          </div>
+          <div class="pt-[8px]">
+            <span class="text-muted text-[12px]">Σερβίρονται όλη μέρα · Ρωτήστε για αλλεργίες</span>
+          </div>
+        </div>
+
+        <!-- Γλυκά & Ψημένα -->
+        <div class="flex flex-col gap-[8px] fade-up">
+          <h3 class="font-serif text-[32px] text-bark pb-[8px]">Γλυκά &amp; Ψημένα</h3>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Μπισκότο βουτύρου</span>
+              <span class="text-muted text-[12px]">Κομμάτια μαύρης σοκολάτας, θαλασσινό αλάτι</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€3,50</span>
+          </div>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Κρουασάν σοκολάτα</span>
+              <span class="text-muted text-[12px]">Βέλγικη σοκολάτα, τραγανό φύλλο βουτύρου</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€3,50</span>
+          </div>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Κέικ λεμόνι</span>
+              <span class="text-muted text-[12px]">Αφράτο, γλάσο λεμονιού, παπαρουνόσπορος</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€4,50</span>
+          </div>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Μπανάνα μπρεντ</span>
+              <span class="text-muted text-[12px]">Καρύδια, κανέλα, βούτυρο αμυγδάλου</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€4,00</span>
+          </div>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Cheesecake της ημέρας</span>
+              <span class="text-muted text-[12px]">Αλλάζει εποχιακά — ρωτήστε μας!</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€5,50</span>
+          </div>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Cinnamon roll</span>
+              <span class="text-muted text-[12px]">Ζεστό, γλάσο τυρί κρέμα, κανέλα Κεϋλάνης</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€4,50</span>
+          </div>
+          <div class="menu-item">
+            <div class="flex flex-col gap-[2px]">
+              <span class="font-semibold text-[16px]">Energy ball σοκολάτα</span>
+              <span class="text-muted text-[12px]">Βρώμη, ταχίνι, κακάο, μέλι · Vegan</span>
+            </div>
+            <span class="text-[15px] shrink-0 pl-[16px]">€2,50</span>
+          </div>
+          <div class="pt-[8px]">
+            <span class="text-muted text-[12px]">Ψήνονται φρέσκα κάθε πρωί · V = Χορτοφαγικό</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Coffee Section -->
+  <section class="bg-bark flex gap-[88px] items-center p-[72px]">
+    <img src="assets/coffee-barista.png" alt="Barista ετοιμάζει καφέ" class="w-[560px] h-[584px] object-cover rounded-[4px] shrink-0 fade-up" />
+    <div class="flex-1 flex flex-col gap-[23px] min-w-0 fade-up">
+      <p class="font-bold text-[12px] text-tan uppercase">ΚΑΛΟΣ ΚΑΦΕΣ. ΧΩΡΙΣ ΠΟΛΥΠΛΟΚΟΤΗΤΑ.</p>
+      <h2 class="font-serif text-[62px] text-cream leading-[1.02]">Τέχνη σε κάθε<br>φλιτζάνι.</h2>
+      <p class="text-tan text-[17px] leading-[1.6]">Προσεκτικά επιλεγμένοι κόκκοι, καβουρδισμένοι εδώ στην Αθήνα. Φτιαγμένος με μεράκι και σερβιρισμένος όπως τον θέλεις. Coffee nerd ή «τα συνηθισμένα» — είσαι σε καλά χέρια.</p>
+      <div class="flex flex-col w-full">
+        <div class="border-t border-white/[0.14] flex items-center justify-between py-[14px]">
+          <div class="flex flex-col gap-[4px]">
+            <span class="text-cream font-medium text-[16px]">Εσπρέσο</span>
+            <span class="text-tan text-[12px]">Πλούσιος, ισορροπημένος, σοκολατένιος</span>
+          </div>
+          <span class="text-cream text-[15px]">€2,50</span>
+        </div>
+        <div class="border-t border-white/[0.14] flex items-center justify-between py-[14px]">
+          <div class="flex flex-col gap-[4px]">
+            <span class="text-cream font-medium text-[16px]">Φλατ ουάιτ</span>
+            <span class="text-tan text-[12px]">Διπλός, μεταξένιο αφρόγαλα</span>
+          </div>
+          <span class="text-cream text-[15px]">€4,00</span>
+        </div>
+        <div class="border-t border-white/[0.14] flex items-center justify-between py-[14px]">
+          <div class="flex flex-col gap-[4px]">
+            <span class="text-cream font-medium text-[16px]">Κρύα εκχύλιση 18 ωρών</span>
+            <span class="text-tan text-[12px]">18 ώρες. Απαλός από την πρώτη γουλιά.</span>
+          </div>
+          <span class="text-cream text-[15px]">€4,00</span>
+        </div>
+      </div>
+      <a href="#full-menu" class="text-link text-cream">
+        Βρείτε τον επόμενο αγαπημένο σας καφέ
+        <img src="assets/arrow-up-right-cream.svg" alt="" width="17" height="17" />
+      </a>
+    </div>
+  </section>
+
+  <!-- Quick Bites -->
+  <section class="flex gap-[88px] items-center px-[72px] py-[96px]">
+    <div class="flex-1 flex flex-col gap-[24px] min-w-0 fade-up">
+      <p class="font-bold text-[12px] text-terra uppercase">ΑΛΗΘΙΝΟ ΦΑΓΗΤΟ. ΕΤΟΙΜΟ ΟΤΑΝ ΕΙΣΑΙ ΕΣΥΗΣ.</p>
+      <h2 class="font-serif text-[76px] text-bark leading-[1.02]">Μεγάλη γεύση.<br>Μικρή αναμονή.</h2>
+      <p class="text-muted text-[17px] leading-[1.6]">Ένα σωστό πρωινό. Ένα μεσημεριανό που αξίζει τον κόπο. Τα κρατάμε φρέσκα, εποχιακά και γενναιόδωρα — ποτέ ως δεύτερη σκέψη.</p>
+      <div class="flex flex-col gap-[16px]">
+        <div class="flex flex-col gap-[9px]">
+          <div class="h-px bg-border"></div>
+          <div class="flex justify-between">
+            <span class="font-semibold text-[16px]">Φοκάτσα πράσινη θεά</span>
+            <span class="text-[15px]">€9,50</span>
+          </div>
+          <p class="text-muted text-[12px] leading-[1.5]">Αβοκάντο, φρέσκα χόρτα, τυρί κρέμα με βότανα · V</p>
+        </div>
+        <div class="flex flex-col gap-[9px]">
+          <div class="h-px bg-border"></div>
+          <div class="flex justify-between">
+            <span class="font-semibold text-[16px]">Κοτόπουλο με μέλι &amp; γραβιέρα</span>
+            <span class="text-[15px]">€10,50</span>
+          </div>
+          <p class="text-muted text-[12px] leading-[1.5]">Ψητό κοτόπουλο, γραβιέρα, πικάντικο μέλι, προζύμι</p>
+        </div>
+      </div>
+      <a href="#full-menu" class="btn-primary bg-bark text-warm w-fit">
+        Βρείτε το μεσημεριανό σας
+        <img src="assets/arrow-up-right-white.svg" alt="" width="18" height="18" />
+      </a>
+    </div>
+    <div class="w-[696px] shrink-0 flex flex-col gap-[14px] fade-up">
+      <img src="assets/lunch-spread.png" alt="Μεσημεριανό σπρεντ" class="w-full h-[532px] object-cover rounded-[4px]" />
+      <div class="flex justify-between text-muted text-[11px]">
+        <span>ΦΡΕΣΚΟΦΤΙΑΓΜΕΝΟ. ΣΕΡΒΙΡΕΤΑΙ ΟΛΗ ΜΕΡΑ.</span>
+        <span>Φυτικές επιλογές; Πάντα.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Story -->
+  <section id="story" class="bg-blush flex">
+    <img src="assets/founders.png" alt="Οι ιδρυτές του Daybreak" class="w-[720px] h-[628px] object-cover shrink-0 fade-up" />
+    <div class="flex-1 flex flex-col gap-[24px] justify-center px-[72px] py-[68px] fade-up">
+      <p class="font-bold text-[12px] text-terra uppercase">ΕΝΑ ΜΙΚΡΟ ΚΑΦΕ. ΜΙΑ ΜΕΓΑΛΗ ΥΠΟΔΟΧΗ.</p>
+      <h2 class="font-serif text-[58px] text-bark leading-[1.02]">Η γωνιά σου<br>στη γειτονιά.</h2>
+      <p class="text-muted text-[17px] leading-[1.6]">Το Daybreak ξεκίνησε με μια απλή ιδέα: να κάνουμε την καθημερινότητα λίγο πιο ξεχωριστή. Το 2021, ανοίξαμε τις πόρτες μας στο Κολωνάκι με μία μηχανή εσπρέσο, λίγες οικογενειακές συνταγές και πολλή αγάπη.</p>
+      <p class="text-muted text-[17px] leading-[1.6]">Σήμερα, αφορά ακόμα τα ίδια πράγματα. Να ξέρουμε την παραγγελία σου. Να θυμόμαστε το όνομά σου. Να βρίσκουμε χώρο για ακόμα έναν.</p>
+      <p class="font-serif italic text-[25px] text-bark">— Μάγια &amp; Λέο, ιδρυτές</p>
+      <a href="#" class="text-link text-bark">
+        Γνωρίστε το Daybreak
+        <img src="assets/arrow-up-right-dark.svg" alt="" width="17" height="17" />
+      </a>
+    </div>
+  </section>
+
+  <!-- Order Ahead -->
+  <section id="order" class="bg-terra flex gap-[88px] items-center p-[72px]">
+    <div class="flex flex-col gap-[22px] w-[672px] shrink-0 text-cream fade-up">
+      <p class="font-bold text-[12px]">ΚΑΛΑ ΠΡΑΓΜΑΤΑ. ΓΙΑ ΤΟ ΔΡΟΜΟ.</p>
+      <h2 class="font-serif text-[76px] leading-[1.02]">Τα συνηθισμένα σου.<br>Χωρίς αναμονή.</h2>
+      <p class="text-[17px]">Λιγότερη ουρά. Περισσότερη απόλαυση. Έτοιμα σε 10–15 λεπτά.</p>
+    </div>
+    <div class="flex-1 flex flex-col gap-[22px] text-cream min-w-0 fade-up">
+      <div class="flex gap-[18px]">
+        <span class="font-serif text-[28px] shrink-0">01</span>
+        <div class="flex flex-col gap-[4px]">
+          <span class="font-semibold text-[16px]">Διαλέξτε τα αγαπημένα σας</span>
+          <span class="text-[13px] leading-[1.5]">Καφές, πρωινό, μεσημεριανό. Όλα σε μία παραγγελία.</span>
+        </div>
+      </div>
+      <div class="flex gap-[18px]">
+        <span class="font-serif text-[28px] shrink-0">02</span>
+        <div class="flex flex-col gap-[4px]">
+          <span class="font-semibold text-[16px]">Επιλέξτε ώρα παραλαβής</span>
+          <span class="text-[13px] leading-[1.5]">Τώρα ή αργότερα. Εμείς προσαρμοζόμαστε.</span>
+        </div>
+      </div>
+      <div class="flex gap-[18px]">
+        <span class="font-serif text-[28px] shrink-0">03</span>
+        <div class="flex flex-col gap-[4px]">
+          <span class="font-semibold text-[16px]">Περάστε &amp; πείτε ένα γεια</span>
+          <span class="text-[13px] leading-[1.5]">Φρεσκοφτιαγμένα, σας περιμένουν στον πάγκο.</span>
+        </div>
+      </div>
+      <a href="#" class="btn-primary bg-bark text-warm w-fit">
+        Ξεκινήστε την παραγγελία σας
+        <img src="assets/arrow-up-right-white.svg" alt="" width="18" height="18" />
+      </a>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="flex flex-col gap-[44px] px-[72px] py-[96px]">
+    <div class="flex items-end justify-between fade-up">
+      <div class="flex flex-col gap-[18px] max-w-[870px]">
+        <p class="font-bold text-[12px] text-terra uppercase">ΟΜΟΡΦΑ ΛΟΓΙΑ ΑΠΟ ΚΑΛΟΥΣ ΑΝΘΡΩΠΟΥΣ</p>
+        <h2 class="font-serif text-[60px] text-bark leading-[1.02]">Λίγη τοπική αγάπη.</h2>
+      </div>
+      <div class="flex flex-col items-end gap-[8px]">
+        <div class="flex items-center gap-[14px]">
+          <span class="font-serif text-[42px] text-bark">4.9</span>
+          <span class="text-terra text-[17px]">★★★★★</span>
+        </div>
+        <span class="text-muted text-[12px]">240+ καλά λόγια στο Google</span>
+      </div>
+    </div>
+    <div class="grid grid-cols-3 gap-[24px]">
+      <div class="bg-warm rounded-[8px] p-[30px] flex flex-col gap-[24px] review-card fade-up">
+        <span class="text-terra text-[16px]">★★★★★</span>
+        <p class="font-serif text-[28px] text-bark leading-[1.25]">«Το latte μέλι &amp; βρώμη είναι πλέον η προσωπικότητά μου. Ο καλύτερος τρόπος να ξεκινήσεις τη Δευτέρα.»</p>
+        <div class="flex items-center gap-[12px] pt-[6px]">
+          <div class="w-[40px] h-[40px] bg-blush rounded-full flex items-center justify-center">
+            <span class="font-semibold text-[12px] text-bark">ΣΡ</span>
+          </div>
+          <div class="flex flex-col gap-[4px]">
+            <span class="font-semibold text-[14px]">Σοφία Ρ.</span>
+            <span class="text-muted text-[12px]">Η πρωινή θαμώνας</span>
+          </div>
+        </div>
+      </div>
+      <div class="bg-warm rounded-[8px] p-[30px] flex flex-col gap-[24px] review-card fade-up">
+        <span class="text-terra text-[16px]">★★★★★</span>
+        <p class="font-serif text-[28px] text-bark leading-[1.25]">«Επιτέλους, ένα γρήγορο μεσημεριανό που δεν είναι συμβιβασμός. Εκείνη η φοκάτσα!»</p>
+        <div class="flex items-center gap-[12px] pt-[6px]">
+          <div class="w-[40px] h-[40px] bg-blush rounded-full flex items-center justify-center">
+            <span class="font-semibold text-[12px] text-bark">ΓΛ</span>
+          </div>
+          <div class="flex flex-col gap-[4px]">
+            <span class="font-semibold text-[14px]">Γιάννης Λ.</span>
+            <span class="text-muted text-[12px]">Ο πιστός του μεσημεριανού</span>
+          </div>
+        </div>
+      </div>
+      <div class="bg-warm rounded-[8px] p-[30px] flex flex-col gap-[24px] review-card fade-up">
+        <span class="text-terra text-[16px]">★★★★★</span>
+        <p class="font-serif text-[28px] text-bark leading-[1.25]">«Ήρθα για τον καφέ. Έμεινα για τους ανθρώπους. Πραγματικά νιώθει σαν τη δική μας γωνιά.»</p>
+        <div class="flex items-center gap-[12px] pt-[6px]">
+          <div class="w-[40px] h-[40px] bg-blush rounded-full flex items-center justify-center">
+            <span class="font-semibold text-[12px] text-bark">ΑΜ</span>
+          </div>
+          <div class="flex flex-col gap-[4px]">
+            <span class="font-semibold text-[14px]">Αλεξάνδρα Μ.</span>
+            <span class="text-muted text-[12px]">Η χαλαρή του Σαββατοκύριακου</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visit -->
+  <section id="visit" class="bg-warm flex gap-[88px] items-center px-[72px] py-[80px]">
+    <div class="flex-1 flex flex-col gap-[26px] min-w-0 fade-up">
+      <p class="font-bold text-[12px] text-terra uppercase">ΤΟ ΤΡΑΠΕΖΙ ΣΑΣ ΠΕΡΙΜΕΝΕΙ</p>
+      <h2 class="font-serif text-[72px] text-bark leading-[1.02]">Τα λέμε στο<br>Daybreak.</h2>
+      <p class="text-muted text-[17px] leading-[1.6]">Περάστε για έναν γρήγορο καφέ ή μείνετε για ένα αργό απόγευμα. Υπάρχει πάντα λίγος χώρος για εσάς εδώ.</p>
+      <div class="h-px bg-border"></div>
+      <div class="flex gap-[36px]">
+        <div class="flex flex-col gap-[10px] w-[244px]">
+          <span class="font-bold text-[12px] text-bark">ΒΡΕΙΤΕ ΜΑΣ</span>
+          <p class="text-muted text-[15px] leading-[1.6]">Σκουφά 42<br>Κολωνάκι, Αθήνα<br>106 73</p>
+          <span class="text-muted text-[14px]">(210) 555-0148</span>
+        </div>
+        <div class="flex-1 flex flex-col gap-[10px]">
+          <span class="font-bold text-[12px] text-bark">ΕΛΑΤΕ ΝΑ ΜΑΣ ΒΡΕΙΤΕ</span>
+          <div class="flex flex-col gap-[4px]">
+            <span class="text-bark text-[15px]">Δευτέρα – Παρασκευή</span>
+            <span class="text-muted text-[14px]">7:00 πμ – 6:00 μμ</span>
+          </div>
+          <div class="flex flex-col gap-[4px]">
+            <span class="text-bark text-[15px]">Σάββατο – Κυριακή</span>
+            <span class="text-muted text-[14px]">8:00 πμ – 6:00 μμ</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center gap-[24px]">
+        <a href="#" class="btn-primary bg-terra text-warm">
+          Οδηγίες
+          <img src="assets/arrow-up-right-white.svg" alt="" width="18" height="18" />
+        </a>
+        <span class="text-muted text-[12px]">Χωρίς κράτηση &amp; τετράποδοι φίλοι ευπρόσδεκτοι.</span>
+      </div>
+    </div>
+    <div class="w-[620px] shrink-0 flex flex-col gap-[14px] fade-up">
+      <img src="assets/cafe-exterior.png" alt="Εξωτερικό Daybreak Café" class="w-full h-[526px] object-cover rounded-tl-[4px] rounded-tr-[160px] rounded-bl-[4px] rounded-br-[4px]" />
+      <div class="flex justify-between text-muted text-[11px]">
+        <span>ΚΟΛΩΝΑΚΙ, ΑΘΗΝΑ</span>
+        <span>Δίπλα σου. Μέρος της μέρας σου.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-bark px-[72px] pt-[64px] pb-[28px] flex flex-col gap-[48px]">
+    <div class="flex gap-[48px] fade-up">
+      <div class="w-[352px] shrink-0 flex flex-col gap-[18px]">
+        <h3 class="font-serif text-[42px] text-cream leading-[1.08]">Κάντε λίγο χώρο<br>για το καλό.</h3>
+        <a href="mailto:hello@daybreak.cafe" class="text-tan text-[14px] hover:text-cream transition-colors">hello@daybreak.cafe</a>
+        <a href="#" class="text-tan text-[14px] hover:text-cream transition-colors">Βρείτε μας στο Instagram @daybreak.cafe ↗</a>
+      </div>
+      <div class="w-[168px] shrink-0 flex flex-col gap-[16px]">
+        <span class="font-semibold text-tan text-[11px]">ΣΤΟ ΜΕΝΟΥ</span>
+        <a href="#" class="footer-link">Καφές &amp; ροφήματα</a>
+        <a href="#" class="footer-link">Γρήγορα σνακ</a>
+        <a href="#" class="footer-link">Φρέσκα ψημένα</a>
+        <a href="#" class="footer-link">Παραγγελία take away</a>
+      </div>
+      <div class="w-[168px] shrink-0 flex flex-col gap-[16px]">
+        <span class="font-semibold text-tan text-[11px]">ΤΡΙΓΥΡΩ ΜΑΣ</span>
+        <a href="#story" class="footer-link">Η ιστορία μας</a>
+        <a href="#visit" class="footer-link">Επισκεφθείτε μας</a>
+        <a href="#" class="footer-link">Δουλέψτε μαζί μας</a>
+        <a href="#" class="footer-link">Επικοινωνήστε</a>
+      </div>
+      <div class="flex-1 flex flex-col gap-[16px] min-w-0">
+        <h4 class="font-serif text-[28px] text-cream">Καλά νέα, στο inbox σου.</h4>
+        <p class="text-tan text-[14px] leading-[1.5]">Νέες γεύσεις, εποχιακά ροφήματα και νέα της γειτονιάς. Μόνο τα καλά.</p>
+        <form id="newsletter-form" class="border-b border-tan flex items-center justify-between h-[54px]">
+          <input type="email" placeholder="Το email σου" required
+                 class="bg-transparent text-tan text-[14px] outline-none flex-1 placeholder:text-tan" />
+          <button type="submit" class="w-[38px] h-[38px] bg-terra rounded-full flex items-center justify-center shrink-0 hover:opacity-90 transition-opacity cursor-pointer">
+            <img src="assets/arrow-right.svg" alt="Εγγραφή" width="18" height="18" />
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Brand Signature -->
+    <div class="flex items-end justify-between">
+      <span class="font-serif text-[218px] text-cream leading-[0.9]">daybreak</span>
+      <div class="flex flex-col items-end gap-[16px] pb-[12px]">
+        <img src="assets/sunrise-large.svg" alt="" width="54" height="54" />
+        <span class="text-tan text-[11px]">ΚΑΦΕΣ. ΓΕΥΣΕΙΣ. ΚΑΛΗ ΠΑΡΕΑ.</span>
+      </div>
+    </div>
+
+    <!-- Legal -->
+    <div class="flex flex-col gap-[22px]">
+      <div class="h-px bg-white/[0.14]"></div>
+      <div class="flex justify-between text-tan text-[11px]">
+        <span>© 2026 Daybreak Café. Φτιαγμένο για κάθε μέρα.</span>
+        <div class="flex gap-[28px]">
+          <a href="#" class="hover:text-cream transition-colors">Πολιτική απορρήτου</a>
+          <a href="#" class="hover:text-cream transition-colors">Προσβασιμότητα</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function setCategory(el) {
+      document.querySelectorAll('.category-pill').forEach(p => p.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const input = this.querySelector('input');
+      const email = input.value;
+      if (email) {
+        input.value = '';
+        input.placeholder = 'Ευχαριστούμε! Είσαι στη λίστα ☀️';
+        setTimeout(() => { input.placeholder = 'Το email σου'; }, 3000);
+      }
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    const groups = new Map();
+    document.querySelectorAll('.fade-up').forEach((el) => {
+      const p = el.parentElement;
+      if (!groups.has(p)) groups.set(p, []);
+      groups.get(p).push(el);
+    });
+    groups.forEach((els) => {
+      if (els.length > 1) els.forEach((el, i) => el.style.setProperty('--reveal-delay', (i * 0.1) + 's'));
+    });
+    document.querySelectorAll('.fade-up').forEach((el) => io.observe(el));
+  </script>
+
+</body>
+</html>
