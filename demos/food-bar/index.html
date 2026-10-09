@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Food &amp; Bar — Κουζίνα &amp; Cocktails στα Νότια Προάστια</title>
+  <meta name="description" content="Food &amp; Bar: comfort food, signature cocktails και μουσική στα Νότια Προάστια. Κουζίνα από το μεσημέρι, bar μέχρι αργά — κρατήσεις online." />
+  <meta name="theme-color" content="#16100e" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Food &amp; Bar — Κουζίνα &amp; Cocktails" />
+  <meta property="og:description" content="Comfort food, signature cocktails και μουσική — από το μεσημέρι μέχρι αργά." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍸</text></svg>" />
+
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Alegreya + Inter: και οι δύο έχουν ελληνικό subset -->
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            night: '#16100e', charcoal: '#241a16', ember: '#d2762f',
+            gold: '#e3b062', linen: '#f7f1ea', stone: '#e8dcce',
+          },
+          fontFamily: {
+            display: ['Alegreya', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { scroll-padding-top: 5rem; }
+    .hero-overlay { background: linear-gradient(180deg, rgba(22,16,14,.72) 0%, rgba(22,16,14,.48) 45%, rgba(22,16,14,.88) 100%); }
+    /* Κάθε slot εικόνας έχει σχεδιασμένο gradient από κάτω: αν μια φωτογραφία
+       δεν φορτώσει, το section δείχνει σκόπιμο, όχι χαλασμένο. */
+    .img-fallback { background: linear-gradient(135deg, #3a2a22 0%, #241a16 55%, #16100e 100%); }
+    .img-fallback--warm { background: linear-gradient(135deg, #8a4a1f 0%, #3a2a22 60%, #16100e 100%); }
+    /* Scroll-reveal (fade + slide, με stagger) */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(42px);
+      transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);
+      transition-delay: var(--reveal-delay, 0s);
+      will-change: opacity, transform;
+    }
+    .fade-up.show { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+    }
+    /* Ορατό focus για πλοήγηση με πληκτρολόγιο */
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+      outline: 2px solid #d2762f; outline-offset: 3px; border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body class="font-sans text-charcoal bg-linen antialiased">
+
+  <!-- Demo banner -->
+  <div class="bg-night text-linen/80 text-center text-xs py-1.5 px-4">
+    ✦ Demo / πρόταση σχεδιασμού — δεν είναι το επίσημο website του καταστήματος
+  </div>
+
+  <!-- ===== HEADER / NAV ===== -->
+  <header id="top" class="sticky top-0 z-50 transition-all duration-300" data-nav>
+    <nav class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-2">
+        <span class="text-2xl">🍸</span>
+        <span class="font-display text-xl font-extrabold tracking-wide">Food &amp; Bar</span>
+      </a>
+      <div class="hidden md:flex items-center gap-7 text-sm font-medium">
+        <a href="#about" class="hover:text-ember transition">Το μαγαζί</a>
+        <a href="#menu" class="hover:text-ember transition">Μενού</a>
+        <a href="#cocktails" class="hover:text-ember transition">Cocktails</a>
+        <a href="#reviews" class="hover:text-ember transition">Κριτικές</a>
+        <a href="#visit" class="hover:text-ember transition">Πού θα μας βρεις</a>
+      </div>
+      <a href="#reservation" class="hidden md:inline-block bg-ember text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-night transition">
+        Κράτηση
+      </a>
+      <button id="menuBtn" class="md:hidden text-2xl" aria-label="Μενού πλοήγησης" aria-expanded="false" aria-controls="mobileMenu">☰</button>
+    </nav>
+    <div id="mobileMenu" class="hidden md:hidden bg-linen border-t border-stone">
+      <div class="px-5 py-4 flex flex-col gap-4 text-sm font-medium">
+        <a href="#about">Το μαγαζί</a>
+        <a href="#menu">Μενού</a>
+        <a href="#cocktails">Cocktails</a>
+        <a href="#reviews">Κριτικές</a>
+        <a href="#visit">Πού θα μας βρεις</a>
+        <a href="#reservation" class="text-ember font-semibold">Κράτηση</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="relative h-[92vh] min-h-[560px] flex items-center justify-center text-center text-white img-fallback">
+    <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1920&q=80"
+         alt="Ο χώρος του Food &amp; Bar το βράδυ" data-img
+         class="absolute inset-0 w-full h-full object-cover" />
+    <div class="absolute inset-0 hero-overlay"></div>
+    <div class="relative z-10 px-5 max-w-3xl">
+      <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur px-4 py-1.5 rounded-full text-sm mb-6">
+        <span class="text-gold">★</span> 4,7 στο Google · 240 κριτικές
+      </div>
+      <h1 class="font-display text-5xl md:text-7xl font-extrabold leading-tight mb-5">Food &amp; Bar</h1>
+      <p class="text-lg md:text-xl text-linen/90 mb-4 font-light max-w-xl mx-auto">
+        Comfort food, signature cocktails και μουσική — στα Νότια Προάστια.
+      </p>
+      <p class="text-sm text-linen/70 mb-9">🍽️ Κουζίνα από 13:00 · 🍸 Bar μέχρι αργά</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#menu" class="bg-ember text-white font-semibold px-8 py-3.5 rounded-full hover:bg-white hover:text-night transition">Δες το μενού</a>
+        <a href="#reservation" class="border border-white/70 text-white font-semibold px-8 py-3.5 rounded-full hover:bg-white hover:text-night transition">Κάνε κράτηση</a>
+      </div>
+    </div>
+    <a href="#highlights" class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-white/80 text-sm animate-bounce" aria-label="Συνέχισε παρακάτω">▼</a>
+  </section>
+
+  <!-- ===== HIGHLIGHTS ===== -->
+  <section id="highlights" class="max-w-6xl mx-auto px-5 py-20 grid md:grid-cols-3 gap-8">
+    <div class="fade-up text-center p-6">
+      <div class="text-4xl mb-4">🍽️</div>
+      <h3 class="font-display text-xl font-bold mb-2">Κουζίνα όλη μέρα</h3>
+      <p class="text-charcoal/75 font-light">Από μεζέδες για μοίρασμα μέχρι smash burgers και πιάτα σχάρας — φρέσκα υλικά, γενναίες μερίδες.</p>
+    </div>
+    <div class="fade-up text-center p-6">
+      <div class="text-4xl mb-4">🍸</div>
+      <h3 class="font-display text-xl font-bold mb-2">Signature Cocktails</h3>
+      <p class="text-charcoal/75 font-light">Κλασικά σωστά φτιαγμένα και δικές μας συνταγές με ελληνικά αποστάγματα — από έμπειρους bartenders.</p>
+    </div>
+    <div class="fade-up text-center p-6">
+      <div class="text-4xl mb-4">🎶</div>
+      <h3 class="font-display text-xl font-bold mb-2">Live &amp; DJ sets</h3>
+      <p class="text-charcoal/75 font-light">Μουσική που ανεβάζει τη βραδιά χωρίς να σκεπάζει την κουβέντα. Live κάθε Παρασκευή.</p>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="bg-stone/50">
+    <div class="max-w-6xl mx-auto px-5 py-20 grid md:grid-cols-2 gap-12 items-center">
+      <!-- Το gradient μπαίνει στο wrapper, όχι στο <img>: αν η φωτογραφία
+           κρυφτεί, το slot κρατάει το σχήμα και το χρώμα του. -->
+      <div class="fade-up rounded-2xl shadow-xl overflow-hidden h-[420px] img-fallback">
+        <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=80"
+             alt="Ο χώρος του μαγαζιού με θέα στο bar" data-img
+             class="w-full h-full object-cover" />
+      </div>
+      <div class="fade-up">
+        <p class="uppercase tracking-[0.25em] text-xs text-ember font-semibold mb-4">Το μαγαζί μας</p>
+        <h2 class="font-display text-4xl font-extrabold mb-6 leading-snug">Από το μεσημεριανό πιάτο στο βραδινό ποτό</h2>
+        <p class="text-charcoal/90 font-light mb-4 leading-relaxed">
+          Ξεκινάμε το μεσημέρι με κουζίνα που βασίζεται σε απλά, καλά υλικά — και συνεχίζουμε
+          μέχρι αργά με μουσική και cocktails. Ένας χώρος για όλες τις ώρες: γεύμα με την παρέα,
+          ποτό μετά τη δουλειά ή βραδιά που τραβάει.
+        </p>
+        <p class="text-charcoal/90 font-light leading-relaxed">
+          Το μενού αλλάζει με τη σεζόν, τα cocktails φτιάχνονται στο λεπτό και η εξυπηρέτηση
+          είναι ζεστή χωρίς φασαρία. Πέρνα να τα δεις από κοντά.
+        </p>
+        <div class="flex gap-10 mt-8">
+          <div><div class="font-display text-3xl font-extrabold text-ember">4,7★</div><div class="text-sm text-charcoal/70">στο Google</div></div>
+          <div><div class="font-display text-3xl font-extrabold text-ember">240</div><div class="text-sm text-charcoal/70">κριτικές</div></div>
+          <div><div class="font-display text-3xl font-extrabold text-ember">8–20€</div><div class="text-sm text-charcoal/70">κατά άτομο</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SIGNATURE COCKTAILS ===== -->
+  <section id="cocktails" class="max-w-6xl mx-auto px-5 py-20">
+    <div class="text-center mb-14 fade-up">
+      <p class="uppercase tracking-[0.25em] text-xs text-ember font-semibold mb-3">Από το bar μας</p>
+      <h2 class="font-display text-4xl font-extrabold">Τρία που πρέπει να δοκιμάσεις</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <article class="fade-up group rounded-2xl overflow-hidden shadow-lg bg-white">
+        <div class="h-56 img-fallback--warm overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1485686531765-ba63b07845a7?auto=format&fit=crop&w=800&q=80"
+               alt="Καπνιστό negroni σε ποτήρι με πάγο" data-img
+               class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+        </div>
+        <div class="p-6">
+          <div class="flex items-baseline justify-between gap-4 mb-2">
+            <h3 class="font-display text-xl font-bold">Καπνιστό Negroni</h3>
+            <span class="text-ember font-semibold whitespace-nowrap">9,50€</span>
+          </div>
+          <p class="text-charcoal/75 font-light text-sm leading-relaxed">Gin, Campari και vermouth με άρωμα καπνού από φλούδα πορτοκαλιού.</p>
+        </div>
+      </article>
+      <article class="fade-up group rounded-2xl overflow-hidden shadow-lg bg-white">
+        <div class="h-56 img-fallback--warm overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1574096079513-d8259312b785?auto=format&fit=crop&w=800&q=80"
+               alt="Spritz με μαστίχα σε ποτήρι κρασιού" data-img
+               class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+        </div>
+        <div class="p-6">
+          <div class="flex items-baseline justify-between gap-4 mb-2">
+            <h3 class="font-display text-xl font-bold">Spritz Μαστίχα</h3>
+            <span class="text-ember font-semibold whitespace-nowrap">8,50€</span>
+          </div>
+          <p class="text-charcoal/75 font-light text-sm leading-relaxed">Μαστίχα Χίου, prosecco, σόδα και περγαμόντο — δροσερό και μυρωδάτο.</p>
+        </div>
+      </article>
+      <article class="fade-up group rounded-2xl overflow-hidden shadow-lg bg-white">
+        <div class="h-56 img-fallback--warm overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1569924995012-c4c706bfcd51?auto=format&fit=crop&w=800&q=80"
+               alt="Espresso martini με αφρό καφέ" data-img
+               class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+        </div>
+        <div class="p-6">
+          <div class="flex items-baseline justify-between gap-4 mb-2">
+            <h3 class="font-display text-xl font-bold">Greek Espresso Martini</h3>
+            <span class="text-ember font-semibold whitespace-nowrap">9,00€</span>
+          </div>
+          <p class="text-charcoal/75 font-light text-sm leading-relaxed">Ελληνικός espresso, βότκα, βανίλια και μια πινελιά κακάο.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== MENU ===== -->
+  <section id="menu" class="bg-stone/50">
+    <div class="max-w-6xl mx-auto px-5 py-20">
+      <div class="text-center mb-14 fade-up">
+        <p class="uppercase tracking-[0.25em] text-xs text-ember font-semibold mb-3">Το μενού μας</p>
+        <h2 class="font-display text-4xl font-extrabold">Φαγητό &amp; ποτό</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div class="fade-up">
+          <h3 class="font-display text-2xl font-bold mb-6 pb-3 border-b-2 border-ember/40">Μεζέδες</h3>
+          <ul class="space-y-4 text-sm">
+            <li class="flex justify-between gap-3"><span>Πατάτες με φέτα &amp; ρίγανη</span><span class="text-ember font-semibold whitespace-nowrap">5,50€</span></li>
+            <li class="flex justify-between gap-3"><span>Τυροκροκέτες (4 τμχ)</span><span class="text-ember font-semibold whitespace-nowrap">6,50€</span></li>
+            <li class="flex justify-between gap-3"><span>Φτερούγες BBQ</span><span class="text-ember font-semibold whitespace-nowrap">7,50€</span></li>
+            <li class="flex justify-between gap-3"><span>Λουκάνικο στη σχάρα</span><span class="text-ember font-semibold whitespace-nowrap">7,00€</span></li>
+            <li class="flex justify-between gap-3"><span>Ντάκος Κρήτης</span><span class="text-ember font-semibold whitespace-nowrap">6,00€</span></li>
+            <li class="flex justify-between gap-3"><span>Nachos με cheddar</span><span class="text-ember font-semibold whitespace-nowrap">7,00€</span></li>
+          </ul>
+        </div>
+        <div class="fade-up">
+          <h3 class="font-display text-2xl font-bold mb-6 pb-3 border-b-2 border-ember/40">Κυρίως</h3>
+          <ul class="space-y-4 text-sm">
+            <li class="flex justify-between gap-3"><span>Smash burger με cheddar</span><span class="text-ember font-semibold whitespace-nowrap">11,50€</span></li>
+            <li class="flex justify-between gap-3"><span>Μπιφτέκι με γραβιέρα</span><span class="text-ember font-semibold whitespace-nowrap">11,00€</span></li>
+            <li class="flex justify-between gap-3"><span>Χοιρινό κότσι</span><span class="text-ember font-semibold whitespace-nowrap">14,50€</span></li>
+            <li class="flex justify-between gap-3"><span>Κοτόπουλο σε πίτα</span><span class="text-ember font-semibold whitespace-nowrap">9,50€</span></li>
+            <li class="flex justify-between gap-3"><span>Σαλάτα με ψητό χαλούμι</span><span class="text-ember font-semibold whitespace-nowrap">9,00€</span></li>
+            <li class="flex justify-between gap-3"><span>Ριζότο μανιταριών</span><span class="text-ember font-semibold whitespace-nowrap">10,50€</span></li>
+          </ul>
+        </div>
+        <div class="fade-up">
+          <h3 class="font-display text-2xl font-bold mb-6 pb-3 border-b-2 border-ember/40">Cocktails</h3>
+          <ul class="space-y-4 text-sm">
+            <li class="flex justify-between gap-3"><span>Negroni</span><span class="text-ember font-semibold whitespace-nowrap">8,50€</span></li>
+            <li class="flex justify-between gap-3"><span>Espresso Martini</span><span class="text-ember font-semibold whitespace-nowrap">9,00€</span></li>
+            <li class="flex justify-between gap-3"><span>Aperol Spritz</span><span class="text-ember font-semibold whitespace-nowrap">8,00€</span></li>
+            <li class="flex justify-between gap-3"><span>Old Fashioned</span><span class="text-ember font-semibold whitespace-nowrap">9,50€</span></li>
+            <li class="flex justify-between gap-3"><span>Mojito</span><span class="text-ember font-semibold whitespace-nowrap">8,00€</span></li>
+            <li class="flex justify-between gap-3"><span>Gin &amp; Tonic</span><span class="text-ember font-semibold whitespace-nowrap">8,50€</span></li>
+          </ul>
+        </div>
+        <div class="fade-up">
+          <h3 class="font-display text-2xl font-bold mb-6 pb-3 border-b-2 border-ember/40">Μπύρες &amp; Κρασιά</h3>
+          <ul class="space-y-4 text-sm">
+            <li class="flex justify-between gap-3"><span>Draft lager 500ml</span><span class="text-ember font-semibold whitespace-nowrap">5,00€</span></li>
+            <li class="flex justify-between gap-3"><span>Ελληνική microbrewery</span><span class="text-ember font-semibold whitespace-nowrap">5,50€</span></li>
+            <li class="flex justify-between gap-3"><span>Κρασί ποτήρι</span><span class="text-ember font-semibold whitespace-nowrap">5,00€</span></li>
+            <li class="flex justify-between gap-3"><span>Κρασί φιάλη</span><span class="text-ember font-semibold whitespace-nowrap">18,00€</span></li>
+            <li class="flex justify-between gap-3"><span>Ούζο / τσίπουρο καραφάκι</span><span class="text-ember font-semibold whitespace-nowrap">6,00€</span></li>
+            <li class="flex justify-between gap-3"><span>Αναψυκτικά</span><span class="text-ember font-semibold whitespace-nowrap">2,00€</span></li>
+          </ul>
+        </div>
+      </div>
+      <p class="text-center text-charcoal/60 text-sm mt-12 fade-up">*Ενδεικτικό μενού &amp; τιμές (demo) — προς επιβεβαίωση με το κατάστημα.</p>
+    </div>
+  </section>
+
+  <!-- ===== REVIEWS ===== -->
+  <section id="reviews" class="bg-night py-20">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="text-center mb-14 fade-up">
+        <p class="uppercase tracking-[0.25em] text-xs text-gold font-semibold mb-3">★ 4,7 / 5 στο Google</p>
+        <h2 class="font-display text-4xl font-extrabold text-linen">Τι λένε οι πελάτες μας</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="fade-up bg-linen/5 border border-linen/10 rounded-2xl p-7">
+          <div class="text-gold mb-3" aria-label="5 από 5 αστέρια">★★★★★</div>
+          <p class="text-linen/90 font-light leading-relaxed mb-5">«Πήγαμε για φαγητό και μείναμε για ποτό. Μερίδες γενναίες, cocktails σοβαρά και πολύ καλή μουσική.»</p>
+          <p class="text-linen/60 text-sm font-medium">— Νίκος Π.</p>
+        </div>
+        <div class="fade-up bg-linen/5 border border-linen/10 rounded-2xl p-7">
+          <div class="text-gold mb-3" aria-label="5 από 5 αστέρια">★★★★★</div>
+          <p class="text-linen/90 font-light leading-relaxed mb-5">«Το smash burger είναι από τα καλύτερα της περιοχής και το προσωπικό φροντίζει να περάσεις καλά.»</p>
+          <p class="text-linen/60 text-sm font-medium">— Μαρία Κ.</p>
+        </div>
+        <div class="fade-up bg-linen/5 border border-linen/10 rounded-2xl p-7">
+          <div class="text-gold mb-3" aria-label="5 από 5 αστέρια">★★★★★</div>
+          <p class="text-linen/90 font-light leading-relaxed mb-5">«Ωραίος χώρος για παρέα, χωρίς να φωνάζεις για να ακουστείς. Σταθερή ποιότητα σε ό,τι έχουμε δοκιμάσει.»</p>
+          <p class="text-linen/60 text-sm font-medium">— Γιώργος Α.</p>
+        </div>
+      </div>
+      <p class="text-center text-linen/40 text-xs mt-10 fade-up">*Ενδεικτικές κριτικές (demo).</p>
+    </div>
+  </section>
+
+  <!-- ===== VISIT ===== -->
+  <section id="visit" class="max-w-6xl mx-auto px-5 py-20 grid md:grid-cols-2 gap-12">
+    <div class="fade-up">
+      <p class="uppercase tracking-[0.25em] text-xs text-ember font-semibold mb-4">Ωράριο</p>
+      <h2 class="font-display text-4xl font-extrabold mb-8">Πότε θα μας βρεις</h2>
+      <ul class="space-y-3 text-charcoal/90">
+        <li class="flex justify-between border-b border-stone pb-3"><span>Δευτέρα</span><span class="font-semibold text-charcoal/50">Κλειστά</span></li>
+        <li class="flex justify-between border-b border-stone pb-3"><span>Τρίτη – Πέμπτη</span><span class="font-semibold">13:00 – 01:00</span></li>
+        <li class="flex justify-between border-b border-stone pb-3"><span>Παρασκευή – Σάββατο</span><span class="font-semibold">13:00 – 02:30</span></li>
+        <li class="flex justify-between border-b border-stone pb-3"><span>Κυριακή</span><span class="font-semibold">13:00 – 00:30</span></li>
+      </ul>
+      <p class="text-charcoal/70 text-sm mt-4">🍽️ Η κουζίνα λειτουργεί μέχρι τις 00:00 (Παρ–Σάβ έως 00:30).</p>
+      <p class="text-charcoal/50 text-xs mt-1">*Ενδεικτικό ωράριο (demo) — προς επιβεβαίωση.</p>
+      <div class="mt-8">
+        <p class="uppercase tracking-[0.25em] text-xs text-ember font-semibold mb-3">Διεύθυνση</p>
+        <p class="text-charcoal/90">Νότια Προάστια</p>
+        <a href="https://www.google.com/maps/search/bar+restaurant+νότια+προάστια+Αθήνα" target="_blank" rel="noopener"
+           class="inline-block mt-3 text-ember font-semibold hover:text-night transition">📍 Δες στον χάρτη →</a>
+      </div>
+    </div>
+    <div class="fade-up rounded-2xl overflow-hidden shadow-xl h-[420px] img-fallback">
+      <iframe title="Χάρτης — Νότια Προάστια" class="w-full h-full border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.openstreetmap.org/export/embed.html?bbox=23.68%2C37.83%2C23.78%2C37.95&layer=mapnik">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- ===== RESERVATION ===== -->
+  <section id="reservation" class="bg-stone/50">
+    <div class="max-w-5xl mx-auto px-5 py-20 grid md:grid-cols-2 gap-12 items-start">
+      <div class="fade-up">
+        <p class="uppercase tracking-[0.25em] text-xs text-ember font-semibold mb-4">Κρατήσεις</p>
+        <h2 class="font-display text-4xl font-extrabold mb-6 leading-snug">Κλείσε το τραπέζι σου</h2>
+        <p class="text-charcoal/90 font-light mb-8">
+          Για τραπέζι, μεγάλη παρέα ή ιδιωτική εκδήλωση — στείλε μας τα στοιχεία σου
+          και επιβεβαιώνουμε μέσα στην ημέρα.
+        </p>
+        <div class="space-y-4">
+          <div class="flex items-center gap-3 text-charcoal"><span class="text-xl">📍</span> Νότια Προάστια</div>
+          <div class="flex items-center gap-3 text-charcoal"><span class="text-xl">🎶</span> Live μουσική κάθε Παρασκευή</div>
+          <div class="flex items-center gap-3 text-charcoal"><span class="text-xl">👥</span> Παρέες άνω των 8 ατόμων με κράτηση</div>
+          <div class="flex items-center gap-4 pt-2 text-2xl">
+            <a href="#" aria-label="Instagram" class="hover:text-ember transition">📷</a>
+            <a href="#" aria-label="Facebook" class="hover:text-ember transition">👍</a>
+          </div>
+        </div>
+      </div>
+      <form id="resForm" class="fade-up bg-white p-8 rounded-2xl shadow-lg space-y-4" novalidate>
+        <div>
+          <label for="rName" class="block text-sm font-medium mb-1">Όνομα</label>
+          <input id="rName" name="name" type="text" required autocomplete="name"
+                 class="w-full px-4 py-3 rounded-lg border border-stone bg-linen/40 focus:border-ember focus:outline-none" placeholder="Το όνομά σου" />
+        </div>
+        <div>
+          <label for="rPhone" class="block text-sm font-medium mb-1">Τηλέφωνο</label>
+          <input id="rPhone" name="phone" type="tel" required autocomplete="tel"
+                 class="w-full px-4 py-3 rounded-lg border border-stone bg-linen/40 focus:border-ember focus:outline-none" placeholder="69........" />
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label for="rDate" class="block text-sm font-medium mb-1">Ημερομηνία</label>
+            <input id="rDate" name="date" type="date" required
+                   class="w-full px-4 py-3 rounded-lg border border-stone bg-linen/40 focus:border-ember focus:outline-none" />
+          </div>
+          <div>
+            <label for="rTime" class="block text-sm font-medium mb-1">Ώρα</label>
+            <input id="rTime" name="time" type="time" required value="21:00"
+                   class="w-full px-4 py-3 rounded-lg border border-stone bg-linen/40 focus:border-ember focus:outline-none" />
+          </div>
+        </div>
+        <div>
+          <label for="rPeople" class="block text-sm font-medium mb-1">Άτομα</label>
+          <select id="rPeople" name="people" class="w-full px-4 py-3 rounded-lg border border-stone bg-linen/40 focus:border-ember focus:outline-none">
+            <option>2 άτομα</option>
+            <option>3 άτομα</option>
+            <option>4 άτομα</option>
+            <option>5–7 άτομα</option>
+            <option>8+ άτομα</option>
+          </select>
+        </div>
+        <div>
+          <label for="rNotes" class="block text-sm font-medium mb-1">Σημείωση <span class="text-charcoal/50 font-light">(προαιρετικό)</span></label>
+          <textarea id="rNotes" name="notes" rows="2"
+                    class="w-full px-4 py-3 rounded-lg border border-stone bg-linen/40 focus:border-ember focus:outline-none" placeholder="Τραπέζι έξω, γενέθλια, αλλεργίες..."></textarea>
+        </div>
+        <button type="submit" class="w-full bg-ember text-white font-semibold py-3.5 rounded-lg hover:bg-night transition">Στείλε αίτημα κράτησης</button>
+        <p id="formMsg" class="hidden text-green-700 text-sm text-center" role="status">✓ Ευχαριστούμε! Θα επιβεβαιώσουμε την κράτηση σύντομα.</p>
+        <p id="formErr" class="hidden text-red-700 text-sm text-center" role="alert">Συμπλήρωσε όνομα, τηλέφωνο, ημερομηνία και ώρα.</p>
+        <p class="text-charcoal/50 text-xs text-center">Demo φόρμα — δεν αποστέλλονται στοιχεία.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-night text-linen/80">
+    <div class="max-w-6xl mx-auto px-5 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-2"><span class="text-2xl">🍸</span><span class="font-display text-xl font-extrabold text-linen">Food &amp; Bar</span></div>
+      <p class="text-sm text-center">Νότια Προάστια</p>
+      <p class="text-xs text-linen/50">Demo / πρόταση σχεδιασμού · © 2026</p>
+    </div>
+  </footer>
+
+  <script>
+    // --- Header: σκιά & φόντο μόλις αρχίσει το scroll ---
+    const header = document.querySelector('[data-nav]');
+    function onScroll() {
+      header.classList.toggle('bg-linen', window.scrollY > 40);
+      header.classList.toggle('shadow-md', window.scrollY > 40);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // --- Mobile menu: ένα listener, κλείνει μόλις διαλέξεις ---
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('hidden') === false;
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
+    mobileMenu.addEventListener('click', (e) => {
+      if (e.target.closest('a')) {
+        mobileMenu.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // --- Εικόνες: αν κάποια δεν φορτώσει, μένει το gradient του slot ---
+    // Προσοχή: εικόνες που αποτυγχάνουν γρήγορα το κάνουν ΠΡΙΝ τρέξει αυτό το
+    // script, οπότε δεν αρκεί το 'error' listener — ελέγχουμε και όσες έχουν
+    // ήδη ολοκληρωθεί χωρίς περιεχόμενο (naturalWidth === 0).
+    document.querySelectorAll('img[data-img]').forEach((img) => {
+      const hide = () => { img.style.display = 'none'; };
+      img.addEventListener('error', hide);
+      if (img.complete && img.naturalWidth === 0) hide();
+    });
+
+    // --- Scroll-reveal: κάθε στοιχείο εμφανίζεται μία φορά, με stagger ---
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+    const groups = new Map();
+    document.querySelectorAll('.fade-up').forEach((el) => {
+      const p = el.parentElement;
+      if (!groups.has(p)) groups.set(p, []);
+      groups.get(p).push(el);
+    });
+    groups.forEach((els) => {
+      if (els.length > 1) els.forEach((el, i) => el.style.setProperty('--reveal-delay', (i * 0.1) + 's'));
+    });
+    document.querySelectorAll('.fade-up').forEach((el) => io.observe(el));
+
+    // --- Φόρμα κράτησης: η ημερομηνία ξεκινά από σήμερα ---
+    const dateInput = document.getElementById('rDate');
+    const today = new Date().toISOString().slice(0, 10);
+    dateInput.min = today;
+    dateInput.value = today;
+
+    const form = document.getElementById('resForm');
+    const okMsg = document.getElementById('formMsg');
+    const errMsg = document.getElementById('formErr');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const valid = form.checkValidity();
+      okMsg.classList.toggle('hidden', !valid);
+      errMsg.classList.toggle('hidden', valid);
+      if (valid) {
+        form.reset();
+        dateInput.value = today;
+        document.getElementById('rTime').value = '21:00';
+      }
+    });
+  </script>
+</body>
+</html>
