@@ -1,0 +1,10 @@
+{
+  "description": "Showcases a modern burger and souvlaki restaurant with an elegant white-blue design, smooth scroll effects, and a complete menu to attract customers.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
