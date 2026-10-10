@@ -101,17 +101,30 @@
     @media (prefers-reduced-motion: reduce) {
       .fade-up { opacity: 1; transform: none; transition: none; }
     }
+
+    /* ===== RESPONSIVE / MOBILE FIXES ===== */
+    @media (max-width: 1024px) {
+      nav, section, footer { padding-left: 36px !important; padding-right: 36px !important; }
+      h1 { font-size: clamp(44px, 8.5vw, 92px) !important; line-height: 1.05 !important; }
+      h2 { font-size: clamp(32px, 6vw, 60px) !important; line-height: 1.06 !important; }
+    }
+    @media (max-width: 640px) {
+      nav { height: 76px !important; }
+      nav, section, footer { padding-left: 20px !important; padding-right: 20px !important; }
+      h1 { font-size: clamp(36px, 11vw, 56px) !important; }
+      h2 { font-size: clamp(27px, 8vw, 42px) !important; }
+    }
   </style>
 </head>
 <body class="font-sans text-bark antialiased">
 
   <!-- Navigation -->
-  <nav class="flex items-center justify-between px-[72px] h-[104px] border-b border-border">
+  <nav class="relative flex items-center justify-between px-[72px] h-[104px] border-b border-border bg-cream z-50">
     <a href="#" class="flex items-center gap-[9px]">
       <img src="assets/sunrise.svg" alt="" width="32" height="32" />
-      <span class="font-serif text-[36px] text-bark">daybreak</span>
+      <span class="font-serif text-[28px] md:text-[36px] text-bark">daybreak</span>
     </a>
-    <div class="flex items-center gap-[36px]">
+    <div class="hidden lg:flex items-center gap-[36px]">
       <a href="#menu" class="nav-link">Μενού</a>
       <a href="#story" class="nav-link">Η ιστορία μας</a>
       <a href="#visit" class="nav-link">Επισκεφθείτε μας</a>
@@ -120,10 +133,20 @@
         <img src="assets/arrow-up-right-white.svg" alt="" width="18" height="18" />
       </a>
     </div>
+    <button id="navToggle" class="lg:hidden text-bark text-[30px] leading-none" aria-label="Μενού πλοήγησης" aria-expanded="false" aria-controls="navMenu">☰</button>
+    <div id="navMenu" class="hidden lg:hidden absolute top-full left-0 right-0 flex-col gap-1 bg-cream border-b border-border px-5 py-4 z-50">
+      <a href="#menu" class="nav-link py-2" onclick="closeNav()">Μενού</a>
+      <a href="#story" class="nav-link py-2" onclick="closeNav()">Η ιστορία μας</a>
+      <a href="#visit" class="nav-link py-2" onclick="closeNav()">Επισκεφθείτε μας</a>
+      <a href="#order" class="btn-primary bg-terra text-warm mt-2 w-fit" onclick="closeNav()">
+        Παραγγελία take away
+        <img src="assets/arrow-up-right-white.svg" alt="" width="18" height="18" />
+      </a>
+    </div>
   </nav>
 
   <!-- Hero -->
-  <section class="flex gap-[64px] items-center px-[72px] pt-[44px] pb-[64px] overflow-hidden">
+  <section class="flex flex-col lg:flex-row gap-10 lg:gap-[64px] items-center px-[72px] pt-[44px] pb-[64px] overflow-hidden">
     <div class="flex-1 flex flex-col gap-[28px] min-w-0 fade-up">
       <p class="font-sans font-bold text-[12px] text-terra uppercase tracking-wide">Η ΓΕΙΤΟΝΙΑ ΣΟΥ, ΛΙΓΟ ΠΙΟ ΦΩΤΕΙΝΗ</p>
       <h1 class="font-serif text-[112px] text-bark leading-[1.02]">Οι καλές μέρες<br>ξεκινούν εδώ.</h1>
@@ -143,7 +166,7 @@
         <p class="text-muted text-[13px]">ΚΑΛΩΣ ΗΡΘΑΤΕ ΠΡΩΙΝΟΙ ΠΟΥΛΙΑ · ΚΑΘΗΜΕΡΙΝΕΣ ΑΠΟ ΤΙΣ 7 ΠΜ</p>
       </div>
     </div>
-    <div class="w-[616px] shrink-0 flex flex-col gap-[14px] fade-up">
+    <div class="w-full lg:w-[616px] lg:shrink-0 flex flex-col gap-[14px] fade-up">
       <div class="relative">
         <img src="assets/hero-coffee.png" alt="Καφές και κρουασάν" class="w-full h-[602px] object-cover rounded-tl-[180px] rounded-tr-[4px] rounded-bl-[4px] rounded-br-[4px]" />
         <div class="absolute -left-[35px] top-[17px] -rotate-[8deg]">
@@ -161,7 +184,7 @@
   </section>
 
   <!-- Brand Promise Bar -->
-  <section class="flex items-center justify-between px-[72px] py-[32px] border-t border-b border-border">
+  <section class="flex flex-wrap gap-6 justify-center sm:justify-between px-[72px] py-[32px] border-t border-b border-border">
     <div class="flex items-center gap-[14px] fade-up">
       <img src="assets/coffee-icon.svg" alt="" width="24" height="24" />
       <span class="font-medium text-[15px]">Specialty καφές, πάντα</span>
@@ -202,7 +225,7 @@
     </div>
 
     <!-- Menu Items -->
-    <div class="grid grid-cols-3 gap-[24px]">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[24px]">
       <div class="flex flex-col gap-[20px] fade-up">
         <div class="relative overflow-hidden rounded-[4px] menu-photo">
           <img src="assets/menu-latte.png" alt="Latte μέλι & βρώμη" class="w-full h-[336px] object-cover" />
@@ -253,7 +276,7 @@
         <h2 class="font-serif text-[64px] text-bark leading-[1.02]">Το πλήρες μενού.</h2>
       </div>
 
-      <div class="grid grid-cols-2 gap-x-[88px] gap-y-[56px]">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-[88px] gap-y-[56px]">
 
         <!-- Καφέδες & Ροφήματα -->
         <div class="flex flex-col gap-[8px] fade-up">
@@ -509,8 +532,8 @@
   </section>
 
   <!-- Coffee Section -->
-  <section class="bg-bark flex gap-[88px] items-center p-[72px]">
-    <img src="assets/coffee-barista.png" alt="Barista ετοιμάζει καφέ" class="w-[560px] h-[584px] object-cover rounded-[4px] shrink-0 fade-up" />
+  <section class="bg-bark flex flex-col lg:flex-row gap-10 lg:gap-[88px] items-center p-[72px]">
+    <img src="assets/coffee-barista.png" alt="Barista ετοιμάζει καφέ" class="w-full lg:w-[560px] h-[300px] lg:h-[584px] object-cover rounded-[4px] lg:shrink-0 fade-up" />
     <div class="flex-1 flex flex-col gap-[23px] min-w-0 fade-up">
       <p class="font-bold text-[12px] text-tan uppercase">ΚΑΛΟΣ ΚΑΦΕΣ. ΧΩΡΙΣ ΠΟΛΥΠΛΟΚΟΤΗΤΑ.</p>
       <h2 class="font-serif text-[62px] text-cream leading-[1.02]">Τέχνη σε κάθε<br>φλιτζάνι.</h2>
@@ -546,7 +569,7 @@
   </section>
 
   <!-- Quick Bites -->
-  <section class="flex gap-[88px] items-center px-[72px] py-[96px]">
+  <section class="flex flex-col lg:flex-row gap-10 lg:gap-[88px] items-center px-[72px] py-[96px]">
     <div class="flex-1 flex flex-col gap-[24px] min-w-0 fade-up">
       <p class="font-bold text-[12px] text-terra uppercase">ΑΛΗΘΙΝΟ ΦΑΓΗΤΟ. ΕΤΟΙΜΟ ΟΤΑΝ ΕΙΣΑΙ ΕΣΥΗΣ.</p>
       <h2 class="font-serif text-[76px] text-bark leading-[1.02]">Μεγάλη γεύση.<br>Μικρή αναμονή.</h2>
@@ -574,7 +597,7 @@
         <img src="assets/arrow-up-right-white.svg" alt="" width="18" height="18" />
       </a>
     </div>
-    <div class="w-[696px] shrink-0 flex flex-col gap-[14px] fade-up">
+    <div class="w-full lg:w-[696px] lg:shrink-0 flex flex-col gap-[14px] fade-up">
       <img src="assets/lunch-spread.png" alt="Μεσημεριανό σπρεντ" class="w-full h-[532px] object-cover rounded-[4px]" />
       <div class="flex justify-between text-muted text-[11px]">
         <span>ΦΡΕΣΚΟΦΤΙΑΓΜΕΝΟ. ΣΕΡΒΙΡΕΤΑΙ ΟΛΗ ΜΕΡΑ.</span>
@@ -584,8 +607,8 @@
   </section>
 
   <!-- Our Story -->
-  <section id="story" class="bg-blush flex">
-    <img src="assets/founders.png" alt="Οι ιδρυτές του Daybreak" class="w-[720px] h-[628px] object-cover shrink-0 fade-up" />
+  <section id="story" class="bg-blush flex flex-col lg:flex-row">
+    <img src="assets/founders.png" alt="Οι ιδρυτές του Daybreak" class="w-full lg:w-[720px] h-[300px] lg:h-[628px] object-cover lg:shrink-0 fade-up" />
     <div class="flex-1 flex flex-col gap-[24px] justify-center px-[72px] py-[68px] fade-up">
       <p class="font-bold text-[12px] text-terra uppercase">ΕΝΑ ΜΙΚΡΟ ΚΑΦΕ. ΜΙΑ ΜΕΓΑΛΗ ΥΠΟΔΟΧΗ.</p>
       <h2 class="font-serif text-[58px] text-bark leading-[1.02]">Η γωνιά σου<br>στη γειτονιά.</h2>
@@ -600,8 +623,8 @@
   </section>
 
   <!-- Order Ahead -->
-  <section id="order" class="bg-terra flex gap-[88px] items-center p-[72px]">
-    <div class="flex flex-col gap-[22px] w-[672px] shrink-0 text-cream fade-up">
+  <section id="order" class="bg-terra flex flex-col lg:flex-row gap-10 lg:gap-[88px] items-center p-[72px]">
+    <div class="flex flex-col gap-[22px] w-full lg:w-[672px] lg:shrink-0 text-cream fade-up">
       <p class="font-bold text-[12px]">ΚΑΛΑ ΠΡΑΓΜΑΤΑ. ΓΙΑ ΤΟ ΔΡΟΜΟ.</p>
       <h2 class="font-serif text-[76px] leading-[1.02]">Τα συνηθισμένα σου.<br>Χωρίς αναμονή.</h2>
       <p class="text-[17px]">Λιγότερη ουρά. Περισσότερη απόλαυση. Έτοιμα σε 10–15 λεπτά.</p>
@@ -637,7 +660,7 @@
 
   <!-- Reviews -->
   <section class="flex flex-col gap-[44px] px-[72px] py-[96px]">
-    <div class="flex items-end justify-between fade-up">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 fade-up">
       <div class="flex flex-col gap-[18px] max-w-[870px]">
         <p class="font-bold text-[12px] text-terra uppercase">ΟΜΟΡΦΑ ΛΟΓΙΑ ΑΠΟ ΚΑΛΟΥΣ ΑΝΘΡΩΠΟΥΣ</p>
         <h2 class="font-serif text-[60px] text-bark leading-[1.02]">Λίγη τοπική αγάπη.</h2>
@@ -650,7 +673,7 @@
         <span class="text-muted text-[12px]">240+ καλά λόγια στο Google</span>
       </div>
     </div>
-    <div class="grid grid-cols-3 gap-[24px]">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[24px]">
       <div class="bg-warm rounded-[8px] p-[30px] flex flex-col gap-[24px] review-card fade-up">
         <span class="text-terra text-[16px]">★★★★★</span>
         <p class="font-serif text-[28px] text-bark leading-[1.25]">«Το latte μέλι &amp; βρώμη είναι πλέον η προσωπικότητά μου. Ο καλύτερος τρόπος να ξεκινήσεις τη Δευτέρα.»</p>
@@ -694,13 +717,13 @@
   </section>
 
   <!-- Visit -->
-  <section id="visit" class="bg-warm flex gap-[88px] items-center px-[72px] py-[80px]">
+  <section id="visit" class="bg-warm flex flex-col lg:flex-row gap-10 lg:gap-[88px] items-center px-[72px] py-[80px]">
     <div class="flex-1 flex flex-col gap-[26px] min-w-0 fade-up">
       <p class="font-bold text-[12px] text-terra uppercase">ΤΟ ΤΡΑΠΕΖΙ ΣΑΣ ΠΕΡΙΜΕΝΕΙ</p>
       <h2 class="font-serif text-[72px] text-bark leading-[1.02]">Τα λέμε στο<br>Daybreak.</h2>
       <p class="text-muted text-[17px] leading-[1.6]">Περάστε για έναν γρήγορο καφέ ή μείνετε για ένα αργό απόγευμα. Υπάρχει πάντα λίγος χώρος για εσάς εδώ.</p>
       <div class="h-px bg-border"></div>
-      <div class="flex gap-[36px]">
+      <div class="flex flex-col sm:flex-row gap-8 sm:gap-[36px]">
         <div class="flex flex-col gap-[10px] w-[244px]">
           <span class="font-bold text-[12px] text-bark">ΒΡΕΙΤΕ ΜΑΣ</span>
           <p class="text-muted text-[15px] leading-[1.6]">Σκουφά 42<br>Κολωνάκι, Αθήνα<br>106 73</p>
@@ -726,7 +749,7 @@
         <span class="text-muted text-[12px]">Χωρίς κράτηση &amp; τετράποδοι φίλοι ευπρόσδεκτοι.</span>
       </div>
     </div>
-    <div class="w-[620px] shrink-0 flex flex-col gap-[14px] fade-up">
+    <div class="w-full lg:w-[620px] lg:shrink-0 flex flex-col gap-[14px] fade-up">
       <img src="assets/cafe-exterior.png" alt="Εξωτερικό Daybreak Café" class="w-full h-[526px] object-cover rounded-tl-[4px] rounded-tr-[160px] rounded-bl-[4px] rounded-br-[4px]" />
       <div class="flex justify-between text-muted text-[11px]">
         <span>ΚΟΛΩΝΑΚΙ, ΑΘΗΝΑ</span>
@@ -737,20 +760,20 @@
 
   <!-- Footer -->
   <footer class="bg-bark px-[72px] pt-[64px] pb-[28px] flex flex-col gap-[48px]">
-    <div class="flex gap-[48px] fade-up">
-      <div class="w-[352px] shrink-0 flex flex-col gap-[18px]">
+    <div class="flex flex-col lg:flex-row flex-wrap gap-10 lg:gap-[48px] fade-up">
+      <div class="w-full lg:w-[352px] lg:shrink-0 flex flex-col gap-[18px]">
         <h3 class="font-serif text-[42px] text-cream leading-[1.08]">Κάντε λίγο χώρο<br>για το καλό.</h3>
         <a href="mailto:hello@daybreak.cafe" class="text-tan text-[14px] hover:text-cream transition-colors">hello@daybreak.cafe</a>
         <a href="#" class="text-tan text-[14px] hover:text-cream transition-colors">Βρείτε μας στο Instagram @daybreak.cafe ↗</a>
       </div>
-      <div class="w-[168px] shrink-0 flex flex-col gap-[16px]">
+      <div class="w-full sm:w-[168px] lg:shrink-0 flex flex-col gap-[16px]">
         <span class="font-semibold text-tan text-[11px]">ΣΤΟ ΜΕΝΟΥ</span>
         <a href="#" class="footer-link">Καφές &amp; ροφήματα</a>
         <a href="#" class="footer-link">Γρήγορα σνακ</a>
         <a href="#" class="footer-link">Φρέσκα ψημένα</a>
         <a href="#" class="footer-link">Παραγγελία take away</a>
       </div>
-      <div class="w-[168px] shrink-0 flex flex-col gap-[16px]">
+      <div class="w-full sm:w-[168px] lg:shrink-0 flex flex-col gap-[16px]">
         <span class="font-semibold text-tan text-[11px]">ΤΡΙΓΥΡΩ ΜΑΣ</span>
         <a href="#story" class="footer-link">Η ιστορία μας</a>
         <a href="#visit" class="footer-link">Επισκεφθείτε μας</a>
@@ -771,8 +794,8 @@
     </div>
 
     <!-- Brand Signature -->
-    <div class="flex items-end justify-between">
-      <span class="font-serif text-[218px] text-cream leading-[0.9]">daybreak</span>
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-8">
+      <span class="font-serif text-[64px] sm:text-[120px] lg:text-[218px] text-cream leading-[0.9]">daybreak</span>
       <div class="flex flex-col items-end gap-[16px] pb-[12px]">
         <img src="assets/sunrise-large.svg" alt="" width="54" height="54" />
         <span class="text-tan text-[11px]">ΚΑΦΕΣ. ΓΕΥΣΕΙΣ. ΚΑΛΗ ΠΑΡΕΑ.</span>
@@ -797,6 +820,22 @@
       document.querySelectorAll('.category-pill').forEach(p => p.classList.remove('active'));
       el.classList.add('active');
     }
+
+    // Mobile nav (hamburger)
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    navToggle.addEventListener('click', () => {
+      const open = navMenu.classList.toggle('hidden') === false;
+      navMenu.classList.toggle('flex', open);
+      navToggle.setAttribute('aria-expanded', String(open));
+      navToggle.textContent = open ? '✕' : '☰';
+    });
+    window.closeNav = function () {
+      navMenu.classList.add('hidden');
+      navMenu.classList.remove('flex');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.textContent = '☰';
+    };
 
     document.getElementById('newsletter-form').addEventListener('submit', function(e) {
       e.preventDefault();
