@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Food &amp; Bar — Κουζίνα και cocktails στα Νότια Προάστια</title>
+  <title>Food &amp; Bar: κουζίνα και cocktails στα Νότια Προάστια</title>
   <meta name="description" content="Food &amp; Bar: κουζίνα από το μεσημέρι, cocktails μέχρι αργά, μουσική το βράδυ. Στα Νότια Προάστια, με κράτηση online." />
   <meta name="theme-color" content="#1f3d2e" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Food &amp; Bar — Κουζίνα και cocktails" />
+  <meta property="og:title" content="Food &amp; Bar: κουζίνα και cocktails" />
   <meta property="og:description" content="Μεσημέρι στο τραπέζι, βράδυ στο bar. Στα Νότια Προάστια." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231f3d2e'/><circle cx='42' cy='23' r='10' fill='%23f2a7bd'/></svg>" />
 
@@ -23,10 +23,10 @@
       theme: {
         extend: {
           colors: {
-            pine: '#1f3d2e',      // βαθύ πράσινο — βάση & σκούρες ενότητες
+            pine: '#1f3d2e',      // βαθύ πράσινο: βάση & σκούρες ενότητες
             ink: '#16261d',       // κείμενο
             moss: '#5b6b60',      // δευτερεύον κείμενο
-            bloom: '#c93a68',     // βουκαμβίλια — το μοναδικό accent
+            bloom: '#c93a68',     // βουκαμβίλια: το μοναδικό accent
             petal: '#f2a7bd',     // ροζ για σκούρο φόντο
             blush: '#f7e1e5',     // ήπιες ροζ ενότητες
             plaster: '#fbf8f5',   // φόντο
@@ -47,7 +47,7 @@
     p { text-wrap: pretty; }
     .tnum { font-variant-numeric: tabular-nums; }
 
-    /* Λεπτός κόκκος σε όλη τη σελίδα — σπάει την «ψηφιακή» επιπεδότητα */
+    /* Λεπτός κόκκος σε όλη τη σελίδα: σπάει την «ψηφιακή» επιπεδότητα */
     body::after {
       content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 60; opacity: .035;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -61,7 +61,7 @@
     /* Κουμπιά */
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
-      border-radius: 999px; padding: .9rem 1.7rem; font-weight: 600; font-size: .95rem;
+      border-radius: 16px; padding: .9rem 1.7rem; font-weight: 600; font-size: .95rem;
       transition: background-color .2s ease, color .2s ease, transform .15s ease;
     }
     .btn:active { transform: scale(.98); }
@@ -102,14 +102,14 @@
 
     /* Ορατό focus για πλοήγηση με πληκτρολόγιο */
     a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
-      outline: 2px solid #c93a68; outline-offset: 3px; border-radius: 4px;
+      outline: 2px solid #c93a68; outline-offset: 3px;
     }
   </style>
 </head>
 
 <body class="font-sans text-ink bg-plaster antialiased">
 
-  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[70] focus:bg-plaster focus:px-4 focus:py-2 focus:rounded-md">Μετάβαση στο περιεχόμενο</a>
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[70] focus:bg-plaster focus:px-4 focus:py-2 focus:rounded-2xl">Μετάβαση στο περιεχόμενο</a>
 
   <!-- Demo banner -->
   <div class="bg-ink text-plaster/75 text-center text-xs py-1.5 px-4">
@@ -119,8 +119,7 @@
   <!-- ===== HEADER ===== -->
   <header id="top" data-nav class="sticky top-0 z-50 bg-plaster/90 backdrop-blur border-b border-transparent transition-colors duration-300">
     <nav class="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between" aria-label="Κύρια πλοήγηση">
-      <a href="#top" class="font-display text-[19px] font-bold tracking-[-0.02em] flex items-center gap-2.5">
-        <span class="w-2.5 h-2.5 rounded-full bg-bloom" aria-hidden="true"></span>
+      <a href="#top" class="font-display text-[18px] font-extrabold tracking-[-0.02em]">
         Food &amp; Bar
       </a>
       <div class="hidden md:flex items-center gap-8 text-[15px] font-medium text-ink/80">
@@ -149,10 +148,10 @@
 
     <!-- ===== HERO ===== -->
     <section class="grid lg:grid-cols-12 lg:min-h-[calc(100dvh-6rem)]">
-      <div class="lg:col-span-7 bg-pine text-plaster flex flex-col justify-end px-5 sm:px-8 lg:px-14 pt-16 pb-14 lg:pb-20">
-        <div class="hero-in max-w-3xl">
+      <div class="lg:col-span-8 bg-pine text-plaster flex flex-col justify-end px-5 sm:px-8 lg:px-12 pt-16 pb-14 lg:pb-20">
+        <div class="hero-in">
           <p class="text-petal text-sm sm:text-base">Κουζίνα και cocktails στα Νότια Προάστια</p>
-          <h1 class="font-display font-bold text-[34px] sm:text-[44px] lg:text-[38px] xl:text-[52px] 2xl:text-[58px] leading-[1.06] tracking-[-0.03em] mt-5">
+          <h1 class="font-display font-extrabold text-[30px] sm:text-[40px] lg:text-[33px] xl:text-[43px] 2xl:text-[52px] leading-[1.1] tracking-[-0.03em] mt-5">
             Μεσημέρι στο τραπέζι.<br>Βράδυ στο bar.
           </h1>
           <p class="mt-7 text-plaster/80 text-base sm:text-lg max-w-[34rem] leading-relaxed">
@@ -166,7 +165,7 @@
           <p class="mt-12 text-sm text-plaster/60"><span class="text-petal font-semibold tnum">4,7</span> στο Google από 240 κριτικές</p>
         </div>
       </div>
-      <div class="lg:col-span-5 relative min-h-[48vh] lg:min-h-0 img-fallback">
+      <div class="lg:col-span-4 relative min-h-[48vh] lg:min-h-0 img-fallback">
         <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1400&q=80"
              alt="Bartender ετοιμάζει cocktail στον πάγκο του bar" data-img
              class="absolute inset-0 w-full h-full object-cover" />
@@ -177,7 +176,7 @@
     <section id="day" class="bg-plaster">
       <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-20 pb-24 lg:pt-28 lg:pb-32">
         <div class="reveal max-w-xl">
-          <h2 class="font-display text-[28px] sm:text-[40px] font-bold tracking-[-0.025em] leading-[1.08]">Μια μέρα στο Food &amp; Bar</h2>
+          <h2 class="font-display text-[28px] sm:text-[40px] lg:text-[34px] xl:text-[40px] font-extrabold tracking-[-0.025em] leading-[1.1]">Μια μέρα στο Food &amp; Bar</h2>
           <p class="mt-4 text-moss text-lg leading-relaxed">Ανοίγουμε για φαγητό και μένουμε για ποτό. Να τι παίζει, ώρα με την ώρα.</p>
         </div>
         <ol class="mt-14 grid md:grid-cols-3 gap-12 md:gap-8">
@@ -204,19 +203,19 @@
     <section id="about" class="bg-blush/50">
       <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-20 pb-24 lg:pt-28 lg:pb-32 grid lg:grid-cols-12 gap-14 lg:gap-10 items-center">
         <div class="lg:col-span-7 relative reveal sm:mb-12">
-          <div class="img-fallback rounded-sm overflow-hidden aspect-[4/3]">
+          <div class="img-fallback rounded-2xl overflow-hidden aspect-[4/3]">
             <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1400&q=80"
                  alt="Τραπέζια ανάμεσα σε φυτά, στο εσωτερικό του μαγαζιού" data-img
                  class="w-full h-full object-cover" />
           </div>
-          <div class="hidden sm:block absolute -bottom-12 right-4 lg:-right-8 w-[42%] aspect-square rounded-sm overflow-hidden border-[6px] border-plaster img-fallback--bloom shadow-[0_28px_50px_-24px_rgba(31,61,46,.55)]">
+          <div class="hidden sm:block absolute -bottom-12 right-4 lg:-right-8 w-[42%] aspect-square rounded-2xl overflow-hidden border-[6px] border-plaster img-fallback--bloom shadow-[0_28px_50px_-24px_rgba(31,61,46,.55)]">
             <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80"
                  alt="Πιάτο της ημέρας με ψητό κρέας και λαχανικά" data-img
                  class="w-full h-full object-cover" />
           </div>
         </div>
         <div class="lg:col-span-5 lg:pl-10 reveal">
-          <h2 class="font-display text-[28px] sm:text-[36px] font-bold tracking-[-0.025em] leading-[1.08]">Φτιαγμένο για όλες τις ώρες</h2>
+          <h2 class="font-display text-[28px] sm:text-[36px] lg:text-[30px] xl:text-[36px] font-extrabold tracking-[-0.025em] leading-[1.1]">Φτιαγμένο για όλες τις ώρες</h2>
           <p class="mt-6 text-ink/80 leading-relaxed">
             Ξεκινάμε το μεσημέρι με κουζίνα που βασίζεται σε απλά, καλά υλικά και συνεχίζουμε μέχρι
             αργά με μουσική και cocktails. Γεύμα με την παρέα, ποτό μετά τη δουλειά ή βραδιά που τραβάει.
@@ -224,7 +223,7 @@
           <p class="mt-4 text-ink/80 leading-relaxed">
             Τα cocktails φτιάχνονται τη στιγμή που τα ζητάς και η εξυπηρέτηση είναι ζεστή χωρίς φασαρία.
           </p>
-          <p class="mt-9 font-display font-bold text-xl text-pine leading-snug tracking-[-0.01em]">«Το μενού αλλάζει με τη σεζόν. Η παρέα μένει ίδια.»</p>
+          <p class="mt-9 font-display font-extrabold text-lg text-pine leading-snug tracking-[-0.01em]">«Το μενού αλλάζει με τη σεζόν. Η παρέα μένει ίδια.»</p>
         </div>
       </div>
     </section>
@@ -233,7 +232,7 @@
     <section id="cocktails" class="bg-pine text-plaster">
       <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-20 pb-24 lg:pt-28 lg:pb-32 grid lg:grid-cols-12 gap-12 lg:gap-10 items-start">
         <div class="lg:col-span-5 reveal">
-          <div class="img-fallback--bloom rounded-sm overflow-hidden aspect-[4/5] max-w-md">
+          <div class="img-fallback--bloom rounded-2xl overflow-hidden aspect-[4/5] max-w-md">
             <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1000&q=80"
                  alt="Τρία cocktails στον πάγκο: δύο με λάιμ και δυόσμο κι ένα ροζ με μούρα" data-img
                  class="w-full h-full object-cover" />
@@ -241,25 +240,25 @@
         </div>
         <div class="lg:col-span-7 lg:pl-8 reveal">
           <p class="text-petal">Από το bar</p>
-          <h2 class="mt-3 font-display text-[28px] sm:text-[40px] font-bold tracking-[-0.025em] leading-[1.08]">Τέσσερα cocktails που σου προτείνουμε</h2>
+          <h2 class="mt-3 font-display text-[28px] sm:text-[40px] lg:text-[34px] xl:text-[40px] font-extrabold tracking-[-0.025em] leading-[1.1]">Τέσσερα cocktails για αρχή</h2>
           <ul class="mt-10 divide-y divide-plaster/15 border-y border-plaster/15">
             <li class="py-6 grid grid-cols-[1fr_auto] gap-x-6 gap-y-1.5">
-              <h3 class="font-display text-2xl font-semibold">Τριαντάφυλλο και gin</h3>
+              <h3 class="font-display text-xl font-extrabold tracking-[-0.01em]">Τριαντάφυλλο και gin</h3>
               <span class="tnum text-petal font-semibold text-lg">9,00 €</span>
               <p class="col-span-2 text-plaster/70 leading-relaxed">Gin, λικέρ τριαντάφυλλο, λεμόνι και αφρός από ασπράδι.</p>
             </li>
             <li class="py-6 grid grid-cols-[1fr_auto] gap-x-6 gap-y-1.5">
-              <h3 class="font-display text-2xl font-semibold">Spritz μαστίχα</h3>
+              <h3 class="font-display text-xl font-extrabold tracking-[-0.01em]">Spritz μαστίχα</h3>
               <span class="tnum text-petal font-semibold text-lg">8,50 €</span>
               <p class="col-span-2 text-plaster/70 leading-relaxed">Μαστίχα Χίου, prosecco, σόδα και περγαμόντο. Δροσερό και μυρωδάτο.</p>
             </li>
             <li class="py-6 grid grid-cols-[1fr_auto] gap-x-6 gap-y-1.5">
-              <h3 class="font-display text-2xl font-semibold">Καπνιστό negroni</h3>
+              <h3 class="font-display text-xl font-extrabold tracking-[-0.01em]">Καπνιστό negroni</h3>
               <span class="tnum text-petal font-semibold text-lg">9,50 €</span>
               <p class="col-span-2 text-plaster/70 leading-relaxed">Gin, Campari και vermouth, με καπνό από φλούδα πορτοκαλιού.</p>
             </li>
             <li class="py-6 grid grid-cols-[1fr_auto] gap-x-6 gap-y-1.5">
-              <h3 class="font-display text-2xl font-semibold">Ελληνικός espresso martini</h3>
+              <h3 class="font-display text-xl font-extrabold tracking-[-0.01em]">Ελληνικός espresso martini</h3>
               <span class="tnum text-petal font-semibold text-lg">9,00 €</span>
               <p class="col-span-2 text-plaster/70 leading-relaxed">Ελληνικός espresso, βότκα, βανίλια και λίγο κακάο.</p>
             </li>
@@ -274,10 +273,10 @@
       <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-20 pb-24 lg:pt-28 lg:pb-32">
         <div class="grid lg:grid-cols-12 gap-10 items-end reveal">
           <div class="lg:col-span-7">
-            <h2 class="font-display text-[28px] sm:text-[40px] font-bold tracking-[-0.025em] leading-[1.08]">Το μενού</h2>
+            <h2 class="font-display text-[28px] sm:text-[40px] lg:text-[34px] xl:text-[40px] font-extrabold tracking-[-0.025em] leading-[1.1]">Το μενού</h2>
             <p class="mt-4 text-moss text-lg leading-relaxed max-w-[36rem]">Μεζέδες για μοίρασμα, πιάτα σχάρας και ό,τι πάει με ένα ποτήρι. Τιμές σε ευρώ.</p>
           </div>
-          <div class="lg:col-span-5 img-fallback rounded-sm overflow-hidden aspect-[16/10]">
+          <div class="lg:col-span-5 img-fallback rounded-2xl overflow-hidden aspect-[16/10]">
             <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=80"
                  alt="Burger με λιωμένο τυρί" data-img
                  class="w-full h-full object-cover" />
@@ -286,7 +285,7 @@
 
         <div class="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-14">
           <div class="reveal">
-            <h3 class="font-display font-bold text-[22px] text-pine">Μεζέδες</h3>
+            <h3 class="font-display font-extrabold text-[18px] text-pine">Μεζέδες</h3>
             <ul class="mt-5 space-y-3.5 text-[15px]">
               <li class="menu-row"><span>Πατάτες με φέτα και ρίγανη</span><span class="dots"></span><span class="tnum font-semibold">5,50</span></li>
               <li class="menu-row"><span>Τυροκροκέτες</span><span class="dots"></span><span class="tnum font-semibold">6,50</span></li>
@@ -297,7 +296,7 @@
             </ul>
           </div>
           <div class="reveal">
-            <h3 class="font-display font-bold text-[22px] text-pine">Κυρίως</h3>
+            <h3 class="font-display font-extrabold text-[18px] text-pine">Κυρίως</h3>
             <ul class="mt-5 space-y-3.5 text-[15px]">
               <li class="menu-row"><span>Smash burger με cheddar</span><span class="dots"></span><span class="tnum font-semibold">11,50</span></li>
               <li class="menu-row"><span>Μπιφτέκι με γραβιέρα</span><span class="dots"></span><span class="tnum font-semibold">11,00</span></li>
@@ -308,7 +307,7 @@
             </ul>
           </div>
           <div class="reveal">
-            <h3 class="font-display font-bold text-[22px] text-pine">Cocktails</h3>
+            <h3 class="font-display font-extrabold text-[18px] text-pine">Cocktails</h3>
             <ul class="mt-5 space-y-3.5 text-[15px]">
               <li class="menu-row"><span>Negroni</span><span class="dots"></span><span class="tnum font-semibold">8,50</span></li>
               <li class="menu-row"><span>Espresso martini</span><span class="dots"></span><span class="tnum font-semibold">9,00</span></li>
@@ -319,7 +318,7 @@
             </ul>
           </div>
           <div class="reveal">
-            <h3 class="font-display font-bold text-[22px] text-pine">Μπύρες και κρασιά</h3>
+            <h3 class="font-display font-extrabold text-[18px] text-pine">Μπύρα και κρασί</h3>
             <ul class="mt-5 space-y-3.5 text-[15px]">
               <li class="menu-row"><span>Draft lager 500ml</span><span class="dots"></span><span class="tnum font-semibold">5,00</span></li>
               <li class="menu-row"><span>Ελληνική microbrewery</span><span class="dots"></span><span class="tnum font-semibold">5,50</span></li>
@@ -338,8 +337,8 @@
     <section id="reviews" class="bg-blush">
       <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-20 pb-24 lg:pt-28 lg:pb-32 grid lg:grid-cols-12 gap-14 lg:gap-10">
         <figure class="lg:col-span-7 reveal">
-          <blockquote class="font-display text-[23px] sm:text-[30px] lg:text-[34px] leading-[1.22] text-pine font-bold tracking-[-0.02em]">
-            «Το smash burger είναι από τα καλύτερα της περιοχής και το προσωπικό φροντίζει να περάσεις καλά.»
+          <blockquote class="font-display text-[17px] sm:text-[22px] lg:text-[21px] xl:text-[25px] leading-[1.3] text-pine font-extrabold tracking-[-0.02em]">
+            «Από τα καλύτερα smash burger της περιοχής, με προσωπικό που σε προσέχει.»
           </blockquote>
           <figcaption class="mt-7 text-ink/70">Μαρία Κ., κριτική στο Google</figcaption>
         </figure>
@@ -365,12 +364,12 @@
     <section id="visit" class="bg-plaster">
       <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-20 pb-16 lg:pt-28 lg:pb-20 grid lg:grid-cols-12 gap-12 lg:gap-10">
         <div class="lg:col-span-5 reveal">
-          <h2 class="font-display text-[28px] sm:text-[40px] font-bold tracking-[-0.025em] leading-[1.08]">Πότε θα μας βρεις</h2>
+          <h2 class="font-display text-[28px] sm:text-[40px] lg:text-[34px] xl:text-[40px] font-extrabold tracking-[-0.025em] leading-[1.1]">Πότε θα μας βρεις</h2>
           <dl class="mt-9 divide-y divide-line border-y border-line">
             <div class="flex justify-between gap-4 py-3.5"><dt>Δευτέρα</dt><dd class="text-moss">Κλειστά</dd></div>
-            <div class="flex justify-between gap-4 py-3.5"><dt>Τρίτη έως Πέμπτη</dt><dd class="tnum font-medium">13:00–01:00</dd></div>
-            <div class="flex justify-between gap-4 py-3.5"><dt>Παρασκευή και Σάββατο</dt><dd class="tnum font-medium">13:00–02:30</dd></div>
-            <div class="flex justify-between gap-4 py-3.5"><dt>Κυριακή</dt><dd class="tnum font-medium">13:00–00:30</dd></div>
+            <div class="flex justify-between gap-4 py-3.5"><dt>Τρίτη έως Πέμπτη</dt><dd class="tnum font-medium">13:00-01:00</dd></div>
+            <div class="flex justify-between gap-4 py-3.5"><dt>Παρασκευή και Σάββατο</dt><dd class="tnum font-medium">13:00-02:30</dd></div>
+            <div class="flex justify-between gap-4 py-3.5"><dt>Κυριακή</dt><dd class="tnum font-medium">13:00-00:30</dd></div>
           </dl>
           <p class="mt-4 text-sm text-moss leading-relaxed">Η κουζίνα κλείνει στις 00:00, Παρασκευή και Σάββατο στις 00:30. Ενδεικτικό ωράριο για το demo.</p>
           <div class="mt-10">
@@ -380,7 +379,7 @@
                class="mt-3 inline-block font-semibold text-bloom underline decoration-2 underline-offset-[6px] hover:text-pine transition-colors">Οδηγίες στο Google Maps</a>
           </div>
         </div>
-        <div class="lg:col-span-7 reveal rounded-sm overflow-hidden img-fallback min-h-[320px] lg:min-h-[460px]">
+        <div class="lg:col-span-7 reveal rounded-2xl overflow-hidden img-fallback min-h-[320px] lg:min-h-[460px]">
           <iframe title="Χάρτης: Νότια Προάστια, Αθήνα" class="w-full h-full min-h-[320px] lg:min-h-[460px] border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
                   src="https://www.openstreetmap.org/export/embed.html?bbox=23.68%2C37.83%2C23.78%2C37.95&layer=mapnik"></iframe>
         </div>
@@ -390,41 +389,41 @@
     <!-- ===== ΚΡΑΤΗΣΗ ===== -->
     <section id="reservation" class="bg-plaster pb-24 lg:pb-32">
       <div class="max-w-6xl mx-auto px-5 sm:px-8">
-        <div class="grid lg:grid-cols-12 rounded-lg overflow-hidden shadow-[0_34px_70px_-34px_rgba(31,61,46,.55)] reveal">
+        <div class="grid lg:grid-cols-12 rounded-2xl overflow-hidden shadow-[0_34px_70px_-34px_rgba(31,61,46,.55)] reveal">
           <div class="lg:col-span-5 bg-pine text-plaster p-8 sm:p-10 lg:p-12">
-            <h2 class="font-display text-[26px] sm:text-[34px] font-bold tracking-[-0.025em] leading-[1.08]">Κλείσε το τραπέζι σου</h2>
+            <h2 class="font-display text-[26px] sm:text-[34px] lg:text-[28px] xl:text-[34px] font-extrabold tracking-[-0.025em] leading-[1.1]">Κλείσε το τραπέζι σου</h2>
             <p class="mt-5 text-plaster/75 leading-relaxed">Για τραπέζι, μεγάλη παρέα ή ιδιωτική εκδήλωση. Στείλε μας τα στοιχεία και επιβεβαιώνουμε μέσα στην ημέρα.</p>
             <ul class="mt-8 space-y-3 text-plaster/85">
-              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-petal shrink-0" aria-hidden="true"></span>Live μουσική κάθε Παρασκευή</li>
-              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-petal shrink-0" aria-hidden="true"></span>Παρέες από 8 άτομα μόνο με κράτηση</li>
-              <li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-petal shrink-0" aria-hidden="true"></span>Τραπέζια έξω όταν το επιτρέπει ο καιρός</li>
+              <li>Live μουσική κάθε Παρασκευή</li>
+              <li>Παρέες από 8 άτομα μόνο με κράτηση</li>
+              <li>Τραπέζια έξω όταν το επιτρέπει ο καιρός</li>
             </ul>
           </div>
           <form id="resForm" class="lg:col-span-7 bg-white p-8 sm:p-10 lg:p-12 grid sm:grid-cols-2 gap-5" novalidate>
             <div>
               <label for="rName" class="block text-sm font-medium mb-1.5">Όνομα</label>
               <input id="rName" name="name" type="text" required autocomplete="name" placeholder="Το όνομά σου"
-                     class="w-full rounded-md border border-line bg-plaster/70 px-4 py-3 placeholder:text-moss/60 focus:border-bloom focus:outline-none focus:ring-2 focus:ring-bloom/20 transition" />
+                     class="w-full rounded-2xl border border-line bg-plaster/70 px-4 py-3 placeholder:text-moss/60 focus:border-bloom focus:outline-none focus:ring-2 focus:ring-bloom/20 transition" />
             </div>
             <div>
               <label for="rPhone" class="block text-sm font-medium mb-1.5">Τηλέφωνο</label>
               <input id="rPhone" name="phone" type="tel" required autocomplete="tel" placeholder="69........"
-                     class="w-full rounded-md border border-line bg-plaster/70 px-4 py-3 placeholder:text-moss/60 focus:border-bloom focus:outline-none focus:ring-2 focus:ring-bloom/20 transition" />
+                     class="w-full rounded-2xl border border-line bg-plaster/70 px-4 py-3 placeholder:text-moss/60 focus:border-bloom focus:outline-none focus:ring-2 focus:ring-bloom/20 transition" />
             </div>
             <div>
               <label for="rDate" class="block text-sm font-medium mb-1.5">Ημερομηνία</label>
               <input id="rDate" name="date" type="date" required
-                     class="w-full rounded-md border border-line bg-plaster/70 px-4 py-3 focus:border-bloom focus:outline-none focus:ring-2 focus:ring-bloom/20 transition" />
+                     class="w-full rounded-2xl border border-line bg-plaster/70 px-4 py-3 focus:border-bloom focus:outline-none focus:ring-2 focus:ring-bloom/20 transition" />
             </div>
             <div>
               <label for="rTime" class="block text-sm font-medium mb-1.5">Ώρα</label>
               <input id="rTime" name="time" type="time" required value="21:00"
-                     class="w-full rounded-md border border-line bg-plaster/70 px-4 py-3 focus:border-bloom focus:outline-none focus:ring-2 focus:ring-bloom/20 transition" />
+                     class="w-full rounded-2xl border border-line bg-plaster/70 px-4 py-3 focus:border-bloom focus:outline-none focus:ring-2 focus:ring-bloom/20 transition" />
             </div>
             <div class="sm:col-span-2">
               <label for="rPeople" class="block text-sm font-medium mb-1.5">Άτομα</label>
               <select id="rPeople" name="people"
-                      class="w-full rounded-md border border-line bg-plaster/70 px-4 py-3 focus:border-bloom focus:outline-none focus:ring-2 focus:ring-bloom/20 transition">
+                      class="w-full rounded-2xl border border-line bg-plaster/70 px-4 py-3 focus:border-bloom focus:outline-none focus:ring-2 focus:ring-bloom/20 transition">
                 <option>2 άτομα</option>
                 <option>3 άτομα</option>
                 <option>4 άτομα</option>
@@ -435,7 +434,7 @@
             <div class="sm:col-span-2">
               <label for="rNotes" class="block text-sm font-medium mb-1.5">Σημείωση <span class="text-moss font-normal">(προαιρετικό)</span></label>
               <textarea id="rNotes" name="notes" rows="2" placeholder="Τραπέζι έξω, γενέθλια, αλλεργίες"
-                        class="w-full rounded-md border border-line bg-plaster/70 px-4 py-3 placeholder:text-moss/60 focus:border-bloom focus:outline-none focus:ring-2 focus:ring-bloom/20 transition"></textarea>
+                        class="w-full rounded-2xl border border-line bg-plaster/70 px-4 py-3 placeholder:text-moss/60 focus:border-bloom focus:outline-none focus:ring-2 focus:ring-bloom/20 transition"></textarea>
             </div>
             <div class="sm:col-span-2">
               <button type="submit" class="btn btn-bloom w-full">Στείλε αίτημα κράτησης</button>
