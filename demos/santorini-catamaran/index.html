@@ -1,0 +1,1898 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Ostria | Κρουαζιέρες με καταμαράν στη Σαντορίνη</title>
+  <meta name="description" content="Πεντάωρες κρουαζιέρες με καταμαράν από τη Βλυχάδα: Κόκκινη και Άσπρη Παραλία, θερμές πηγές του ηφαιστείου και ηλιοβασίλεμα στον Φάρο του Ακρωτηρίου.">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#0b1c26">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0b1c26">
+  <meta property="og:title" content="Ostria | Κρουαζιέρες με καταμαράν στη Σαντορίνη">
+  <meta property="og:description" content="Οι παραλίες της Σαντορίνης, από το κατάστρωμα.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1622299077374-2b90018ae5be?w=1200&q=80&auto=format&fit=crop">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230b1c26'/%3E%3Cpath d='M16 6v15M16 6l-7 13h7M16 9l6 10h-6M8 24c2.7 1.6 5.3 1.6 8 0s5.3-1.6 8 0' fill='none' stroke='%23e8875a' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Noto+Serif+Display:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script>
+    tailwind.config = {
+      future: { hoverOnlyWhenSupported: true },
+      theme: {
+        extend: {
+          colors: {
+            ink: '#0b1c26',
+            navy: '#12303f',
+            foam: '#f5f1ea',
+            sand: '#e9e1d4',
+            stone: '#6f665d',
+            sun: '#e8875a'
+          },
+          fontFamily: {
+            display: ['"Noto Serif Display"', 'Georgia', 'serif'],
+            sans: ['Manrope', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --ink: #0b1c26;
+      --navy: #12303f;
+      --foam: #f5f1ea;
+      --sand: #e9e1d4;
+      --stone: #6f665d;
+      --sun: #e8875a;
+      --r-outer: 28px;
+      --r-inner: 22px;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+      --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+    }
+
+    /* ---------- Base & mobile platform ---------- */
+    html {
+      background: var(--ink);
+      -webkit-tap-highlight-color: transparent;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+    body {
+      background: var(--foam);
+      color: var(--ink);
+      font-family: Manrope, system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    html.menu-open { overflow: hidden; }
+    a, button, [role="button"], label.opt { touch-action: manipulation; }
+    button, .btn, [role="button"] { user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
+    input, select, textarea { font-size: 16px; }
+    ::selection { background: var(--sun); color: var(--ink); }
+    :focus-visible { outline: 2px solid var(--sun); outline-offset: 3px; border-radius: 8px; }
+    em { font-style: italic; }
+    h1, h2, h3, blockquote { text-wrap: balance; }
+    p { text-wrap: pretty; }
+    img { -webkit-user-drag: none; }
+
+    /* Language switching: both languages live in the markup */
+    html[lang="el"] t-en, html[lang="en"] t-el,
+    html[lang="el"] .lang-en, html[lang="en"] .lang-el { display: none !important; }
+
+    /* Lenis smooth scroll */
+    html.lenis, html.lenis body { height: auto; }
+    .lenis.lenis-smooth { scroll-behavior: auto !important; }
+    .lenis.lenis-stopped { overflow: hidden; }
+
+    /* Film grain, fixed and non-interactive */
+    .grain {
+      position: fixed; inset: 0; z-index: 60; pointer-events: none; opacity: .045;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    }
+
+    .skip { position: absolute; left: 16px; top: -100px; z-index: 70; background: var(--sun); color: var(--ink); padding: 10px 16px; border-radius: 999px; font-weight: 600; }
+    .skip:focus { top: 16px; }
+
+    .kicker { font-size: 11px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; }
+
+    /* ---------- Icons ---------- */
+    .ico { width: 1.15em; height: 1.15em; stroke: currentColor; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+    /* ---------- Buttons (button-in-button) ---------- */
+    .btn {
+      display: inline-flex; align-items: center; gap: .9rem;
+      border-radius: 999px; padding: .5rem .5rem .5rem 1.4rem;
+      font-weight: 600; font-size: 15px; line-height: 1; white-space: nowrap;
+      transition: transform 160ms var(--ease-out), background-color 220ms ease, color 220ms ease, box-shadow 220ms ease;
+    }
+    .btn:active { transform: scale(.97); }
+    .btn-ico {
+      width: 2.3rem; height: 2.3rem; border-radius: 999px; display: grid; place-items: center;
+      transition: transform 450ms var(--ease-out);
+    }
+    .btn-sun { background: var(--sun); color: var(--ink); }
+    .btn-sun .btn-ico { background: rgba(11, 28, 38, .12); }
+    .btn-glass { background: rgba(245, 241, 234, .08); color: var(--foam); box-shadow: inset 0 0 0 1px rgba(245, 241, 234, .24); }
+    .btn-glass .btn-ico { background: rgba(245, 241, 234, .12); }
+    .btn-ink { background: var(--ink); color: var(--foam); }
+    .btn-ink .btn-ico { background: rgba(245, 241, 234, .12); }
+    .btn-plain { padding: .85rem 1.4rem; }
+    .btn[disabled] { opacity: .7; pointer-events: none; }
+    @media (hover: hover) and (pointer: fine) {
+      .btn:hover .btn-ico { transform: translate(3px, -2px) scale(1.06); }
+      .btn-sun:hover { background: #ee956b; }
+      .btn-glass:hover { background: rgba(245, 241, 234, .14); }
+      .btn-ink:hover { background: #142c3a; }
+    }
+    .magnet { display: inline-flex; will-change: transform; }
+
+    /* ---------- Double bezel ---------- */
+    .bezel { padding: 6px; border-radius: var(--r-outer); background: rgba(11, 28, 38, .035); box-shadow: inset 0 0 0 1px rgba(11, 28, 38, .07); }
+    .bezel-dark { padding: 6px; border-radius: var(--r-outer); background: rgba(245, 241, 234, .035); box-shadow: inset 0 0 0 1px rgba(245, 241, 234, .09); }
+    .core { border-radius: var(--r-inner); overflow: hidden; position: relative; isolation: isolate; }
+    .core-lift { box-shadow: 0 40px 80px -48px rgba(11, 28, 38, .35); }
+    .hairline-top { box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08); }
+
+    /* Image fallback gradient when a photo fails */
+    .img-fallback { background: radial-gradient(120% 90% at 20% 10%, #2b5a70 0%, #12303f 55%, #0b1c26 100%); }
+    .img-fallback > img.is-broken { visibility: hidden; }
+
+    /* ---------- Nav (fluid island) ---------- */
+    .nav {
+      position: fixed; left: 0; right: 0; top: calc(env(safe-area-inset-top, 0px) + 14px);
+      z-index: 40; display: flex; justify-content: center; padding: 0 12px; pointer-events: none;
+      transition: transform 600ms var(--ease-drawer);
+    }
+    .nav.is-hidden { transform: translateY(calc(-100% - 40px)); }
+    .nav-pill {
+      pointer-events: auto; display: flex; align-items: center; gap: 6px;
+      width: 100%; max-width: 1100px; padding: 6px 6px 6px 18px; border-radius: 999px;
+      background: rgba(11, 28, 38, .52); color: var(--foam);
+      -webkit-backdrop-filter: blur(18px) saturate(140%); backdrop-filter: blur(18px) saturate(140%);
+      box-shadow: inset 0 0 0 1px rgba(245, 241, 234, .12), 0 20px 40px -24px rgba(0, 0, 0, .5);
+      transition: background-color 400ms ease;
+    }
+    .nav.is-scrolled .nav-pill { background: rgba(11, 28, 38, .72); }
+    @media (min-width: 1024px) { .nav-pill { width: auto; gap: 10px; padding-left: 22px; } }
+    .nav-link { position: relative; padding: 10px 12px; font-size: 14px; font-weight: 500; color: rgba(245, 241, 234, .78); border-radius: 999px; transition: color 200ms ease, background-color 200ms ease; }
+    @media (hover: hover) and (pointer: fine) { .nav-link:hover { color: var(--foam); background: rgba(245, 241, 234, .07); } }
+
+    .lang { display: inline-flex; padding: 3px; border-radius: 999px; background: rgba(245, 241, 234, .07); box-shadow: inset 0 0 0 1px rgba(245, 241, 234, .1); }
+    .lang button { min-width: 38px; height: 32px; border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: .06em; color: rgba(245, 241, 234, .6); transition: background-color 200ms ease, color 200ms ease, transform 160ms var(--ease-out); }
+    .lang button[aria-pressed="true"] { background: var(--foam); color: var(--ink); }
+    .lang button:active { transform: scale(.95); }
+
+    .burger { position: relative; width: 44px; height: 44px; border-radius: 999px; background: rgba(245, 241, 234, .08); transition: transform 160ms var(--ease-out), background-color 200ms ease; }
+    .burger:active { transform: scale(.95); }
+    .burger span { position: absolute; left: 14px; right: 14px; height: 1.5px; border-radius: 2px; background: var(--foam); transition: transform 450ms var(--ease-out); }
+    .burger span:nth-child(1) { top: 18px; }
+    .burger span:nth-child(2) { top: 25px; }
+    .burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(3.5px) rotate(45deg); }
+    .burger[aria-expanded="true"] span:nth-child(2) { transform: translateY(-3.5px) rotate(-45deg); }
+
+    .menu {
+      position: fixed; inset: 0; z-index: 39; display: flex; flex-direction: column; justify-content: flex-end;
+      padding: calc(env(safe-area-inset-top, 0px) + 110px) 24px calc(env(safe-area-inset-bottom, 0px) + 32px);
+      background: rgba(11, 28, 38, .9); color: var(--foam);
+      -webkit-backdrop-filter: blur(28px); backdrop-filter: blur(28px);
+      opacity: 0; visibility: hidden; overscroll-behavior: contain;
+      transition: opacity 380ms var(--ease-out), visibility 0s linear 380ms;
+    }
+    .menu.is-open { opacity: 1; visibility: visible; transition: opacity 380ms var(--ease-out), visibility 0s; }
+    .menu-item { overflow: hidden; }
+    .menu-item > * { display: block; opacity: 0; transform: translateY(48px); transition: opacity 500ms var(--ease-out), transform 700ms var(--ease-out); transition-delay: calc(var(--i) * 55ms + 60ms); }
+    .menu-item > .btn { display: flex; }
+    .menu.is-open .menu-item > * { opacity: 1; transform: none; }
+
+    /* ---------- Hero ---------- */
+    .hero-img { animation: heroZoom 2.8s var(--ease-out) both; transform-origin: 50% 60%; }
+    @keyframes heroZoom { from { transform: scale(1.16); } to { transform: scale(1); } }
+    .hero-wash {
+      background:
+        radial-gradient(70% 55% at 50% 52%, rgba(11, 28, 38, .55) 0%, rgba(11, 28, 38, 0) 100%),
+        linear-gradient(180deg, rgba(11, 28, 38, .7) 0%, rgba(11, 28, 38, .18) 30%, rgba(11, 28, 38, .3) 62%, rgba(11, 28, 38, .94) 100%);
+    }
+    .line { display: block; overflow: hidden; padding: 0 .12em .1em; margin: 0 -.12em -.1em; }
+    .line-inner { display: block; animation: lineUp 1.25s var(--ease-out) both; animation-delay: calc(.35s + var(--i) * .13s); }
+    @keyframes lineUp { from { transform: translateY(108%); } to { transform: none; } }
+    .hero-fade { animation: fadeUp 1.1s var(--ease-out) both; animation-delay: var(--d, .6s); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+    .cue { position: relative; width: 1px; height: 56px; background: rgba(245, 241, 234, .2); overflow: hidden; }
+    .cue::after { content: ""; position: absolute; left: 0; top: 0; width: 1px; height: 18px; background: var(--foam); animation: cue 2.4s var(--ease-in-out) infinite; }
+    @keyframes cue { from { transform: translateY(-18px); } to { transform: translateY(56px); } }
+
+    /* ---------- Scroll reveal (IntersectionObserver) ---------- */
+    .js .reveal {
+      opacity: 0; transform: translateY(44px); filter: blur(6px);
+      transition: opacity 1s var(--ease-out), transform 1.2s var(--ease-out), filter 1s var(--ease-out);
+      transition-delay: var(--rd, 0ms);
+    }
+    .js .reveal.is-in { opacity: 1; transform: none; filter: none; }
+    .js .reveal-img { clip-path: inset(18% 0 0 0 round var(--r-inner)); transition: clip-path 1.4s var(--ease-out); transition-delay: var(--rd, 0ms); }
+    .js .reveal-img img { transform: scale(1.14); transition: transform 1.8s var(--ease-out); transition-delay: var(--rd, 0ms); }
+    .js .reveal-img.is-in { clip-path: inset(0 0 0 0 round var(--r-inner)); }
+    .js .reveal-img.is-in img { transform: scale(1); }
+
+    /* ---------- Manifesto ---------- */
+    .pill-img {
+      display: inline-block; width: 2.3em; height: 1em; border-radius: 999px; vertical-align: -0.1em;
+      background-size: cover; background-position: center; background-color: var(--sand);
+      box-shadow: inset 0 0 0 1px rgba(11, 28, 38, .08);
+    }
+
+    /* ---------- Route map ---------- */
+    .map-svg { display: block; width: 100%; height: 100%; }
+    .map-land { fill: #e9e1d4; }
+    .map-label { font-family: Manrope, sans-serif; font-size: 6.4px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; fill: rgba(11, 28, 38, .55); }
+    .map-label-sea { fill: rgba(245, 241, 234, .45); }
+    .map-caldera { font-family: "Noto Serif Display", serif; font-style: italic; font-size: 12px; fill: rgba(245, 241, 234, .32); letter-spacing: .02em; }
+    .route-base { fill: none; stroke: rgba(245, 241, 234, .2); stroke-width: 1.1; stroke-dasharray: 1.5 3.5; stroke-linecap: round; }
+    .route-live { fill: none; stroke: var(--sun); stroke-width: 1.8; stroke-dasharray: 4 3.2; stroke-linecap: round; }
+    .pin-inner { transform-box: fill-box; transform-origin: center; transition: transform 450ms var(--ease-out); }
+    .pin-dot { fill: var(--ink); stroke: rgba(245, 241, 234, .55); stroke-width: 1; transition: fill 300ms ease, stroke 300ms ease; }
+    .pin-num { font-family: Manrope, sans-serif; font-size: 8px; font-weight: 700; fill: var(--foam); text-anchor: middle; transition: fill 300ms ease; }
+    .pin-ring { fill: none; stroke: var(--sun); stroke-width: 1; opacity: 0; transform-box: fill-box; transform-origin: center; }
+    .pin.is-past .pin-dot { stroke: var(--sun); }
+    .pin.is-active .pin-inner { transform: scale(1.22); }
+    .pin.is-active .pin-dot { fill: var(--sun); stroke: var(--sun); }
+    .pin.is-active .pin-num { fill: var(--ink); }
+    .pin.is-active .pin-ring { animation: ring 2s var(--ease-out) infinite; }
+    @keyframes ring { from { opacity: .9; transform: scale(.8); } to { opacity: 0; transform: scale(2); } }
+
+    .stop-card .core { transition: box-shadow 500ms ease; }
+    .stop-card .stop-num { transition: background-color 400ms ease, color 400ms ease; }
+    .stop-card.is-active .stop-num { background: var(--sun); color: var(--ink); }
+    .stop-card .stop-img img { transition: transform 1.2s var(--ease-out); }
+    .stop-card.is-active .stop-img img { transform: scale(1.04); }
+
+    .caption-swap { transition: opacity 260ms ease, filter 260ms ease; }
+    .caption-swap.is-swapping { opacity: 0; filter: blur(3px); }
+
+    /* ---------- Marquee ---------- */
+    .marquee-track { display: flex; width: max-content; animation: marquee 48s linear infinite; }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    /* ---------- Cruise accordion ---------- */
+    .cruise-acc { display: grid; gap: 10px; }
+    .cruise { position: relative; overflow: hidden; border-radius: var(--r-inner); min-height: 560px; color: var(--foam); isolation: isolate; display: flex; flex-direction: column; justify-content: flex-end; }
+    .cruise-img { position: absolute; inset: 0; z-index: -2; }
+    .cruise-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s var(--ease-out); }
+    .cruise-shade { position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(11, 28, 38, .25) 0%, rgba(11, 28, 38, .1) 35%, rgba(11, 28, 38, .9) 100%); }
+    .cruise-body { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding: 28px; }
+    .cruise-toggle { display: none; }
+    @media (max-width: 1023px) {
+      .cruise-shade { background: linear-gradient(180deg, rgba(11, 28, 38, .3) 0%, rgba(11, 28, 38, .42) 38%, rgba(11, 28, 38, .92) 100%); }
+    }
+    @media (min-width: 1024px) {
+      .cruise-acc { display: flex; gap: 10px; height: min(78svh, 680px); }
+      .cruise { flex: 1 1 0%; min-width: 0; min-height: 0; transition: flex-grow 800ms var(--ease-drawer); }
+      .cruise.is-open { flex-grow: 3.1; }
+      .cruise.is-open .cruise-img img { transform: scale(1.05); }
+      .cruise-body { width: 470px; max-width: none; padding: 36px; }
+      .cruise-body > * { opacity: 0; transform: translateY(18px); transition: opacity 300ms ease, transform 500ms var(--ease-out); }
+      .cruise.is-open .cruise-body > * { opacity: 1; transform: none; transition: opacity 600ms var(--ease-out), transform 800ms var(--ease-out); transition-delay: calc(var(--i, 0) * 60ms + 260ms); }
+      .cruise:not(.is-open) .cruise-body { pointer-events: none; }
+      .cruise-toggle { display: block; position: absolute; inset: 0; z-index: 1; text-align: left; cursor: pointer; }
+      .cruise-vert { position: absolute; left: 28px; bottom: 30px; writing-mode: vertical-rl; transform: rotate(180deg); transition: opacity 400ms ease; }
+      .cruise-top { position: absolute; left: 28px; top: 28px; transition: opacity 400ms ease; }
+      .cruise.is-open .cruise-vert, .cruise.is-open .cruise-top { opacity: 0; }
+    }
+
+    /* ---------- Booking form ---------- */
+    .field-label { display: block; font-size: 13px; font-weight: 600; color: rgba(245, 241, 234, .7); margin-bottom: 8px; }
+    .field {
+      width: 100%; height: 54px; padding: 0 16px; border-radius: 14px; color: var(--foam);
+      background: rgba(245, 241, 234, .05); box-shadow: inset 0 0 0 1px rgba(245, 241, 234, .12);
+      transition: box-shadow 200ms ease, background-color 200ms ease; color-scheme: dark;
+    }
+    textarea.field { height: auto; min-height: 104px; padding: 14px 16px; resize: vertical; }
+    .field::placeholder { color: rgba(245, 241, 234, .35); }
+    .field:focus { outline: none; background: rgba(245, 241, 234, .08); box-shadow: inset 0 0 0 1.5px var(--sun); }
+    .field[aria-invalid="true"] { box-shadow: inset 0 0 0 1.5px #f2a18b; }
+    select.field { appearance: none; -webkit-appearance: none; padding-right: 44px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f5f1ea' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; background-size: 18px; }
+    select.field option { color: #0b1c26; }
+    .err { min-height: 0; font-size: 13px; color: #f2a18b; margin-top: 6px; }
+    .err:empty { display: none; }
+
+    .opt-card {
+      display: block; height: 100%; padding: 16px; border-radius: 16px; cursor: pointer;
+      background: rgba(245, 241, 234, .04); box-shadow: inset 0 0 0 1px rgba(245, 241, 234, .12);
+      transition: background-color 220ms ease, box-shadow 220ms ease, transform 160ms var(--ease-out);
+    }
+    .opt-card:active { transform: scale(.98); }
+    .opt input:checked + .opt-card { background: rgba(232, 135, 90, .12); box-shadow: inset 0 0 0 1.5px var(--sun); }
+    .opt input:focus-visible + .opt-card { outline: 2px solid var(--sun); outline-offset: 3px; }
+    .opt-dot { width: 18px; height: 18px; border-radius: 999px; box-shadow: inset 0 0 0 1.5px rgba(245, 241, 234, .4); display: grid; place-items: center; transition: box-shadow 200ms ease; }
+    .opt-dot::after { content: ""; width: 8px; height: 8px; border-radius: 999px; background: var(--sun); transform: scale(.4); opacity: 0; transition: transform 250ms var(--ease-out), opacity 200ms ease; }
+    .opt input:checked + .opt-card .opt-dot { box-shadow: inset 0 0 0 1.5px var(--sun); }
+    .opt input:checked + .opt-card .opt-dot::after { transform: scale(1); opacity: 1; }
+    @media (hover: hover) and (pointer: fine) { .opt-card:hover { background: rgba(245, 241, 234, .07); } }
+
+    .stepper { display: flex; align-items: center; justify-content: space-between; height: 54px; padding: 5px; border-radius: 14px; background: rgba(245, 241, 234, .05); box-shadow: inset 0 0 0 1px rgba(245, 241, 234, .12); }
+    .stepper button { width: 44px; height: 44px; border-radius: 10px; display: grid; place-items: center; background: rgba(245, 241, 234, .07); transition: background-color 200ms ease, transform 160ms var(--ease-out), opacity 200ms ease; }
+    .stepper button:active { transform: scale(.94); }
+    .stepper button:disabled { opacity: .3; }
+    @media (hover: hover) and (pointer: fine) { .stepper button:not(:disabled):hover { background: rgba(245, 241, 234, .14); } }
+
+    .panel-swap { transition: opacity 500ms var(--ease-out), transform 600ms var(--ease-out), filter 500ms var(--ease-out); }
+    .panel-swap.is-out { opacity: 0; transform: translateY(14px); filter: blur(4px); }
+
+    .spinner { width: 18px; height: 18px; border-radius: 999px; border: 2px solid rgba(11, 28, 38, .25); border-top-color: var(--ink); animation: spin .7s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .check-circle { stroke-dasharray: 160; stroke-dashoffset: 160; }
+    .check-path { stroke-dasharray: 40; stroke-dashoffset: 40; }
+    .is-shown .check-circle { animation: draw 900ms var(--ease-out) 150ms forwards; }
+    .is-shown .check-path { animation: draw 500ms var(--ease-out) 750ms forwards; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+
+    /* ---------- Reviews ---------- */
+    .review { grid-area: 1 / 1; opacity: 0; transform: translateY(14px); filter: blur(4px); transition: opacity 500ms var(--ease-out), transform 700ms var(--ease-out), filter 500ms var(--ease-out); }
+    .review.is-active { opacity: 1; transform: none; filter: none; }
+    .rev-stage { touch-action: pan-y; }
+
+    /* ---------- FAQ ---------- */
+    .faq-a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 320ms var(--ease-out); }
+    .faq-a > div { overflow: hidden; }
+    .faq-item.is-open .faq-a { grid-template-rows: 1fr; }
+    .faq-plus { transition: transform 260ms var(--ease-out), background-color 200ms ease, color 200ms ease; }
+    .faq-item.is-open .faq-plus { transform: rotate(45deg); background: var(--ink); color: var(--foam); }
+    .faq-q:active .faq-plus { transform: scale(.94); }
+    .faq-item.is-open .faq-q:active .faq-plus { transform: rotate(45deg) scale(.94); }
+
+    /* ---------- Reduced motion: keep fades, drop movement ---------- */
+    @media (prefers-reduced-motion: reduce) {
+      .hero-img, .line-inner { animation: none; }
+      .hero-fade { animation: fadeOnly .6s ease both; }
+      @keyframes fadeOnly { from { opacity: 0; } to { opacity: 1; } }
+      .cue::after, .marquee-track, .pin.is-active .pin-ring { animation: none; }
+      .js .reveal { transform: none; filter: none; transition: opacity .6s ease; }
+      .js .reveal-img, .js .reveal-img.is-in { clip-path: none; }
+      .js .reveal-img img { transform: none; }
+      .menu-item > * { transform: none; transition: opacity 300ms ease; }
+      .review { transform: none; filter: none; transition: opacity 300ms ease; }
+      .cruise, .cruise-body > *, .cruise-img img, .stop-card .stop-img img { transition-duration: 1ms !important; }
+      .nav { transition: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#main" class="skip"><t-el>Μετάβαση στο περιεχόμενο</t-el><t-en>Skip to content</t-en></a>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Icon sprite (light line icons) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-arrow-ur" viewBox="0 0 24 24"><path d="M7 17 17 7M8.5 7H17v8.5"/></symbol>
+    <symbol id="i-arrow-r" viewBox="0 0 24 24"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></symbol>
+    <symbol id="i-arrow-l" viewBox="0 0 24 24"><path d="M19.5 12h-15M10.5 6l-6 6 6 6"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-sail" viewBox="0 0 24 24"><path d="M12 3v14M12 3 5.5 15H12M12 6l5.5 9H12M3.5 19.5c2.8 1.6 5.7 1.6 8.5 0s5.7-1.6 8.5 0"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.6"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+    <symbol id="i-wave" viewBox="0 0 24 24"><path d="M2.5 9c2.4 1.6 4.8 1.6 7.2 0s4.8-1.6 7.1 0 4.8 1.6 4.7 0M2.5 15c2.4 1.6 4.8 1.6 7.2 0s4.8-1.6 7.1 0 4.8 1.6 4.7 0"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3.5 5 6v5.5c0 4.3 3 7.6 7 9 4-1.4 7-4.7 7-9V6l-7-2.5Z"/><path d="m9 12 2.2 2.2L15.5 10"/></symbol>
+    <symbol id="i-van" viewBox="0 0 24 24"><path d="M3 16.5V8a2 2 0 0 1 2-2h9.5l4 4.5H21v6h-1.5M3 16.5h1.5M9.5 16.5h5"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M14.5 6v4.5H18"/></symbol>
+  </svg>
+
+  <!-- ============ NAV ============ -->
+  <header id="nav" class="nav">
+    <div class="nav-pill">
+      <a href="#top" class="flex items-center gap-2.5 mr-auto lg:mr-4 py-2" aria-label="Ostria">
+        <svg class="ico text-sun" style="width:22px;height:22px"><use href="#i-sail"/></svg>
+        <span class="font-display text-[22px] leading-none tracking-[-0.01em]">Ostria</span>
+      </a>
+      <nav class="hidden lg:flex items-center" aria-label="Κύρια" data-el-aria-label="Κύρια" data-en-aria-label="Main">
+        <a class="nav-link" href="#route"><t-el>Διαδρομή</t-el><t-en>Route</t-en></a>
+        <a class="nav-link" href="#cruises"><t-el>Κρουαζιέρες</t-el><t-en>Cruises</t-en></a>
+        <a class="nav-link" href="#onboard"><t-el>Στο σκάφος</t-el><t-en>On board</t-en></a>
+        <a class="nav-link" href="#faq"><t-el>Ερωτήσεις</t-el><t-en>FAQ</t-en></a>
+      </nav>
+      <div class="lang" role="group" aria-label="Γλώσσα" data-el-aria-label="Γλώσσα" data-en-aria-label="Language">
+        <button type="button" data-lang-btn="el" aria-pressed="true">ΕΛ</button>
+        <button type="button" data-lang-btn="en" aria-pressed="false">EN</button>
+      </div>
+      <a href="#book" class="btn btn-sun hidden sm:inline-flex !py-1.5 !pl-5 !pr-1.5 text-[14px]">
+        <span><t-el>Κράτηση</t-el><t-en>Book now</t-en></span>
+        <span class="btn-ico !w-8 !h-8"><svg class="ico"><use href="#i-arrow-ur"/></svg></span>
+      </a>
+      <button id="burger" class="burger lg:hidden" type="button" aria-expanded="false" aria-controls="menu" aria-label="Μενού" data-el-aria-label="Μενού" data-en-aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div id="menu" class="menu lg:hidden" inert>
+    <ul class="space-y-1">
+      <li class="menu-item" style="--i:0"><a href="#route" class="font-display font-light text-[44px] leading-[1.15]"><t-el>Διαδρομή</t-el><t-en>Route</t-en></a></li>
+      <li class="menu-item" style="--i:1"><a href="#cruises" class="font-display font-light text-[44px] leading-[1.15]"><t-el>Κρουαζιέρες</t-el><t-en>Cruises</t-en></a></li>
+      <li class="menu-item" style="--i:2"><a href="#onboard" class="font-display font-light text-[44px] leading-[1.15]"><t-el>Στο σκάφος</t-el><t-en>On board</t-en></a></li>
+      <li class="menu-item" style="--i:3"><a href="#faq" class="font-display font-light text-[44px] leading-[1.15]"><t-el>Ερωτήσεις</t-el><t-en>FAQ</t-en></a></li>
+    </ul>
+    <div class="menu-item mt-10" style="--i:4">
+      <a href="#book" class="btn btn-sun w-full justify-between text-[16px]">
+        <span><t-el>Κλείστε θέσεις</t-el><t-en>Book your seats</t-en></span>
+        <span class="btn-ico"><svg class="ico"><use href="#i-arrow-ur"/></svg></span>
+      </a>
+    </div>
+    <p class="menu-item mt-6 text-[13px] text-foam/50" style="--i:5"><span><t-el>Μαρίνα Βλυχάδας, Σαντορίνη</t-el><t-en>Vlychada Marina, Santorini</t-en></span></p>
+  </div>
+
+  <main id="main" class="overflow-x-clip w-full max-w-full">
+
+    <!-- ============ HERO ============ -->
+    <section id="top" class="hero relative isolate min-h-[100svh] overflow-hidden bg-ink text-foam flex flex-col">
+      <div class="hero-media absolute inset-0 -z-20 img-fallback">
+        <img class="hero-img w-full h-full object-cover object-[50%_45%]"
+             src="https://images.unsplash.com/photo-1622299077374-2b90018ae5be?w=1800&q=80&auto=format&fit=crop"
+             srcset="https://images.unsplash.com/photo-1622299077374-2b90018ae5be?w=900&q=78&auto=format&fit=crop 900w,
+                     https://images.unsplash.com/photo-1622299077374-2b90018ae5be?w=1400&q=78&auto=format&fit=crop 1400w,
+                     https://images.unsplash.com/photo-1622299077374-2b90018ae5be?w=2200&q=78&auto=format&fit=crop 2200w"
+             sizes="100vw" fetchpriority="high" decoding="async"
+             alt="Τα βράχια της καλντέρας της Σαντορίνης με λευκά χωριά στην κορυφή και ένα ιστιοφόρο στη θάλασσα"
+             data-el-alt="Τα βράχια της καλντέρας της Σαντορίνης με λευκά χωριά στην κορυφή και ένα ιστιοφόρο στη θάλασσα"
+             data-en-alt="Santorini's caldera cliffs with white villages on top and a sailing boat on the sea">
+      </div>
+      <div class="hero-wash absolute inset-0 -z-10" aria-hidden="true"></div>
+
+      <div class="hero-content relative flex-1 flex flex-col items-center justify-center text-center mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-10 pt-36 pb-32">
+        <p class="kicker hero-fade text-foam/80 mb-7" style="--d:.2s"><t-el>Κρουαζιέρες με καταμαράν στη Σαντορίνη</t-el><t-en>Catamaran cruises in Santorini</t-en></p>
+        <h1 class="font-display font-light w-full max-w-6xl text-[clamp(2.45rem,6.1vw,6.4rem)] leading-[1.04] tracking-[-0.02em]">
+          <span class="line"><span class="line-inner" style="--i:0"><t-el>Οι παραλίες της Σαντορίνης,</t-el><t-en>Santorini's beaches,</t-en></span></span>
+          <span class="line"><span class="line-inner" style="--i:1"><em><t-el>από το κατάστρωμα.</t-el><t-en>seen from the deck.</t-en></em></span></span>
+        </h1>
+        <p class="hero-fade mt-8 max-w-[38rem] [text-wrap:balance] text-[16px] sm:text-[17px] leading-[1.7] text-foam/80" style="--d:.85s">
+          <t-el>Πεντάωρες κρουαζιέρες από τη Βλυχάδα με έως 20 επιβάτες, κολύμπι στην Κόκκινη και την Άσπρη Παραλία και ηλιοβασίλεμα κάτω από τον Φάρο του Ακρωτηρίου.</t-el>
+          <t-en>Five-hour cruises from Vlychada with no more than 20 guests, swimming stops at Red and White Beach and sunset beneath Akrotiri Lighthouse.</t-en>
+        </p>
+        <div class="hero-fade mt-10 flex flex-col sm:flex-row items-center gap-3" style="--d:1.05s">
+          <span class="magnet"><a href="#book" class="btn btn-sun text-[15px]">
+            <span><t-el>Κλείστε θέσεις</t-el><t-en>Book your seats</t-en></span>
+            <span class="btn-ico"><svg class="ico"><use href="#i-arrow-ur"/></svg></span>
+          </a></span>
+          <a href="#route" class="btn btn-glass text-[15px]">
+            <span><t-el>Δείτε τη διαδρομή</t-el><t-en>See the route</t-en></span>
+            <span class="btn-ico"><svg class="ico"><use href="#i-arrow-r"/></svg></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-fade absolute bottom-0 inset-x-0 pb-[calc(env(safe-area-inset-bottom,0px)+22px)]" style="--d:1.4s">
+        <div class="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-10 flex items-end justify-between text-[12px] text-foam/60">
+          <span class="hidden sm:block"><t-el>Μαρίνα Βλυχάδας</t-el><t-en>Vlychada Marina</t-en></span>
+          <span class="cue mx-auto sm:mx-0" aria-hidden="true"></span>
+          <span class="hidden sm:block"><t-el>Απρίλιος - Οκτώβριος</t-el><t-en>April - October</t-en></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MANIFESTO ============ -->
+    <section id="manifesto" class="bg-foam py-28 md:py-44">
+      <div class="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-10">
+        <p class="scrub font-display font-light text-[clamp(1.75rem,3.5vw,3.35rem)] leading-[1.22] tracking-[-0.012em] max-w-5xl">
+          <t-el>Ξεκινάμε από τη μαρίνα της Βλυχάδας <span class="pill-img" role="img" aria-label="Καταμαράν στη θάλασσα" style="background-image:url('https://images.unsplash.com/photo-1561499534-6266affc5614?w=240&q=70&auto=format&fit=crop')"></span> κάτω από βράχια που μοιάζουν σμιλεμένα από τον αέρα. Κολυμπάμε εκεί που δεν φτάνει δρόμος <span class="pill-img" role="img" aria-label="Η Άσπρη Παραλία" style="background-image:url('https://images.unsplash.com/photo-1736618626516-674d438a6bf1?w=240&q=70&auto=format&fit=crop')"></span> τρώμε ό,τι ψήνει ο σεφ στο κατάστρωμα <span class="pill-img" role="img" aria-label="Ψητό χταπόδι και σαλάτα" style="background-image:url('https://images.unsplash.com/photo-1764397514746-e58523d0eaff?w=240&q=70&auto=format&fit=crop')"></span> και γυρνάμε όταν ο ήλιος πέφτει πίσω από τον φάρο.</t-el>
+          <t-en>We set off from Vlychada marina <span class="pill-img" role="img" aria-label="Catamaran at sea" style="background-image:url('https://images.unsplash.com/photo-1561499534-6266affc5614?w=240&q=70&auto=format&fit=crop')"></span> beneath cliffs that look carved by the wind. We swim where no road reaches <span class="pill-img" role="img" aria-label="White Beach" style="background-image:url('https://images.unsplash.com/photo-1736618626516-674d438a6bf1?w=240&q=70&auto=format&fit=crop')"></span> eat whatever the chef grills on deck <span class="pill-img" role="img" aria-label="Grilled octopus and salad" style="background-image:url('https://images.unsplash.com/photo-1764397514746-e58523d0eaff?w=240&q=70&auto=format&fit=crop')"></span> and head back as the sun drops behind the lighthouse.</t-en>
+        </p>
+        <div class="mt-14 md:mt-20 flex flex-wrap items-center gap-x-10 gap-y-4 text-[14px] text-stone reveal">
+          <span class="inline-flex items-center gap-2.5"><svg class="ico text-ink"><use href="#i-wave"/></svg><t-el>Έως 20 επιβάτες</t-el><t-en>Up to 20 guests</t-en></span>
+          <span class="inline-flex items-center gap-2.5"><svg class="ico text-ink"><use href="#i-van"/></svg><t-el>Δωρεάν παραλαβή από το ξενοδοχείο</t-el><t-en>Free hotel pickup</t-en></span>
+          <span class="inline-flex items-center gap-2.5"><svg class="ico text-ink"><use href="#i-shield"/></svg><t-el>Δωρεάν ακύρωση έως 48 ώρες πριν</t-el><t-en>Free cancellation up to 48 hours before</t-en></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ROUTE ============ -->
+    <section id="route" class="relative bg-ink text-foam py-24 md:py-36">
+      <div class="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-10">
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-10 items-end mb-14 md:mb-20">
+          <h2 class="reveal lg:col-span-7 font-display font-light text-[clamp(2.3rem,4.6vw,4.4rem)] leading-[1.05] tracking-[-0.015em]">
+            <t-el>Μία μέρα, <em>πέντε στάσεις.</em></t-el><t-en>One day, <em>five stops.</em></t-en>
+          </h2>
+          <p class="reveal lg:col-span-5 text-[16px] leading-[1.75] text-foam/70 max-w-md">
+            <t-el>Η διαδρομή προσαρμόζεται στον αέρα της ημέρας. Ο καπετάνιος διαλέγει κάθε πρωί τους πιο προστατευμένους όρμους, ώστε το νερό να είναι ήρεμο για κολύμπι.</t-el>
+            <t-en>The route adapts to the day's wind. Every morning our skipper picks the most sheltered coves, so the water stays calm for swimming.</t-en>
+          </p>
+        </div>
+
+        <div class="route-grid flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-10">
+          <!-- Sticky map -->
+          <div class="lg:col-span-5 sticky top-[calc(env(safe-area-inset-top,0px)+12px)] lg:top-[96px] z-[2] self-start w-full">
+            <div class="bezel-dark bg-ink">
+              <div class="core hairline-top bg-navy">
+                <div class="relative h-[36svh] min-h-[250px] lg:h-[min(72svh,620px)]">
+                  <svg id="mapSvg" class="map-svg" viewBox="14 8 366 412" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Χάρτης της Σαντορίνης με τη διαδρομή της κρουαζιέρας" data-el-aria-label="Χάρτης της Σαντορίνης με τη διαδρομή της κρουαζιέρας" data-en-aria-label="Map of Santorini showing the cruise route">
+                    <defs>
+                      <radialGradient id="sea" cx="50%" cy="55%" r="65%">
+                        <stop offset="0" stop-color="#1a4257"/>
+                        <stop offset="1" stop-color="#12303f"/>
+                      </radialGradient>
+                      <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+                        <stop offset="0" stop-color="#e8875a" stop-opacity=".55"/>
+                        <stop offset="1" stop-color="#e8875a" stop-opacity="0"/>
+                      </radialGradient>
+                      <mask id="routeMask" maskUnits="userSpaceOnUse" x="0" y="0" width="420" height="440">
+                        <path id="routeMaskPath" d="M252 401 C248.0 400.0 237.0 397.8 228 395 C219.0 392.2 207.7 387.3 198 384 C188.3 380.7 178.5 377.0 170 375 C161.5 373.0 155.3 373.5 147 372 C138.7 370.5 128.7 369.0 120 366 C111.3 363.0 101.8 358.3 95 354 C88.2 349.7 79.2 345.0 79 340 C78.8 335.0 86.5 329.7 94 324 C101.5 318.3 114.7 313.0 124 306 C133.3 299.0 143.8 290.0 150 282 C156.2 274.0 160.3 265.3 161 258 C161.7 250.7 157.8 239.8 154 238 C150.2 236.2 144.7 242.7 138 247 C131.3 251.3 121.5 256.5 114 264 C106.5 271.5 99.0 282.7 93 292 C87.0 301.3 81.8 312.5 78 320 C74.2 327.5 71.3 334.2 70 337" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                      </mask>
+                    </defs>
+                    <rect x="0" y="0" width="420" height="440" fill="url(#sea)"/>
+                    <g class="map-land">
+                      <path d="M246.1 227.0 L248.4 228.6 L251.9 235.8 L253.2 240.0 L254.5 241.8 L255.9 245.8 L255.9 252.8 L255.2 253.5 L253.8 253.3 L253.6 254.1 L252.7 253.8 L251.8 260.5 L250.3 261.3 L250.1 263.2 L249.0 264.5 L243.0 267.1 L242.1 266.0 L241.9 270.8 L241.1 271.8 L241.6 272.2 L239.6 274.0 L240.0 275.8 L237.8 278.3 L236.8 282.5 L235.8 283.7 L235.8 285.9 L233.5 289.3 L232.1 290.6 L230.8 290.8 L230.0 292.3 L231.3 293.9 L230.5 297.2 L232.3 300.9 L231.8 305.4 L229.7 307.5 L227.6 308.4 L224.7 312.3 L224.1 311.8 L221.5 313.8 L219.9 313.5 L218.4 314.4 L219.8 317.0 L219.3 317.9 L220.0 320.7 L218.1 325.7 L214.9 329.7 L207.6 330.9 L206.3 330.8 L204.7 329.2 L203.6 329.9 L203.7 330.9 L202.4 330.7 L202.8 332.0 L201.6 331.3 L201.4 333.1 L201.0 332.5 L198.6 333.6 L198.2 332.9 L196.1 332.9 L195.5 331.8 L190.5 333.1 L187.5 332.4 L182.5 329.9 L176.6 329.1 L174.0 327.3 L173.8 326.5 L171.7 326.1 L171.6 325.4 L167.1 325.0 L163.4 322.7 L159.7 322.2 L153.3 318.7 L152.1 316.9 L149.6 316.3 L146.6 317.3 L138.6 317.0 L136.2 317.7 L130.0 323.0 L127.6 323.1 L125.2 324.7 L122.2 325.2 L118.6 324.1 L116.3 320.8 L112.2 318.7 L111.1 319.3 L109.2 323.4 L107.8 324.7 L103.9 333.2 L101.8 336.0 L95.8 338.7 L91.0 338.8 L88.0 340.1 L87.9 341.3 L91.2 343.3 L93.9 344.0 L99.2 347.8 L103.6 349.4 L104.0 353.7 L104.7 353.9 L107.9 352.8 L108.5 353.4 L109.4 351.9 L110.7 351.7 L112.2 351.7 L113.1 353.3 L113.5 352.5 L113.9 353.1 L115.4 352.9 L117.5 351.1 L116.8 351.1 L117.3 350.0 L119.6 347.5 L123.9 346.1 L128.5 345.9 L136.9 352.8 L137.6 355.6 L139.4 354.9 L142.4 356.0 L144.0 358.7 L146.8 360.0 L149.4 365.0 L149.7 366.8 L148.7 367.4 L148.8 368.3 L150.0 369.1 L150.5 368.5 L152.4 369.1 L153.6 370.3 L155.1 369.0 L155.8 366.6 L159.2 366.4 L162.6 363.5 L165.5 363.8 L167.0 363.1 L171.2 364.2 L173.1 365.8 L173.3 367.3 L172.5 367.9 L173.2 369.9 L174.5 369.7 L176.6 367.2 L179.1 366.3 L181.0 364.0 L183.8 363.0 L191.9 363.5 L194.1 364.3 L194.7 365.3 L198.9 363.2 L200.9 363.4 L207.0 365.9 L209.4 367.8 L211.6 367.1 L217.2 368.5 L220.1 367.9 L225.1 370.2 L227.4 370.2 L229.3 371.8 L234.1 373.3 L238.2 375.8 L244.4 381.1 L252.9 393.7 L254.4 398.3 L258.3 400.5 L254.6 398.1 L253.7 395.1 L254.8 394.0 L258.0 394.3 L257.5 394.9 L255.1 394.5 L255.2 396.0 L256.4 396.9 L255.2 395.6 L256.3 394.4 L260.7 396.1 L260.1 396.9 L258.5 395.7 L260.0 397.0 L259.0 398.4 L257.0 397.5 L259.2 398.8 L260.8 397.3 L262.2 397.8 L267.9 404.6 L269.0 407.2 L271.0 407.7 L275.5 407.1 L282.9 401.4 L287.5 396.5 L293.4 391.8 L306.4 384.0 L318.5 375.1 L324.5 369.2 L339.2 351.6 L343.4 344.2 L345.6 341.9 L349.9 342.9 L350.9 341.7 L351.7 342.8 L354.0 342.6 L356.3 340.5 L355.8 339.6 L359.0 336.3 L359.8 335.8 L359.7 338.0 L360.2 337.9 L361.6 337.3 L362.2 335.9 L361.9 334.4 L363.9 333.2 L364.4 333.9 L365.1 333.5 L364.8 331.4 L365.2 330.1 L366.3 329.9 L365.8 327.3 L365.2 327.7 L364.8 326.4 L362.7 324.4 L363.2 323.8 L362.7 322.8 L359.8 320.7 L359.4 318.7 L358.6 318.7 L358.3 314.9 L355.9 314.2 L356.9 312.9 L354.2 311.4 L355.8 307.1 L364.8 292.5 L366.9 286.6 L367.4 282.7 L364.2 263.3 L364.4 259.2 L366.2 255.9 L365.5 254.8 L365.9 247.5 L365.0 243.0 L364.9 239.8 L365.4 239.6 L365.0 237.9 L365.8 237.3 L365.8 234.6 L366.6 234.7 L368.1 221.5 L366.6 214.9 L364.5 210.6 L366.9 208.6 L367.4 207.0 L366.7 208.5 L364.6 209.7 L361.2 205.6 L362.1 204.8 L361.2 203.1 L361.1 204.2 L359.9 204.3 L359.5 203.1 L360.3 203.4 L361.0 202.1 L362.8 202.0 L359.8 202.3 L358.5 199.5 L358.9 196.2 L362.4 196.0 L360.5 195.4 L356.8 196.9 L342.4 187.5 L339.5 185.4 L335.7 180.2 L333.3 178.5 L331.8 176.6 L331.1 174.1 L321.6 169.0 L314.3 163.4 L309.6 158.3 L308.8 156.2 L309.4 156.1 L304.8 150.7 L303.6 146.4 L304.2 142.4 L298.6 136.3 L296.1 132.0 L294.2 127.3 L294.9 126.2 L294.6 125.6 L294.0 126.2 L293.9 125.4 L294.6 125.1 L295.4 126.5 L295.0 124.5 L294.2 124.6 L288.6 119.5 L286.4 116.6 L286.5 115.4 L279.7 110.1 L260.4 91.0 L260.0 89.3 L246.9 77.1 L246.3 75.8 L245.6 76.1 L245.7 76.9 L245.0 76.8 L246.4 75.4 L244.6 74.5 L242.3 70.8 L242.0 68.4 L236.8 55.0 L230.0 47.8 L231.1 46.1 L231.2 44.5 L230.6 45.1 L231.5 42.1 L230.6 41.9 L230.3 40.5 L229.4 40.6 L229.9 40.5 L229.6 39.5 L228.7 40.7 L223.7 36.6 L218.6 34.5 L199.0 30.3 L187.4 28.7 L167.1 22.9 L161.1 18.7 L158.2 18.8 L158.4 17.7 L144.2 22.5 L141.3 25.7 L137.7 27.6 L132.6 33.1 L127.0 36.5 L122.3 40.7 L118.5 47.1 L118.0 56.9 L116.6 60.6 L117.7 63.2 L119.6 64.3 L120.1 65.4 L119.8 73.1 L120.7 74.3 L122.3 74.0 L123.5 75.0 L123.6 76.2 L122.8 77.4 L123.6 80.6 L126.8 80.6 L128.6 77.5 L130.2 76.4 L135.1 76.0 L136.9 74.6 L141.1 75.0 L144.3 74.1 L147.9 75.0 L154.7 74.7 L159.6 79.7 L162.3 79.5 L164.1 78.2 L165.3 78.5 L166.4 77.8 L176.6 79.8 L177.4 81.8 L177.7 80.9 L178.8 80.9 L181.9 82.3 L183.2 81.0 L184.2 81.4 L188.1 79.1 L201.8 76.2 L205.5 73.9 L208.1 74.1 L216.2 79.7 L215.6 80.6 L215.7 83.2 L217.5 84.6 L218.5 84.6 L218.4 87.1 L221.9 89.6 L223.1 92.4 L224.1 92.7 L225.3 95.1 L225.0 97.2 L226.2 100.5 L227.9 102.3 L227.7 103.3 L228.9 103.2 L228.7 104.2 L230.9 106.6 L230.7 107.4 L233.1 109.6 L233.1 111.3 L234.5 114.1 L233.9 117.6 L229.2 127.5 L224.0 130.2 L221.9 135.2 L222.3 136.8 L220.3 139.5 L218.9 140.8 L217.2 141.2 L214.6 144.3 L213.7 146.2 L214.3 146.7 L213.5 148.3 L214.1 149.6 L213.7 153.0 L212.6 154.2 L213.2 154.5 L213.7 153.6 L218.0 155.0 L226.2 155.2 L229.6 156.8 L232.8 159.2 L236.4 164.0 L237.4 168.7 L236.6 170.8 L236.6 174.1 L235.7 174.3 L238.1 176.7 L237.9 178.7 L236.4 180.0 L239.2 182.8 L242.0 183.4 L242.7 186.5 L243.0 185.0 L243.4 188.2 L242.3 190.4 L243.3 192.4 L242.8 195.9 L245.0 200.6 L242.8 208.5 L239.9 212.4 L239.2 214.9 L239.4 217.8 L241.0 220.3 L238.3 223.8 L242.0 225.9 L244.7 225.7 L246.1 227.0 Z"/>
+                      <path d="M91.2 103.5 L90.0 101.2 L87.2 100.2 L85.2 100.6 L80.3 99.5 L75.9 100.4 L71.5 99.0 L66.1 95.8 L65.2 93.4 L66.1 91.1 L67.5 90.8 L67.2 89.6 L67.9 87.6 L67.6 85.2 L66.5 83.3 L67.4 79.1 L66.5 76.9 L64.1 76.8 L52.8 81.3 L52.0 84.9 L48.2 91.3 L44.7 106.3 L42.5 110.5 L41.5 115.7 L37.5 121.0 L34.0 131.4 L30.6 136.3 L29.9 139.8 L28.4 141.9 L25.2 149.7 L26.7 157.2 L26.2 164.3 L25.1 167.2 L27.0 177.3 L26.1 178.3 L26.5 181.3 L27.5 181.7 L27.8 180.6 L28.3 181.3 L30.3 180.3 L32.4 180.1 L36.3 182.8 L38.6 180.1 L41.1 180.3 L42.6 179.5 L46.1 180.0 L49.0 182.1 L51.4 187.1 L56.2 190.1 L58.2 193.1 L68.0 196.6 L71.6 200.8 L74.9 201.3 L75.6 202.1 L77.9 201.7 L80.6 203.3 L82.9 205.3 L84.5 208.2 L84.3 209.5 L85.2 209.2 L84.5 205.9 L85.2 201.3 L84.1 193.2 L82.9 191.9 L80.0 190.8 L78.8 188.6 L79.2 183.4 L82.2 176.6 L82.2 171.7 L79.1 168.0 L78.6 166.0 L80.8 162.8 L80.5 160.6 L81.4 158.9 L76.5 155.4 L75.7 153.7 L73.6 151.9 L71.5 146.0 L72.7 144.7 L75.3 136.5 L77.3 134.9 L78.0 133.1 L80.8 131.0 L81.9 130.7 L82.3 131.3 L82.0 130.6 L83.9 129.8 L89.1 130.2 L93.2 135.9 L95.1 130.2 L97.6 128.2 L97.9 123.2 L97.0 121.0 L92.0 117.4 L89.0 113.2 L89.6 113.1 L88.9 112.4 L88.9 110.6 L90.5 108.1 L90.3 106.7 L91.6 104.2 L91.2 103.5 Z"/>
+                      <path d="M185.1 202.9 L184.8 202.4 L186.3 200.2 L185.9 199.2 L184.3 199.7 L183.5 198.1 L181.8 197.1 L177.9 198.0 L175.3 197.8 L173.7 199.6 L170.7 200.1 L170.2 202.1 L169.7 198.7 L169.3 199.3 L168.8 197.8 L165.9 196.3 L166.9 193.6 L166.8 191.4 L166.4 190.7 L164.2 191.6 L161.6 195.2 L160.7 199.3 L159.0 200.3 L158.6 208.9 L156.6 210.4 L157.9 212.9 L157.3 215.1 L158.6 215.8 L158.1 217.2 L157.2 215.7 L155.9 215.9 L154.9 217.5 L155.7 218.7 L154.8 222.6 L155.2 224.9 L157.5 223.2 L159.0 226.6 L161.3 229.0 L163.9 230.4 L160.1 229.1 L158.1 229.6 L156.2 231.0 L155.7 234.5 L157.9 235.6 L158.2 237.2 L160.8 238.3 L160.2 240.0 L162.5 242.5 L163.8 243.3 L167.7 242.9 L169.7 246.2 L173.8 245.4 L176.4 247.3 L177.2 245.8 L177.9 245.9 L175.9 241.7 L178.8 242.0 L181.5 238.1 L182.3 239.9 L184.5 240.5 L184.3 237.9 L185.0 238.0 L184.4 239.3 L185.4 240.7 L186.8 240.5 L187.9 239.2 L190.7 241.0 L192.0 240.4 L192.1 239.0 L195.8 240.1 L195.6 236.9 L197.4 235.4 L197.4 234.7 L196.0 234.0 L197.2 232.1 L196.6 231.2 L194.2 232.2 L194.0 231.5 L194.1 230.5 L197.2 228.9 L196.3 227.1 L197.5 225.7 L196.2 225.1 L196.5 223.6 L195.8 222.5 L197.7 223.4 L198.1 221.6 L199.7 221.9 L202.2 224.1 L204.2 222.8 L204.2 219.0 L202.2 217.8 L199.9 217.5 L201.7 217.7 L205.2 216.1 L202.4 212.7 L204.5 213.6 L206.0 212.6 L205.5 209.9 L204.1 209.5 L206.4 207.6 L206.3 206.4 L205.2 205.1 L203.5 205.8 L204.1 205.2 L203.7 203.7 L202.4 203.6 L202.3 202.5 L199.1 200.6 L197.2 201.1 L197.1 202.1 L198.4 203.6 L197.0 203.4 L197.3 202.7 L196.4 202.4 L193.7 203.2 L193.1 204.0 L191.4 204.0 L191.2 201.2 L189.7 200.1 L187.8 201.9 L189.1 205.2 L185.0 204.2 L184.5 203.5 L185.1 202.9 Z"/>
+                      <path d="M143.5 234.4 L141.6 235.7 L143.1 233.7 L141.1 233.4 L143.4 230.7 L143.2 227.0 L135.3 229.3 L134.3 228.0 L132.4 228.3 L131.8 229.6 L129.9 231.0 L130.5 231.4 L130.1 231.9 L127.1 233.3 L126.4 233.0 L125.5 234.9 L126.6 236.1 L129.9 235.8 L133.3 237.6 L134.9 239.5 L137.2 239.6 L141.3 241.8 L144.5 247.4 L143.6 248.9 L145.1 251.0 L146.4 250.3 L147.2 247.8 L148.6 246.4 L149.8 250.3 L151.3 251.0 L153.2 250.0 L154.2 248.2 L152.6 245.0 L152.6 244.0 L154.1 242.9 L152.8 241.4 L153.3 240.4 L145.6 235.5 L146.2 233.4 L145.8 232.4 L145.0 232.4 L143.5 234.4 Z"/>
+                      <path d="M74.8 277.3 L79.1 276.7 L78.8 275.7 L80.9 273.9 L81.9 271.1 L77.8 270.0 L75.1 271.7 L71.1 272.1 L71.1 272.8 L69.0 274.4 L68.4 277.4 L71.3 278.5 L74.8 277.3 Z"/>
+                    </g>
+                    <text class="map-caldera lang-el" x="166" y="142" text-anchor="middle">Καλντέρα</text>
+                    <text class="map-caldera lang-en" x="166" y="142" text-anchor="middle">Caldera</text>
+                    <g class="map-label">
+                      <text class="lang-el" x="152" y="50">Οία</text><text class="lang-en" x="152" y="50">Oia</text>
+                      <text class="lang-el" x="262" y="190">Φηρά</text><text class="lang-en" x="262" y="190">Fira</text>
+                      <text class="lang-el" x="52" y="152" text-anchor="middle">Θηρασιά</text><text class="lang-en" x="52" y="152" text-anchor="middle">Thirasia</text>
+                      <text class="lang-el" x="184" y="222" text-anchor="middle" style="font-size:5.4px">Ν. Καμένη</text><text class="lang-en" x="184" y="222" text-anchor="middle" style="font-size:5.4px">Nea Kameni</text>
+                      <text class="lang-el" x="208" y="352" text-anchor="middle">Ακρωτήρι</text><text class="lang-en" x="208" y="352" text-anchor="middle">Akrotiri</text>
+                      <text class="lang-el" x="286" y="378">Βλυχάδα</text><text class="lang-en" x="286" y="378">Vlychada</text>
+                    </g>
+                    <g class="map-label map-label-sea">
+                      <text class="lang-el" x="52" y="284" text-anchor="middle" style="font-size:5.4px">Ασπρονήσι</text><text class="lang-en" x="52" y="284" text-anchor="middle" style="font-size:5.4px">Aspronisi</text>
+                    </g>
+                    <path class="route-base" d="M252 401 C248.0 400.0 237.0 397.8 228 395 C219.0 392.2 207.7 387.3 198 384 C188.3 380.7 178.5 377.0 170 375 C161.5 373.0 155.3 373.5 147 372 C138.7 370.5 128.7 369.0 120 366 C111.3 363.0 101.8 358.3 95 354 C88.2 349.7 79.2 345.0 79 340 C78.8 335.0 86.5 329.7 94 324 C101.5 318.3 114.7 313.0 124 306 C133.3 299.0 143.8 290.0 150 282 C156.2 274.0 160.3 265.3 161 258 C161.7 250.7 157.8 239.8 154 238 C150.2 236.2 144.7 242.7 138 247 C131.3 251.3 121.5 256.5 114 264 C106.5 271.5 99.0 282.7 93 292 C87.0 301.3 81.8 312.5 78 320 C74.2 327.5 71.3 334.2 70 337"/>
+                    <path class="route-live" d="M252 401 C248.0 400.0 237.0 397.8 228 395 C219.0 392.2 207.7 387.3 198 384 C188.3 380.7 178.5 377.0 170 375 C161.5 373.0 155.3 373.5 147 372 C138.7 370.5 128.7 369.0 120 366 C111.3 363.0 101.8 358.3 95 354 C88.2 349.7 79.2 345.0 79 340 C78.8 335.0 86.5 329.7 94 324 C101.5 318.3 114.7 313.0 124 306 C133.3 299.0 143.8 290.0 150 282 C156.2 274.0 160.3 265.3 161 258 C161.7 250.7 157.8 239.8 154 238 C150.2 236.2 144.7 242.7 138 247 C131.3 251.3 121.5 256.5 114 264 C106.5 271.5 99.0 282.7 93 292 C87.0 301.3 81.8 312.5 78 320 C74.2 327.5 71.3 334.2 70 337" mask="url(#routeMask)"/>
+                    <g id="pins">
+                      <g class="pin" data-x="257.2" data-y="396.3" transform="translate(257.2 396.3)"><g class="pin-inner"><circle class="pin-ring" r="8"/><circle class="pin-dot" r="7.5"/><text class="pin-num" y="2.8">1</text></g></g>
+                      <g class="pin" data-x="169.7" data-y="364.3" transform="translate(169.7 364.3)"><g class="pin-inner"><circle class="pin-ring" r="8"/><circle class="pin-dot" r="7.5"/><text class="pin-num" y="2.8">2</text></g></g>
+                      <g class="pin" data-x="147.1" data-y="360.6" transform="translate(147.1 360.6)"><g class="pin-inner"><circle class="pin-ring" r="8"/><circle class="pin-dot" r="7.5"/><text class="pin-num" y="2.8">3</text></g></g>
+                      <g class="pin" data-x="150.5" data-y="233.5" transform="translate(150.5 233.5)"><g class="pin-inner"><circle class="pin-ring" r="8"/><circle class="pin-dot" r="7.5"/><text class="pin-num" y="2.8">4</text></g></g>
+                      <g class="pin" data-x="94.4" data-y="341.4" transform="translate(94.4 341.4)"><g class="pin-inner"><circle class="pin-ring" r="8"/><circle class="pin-dot" r="7.5"/><text class="pin-num" y="2.8">5</text></g></g>
+                    </g>
+                    <g id="boat" transform="translate(252 401)">
+                      <circle r="11" fill="url(#glow)"/>
+                      <circle r="3.6" fill="#f5f1ea" stroke="#e8875a" stroke-width="1.6"/>
+                    </g>
+                  </svg>
+
+                  <div class="absolute top-4 left-4 flex items-center gap-2 text-[11px] font-semibold tracking-[0.2em] text-foam/60" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" class="ico" style="width:16px;height:16px"><path d="M12 3 8 13l4-2 4 2-4-10Z" fill="currentColor" stroke="none" opacity=".9"/><path d="M12 13v8" /></svg>
+                    <t-el>Β</t-el><t-en>N</t-en>
+                  </div>
+                  <p class="absolute bottom-2 right-3 text-[9px] text-foam/35">© OpenStreetMap contributors</p>
+                </div>
+                <div class="flex items-center gap-4 px-5 py-4 border-t border-foam/10">
+                  <span id="mapNum" class="font-display italic text-[28px] leading-none text-sun w-9">01</span>
+                  <div class="min-w-0">
+                    <p class="kicker text-foam/45 mb-1"><t-el>Τώρα στη διαδρομή</t-el><t-en>Now on the route</t-en></p>
+                    <p id="mapCaption" class="caption-swap font-display text-[19px] leading-tight truncate"><t-el>Βλυχάδα</t-el><t-en>Vlychada</t-en></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stops -->
+          <ol id="stops" class="lg:col-span-7 flex flex-col gap-6 lg:gap-[14svh] lg:py-[6svh] relative z-[1]">
+            <li class="stop-card reveal">
+              <div class="bezel-dark">
+                <div class="core bg-navy hairline-top">
+                  <div class="stop-img aspect-[16/10] overflow-hidden img-fallback">
+                    <img class="w-full h-full object-cover" loading="lazy" decoding="async"
+                         src="https://images.unsplash.com/photo-1632570654924-8cd184e557e6?w=1200&q=75&auto=format&fit=crop"
+                         alt="Τα σμιλεμένα από τον αέρα βράχια της Βλυχάδας" data-el-alt="Τα σμιλεμένα από τον αέρα βράχια της Βλυχάδας" data-en-alt="The wind-carved cliffs of Vlychada">
+                  </div>
+                  <div class="p-6 md:p-8">
+                    <div class="flex items-center gap-3 mb-5">
+                      <span class="stop-num w-9 h-9 rounded-full grid place-items-center text-[13px] font-bold bg-foam/10">1</span>
+                      <span class="text-[13px] text-foam/55">10:00 <t-el>Αναχώρηση</t-el><t-en>Departure</t-en></span>
+                    </div>
+                    <h3 class="stop-title font-display text-[30px] md:text-[34px] leading-[1.1]"><t-el>Βλυχάδα</t-el><t-en>Vlychada</t-en></h3>
+                    <p class="mt-3 text-[15.5px] leading-[1.75] text-foam/70 max-w-lg">
+                      <t-el>Επιβίβαση στη μαρίνα, ανάμεσα σε βράχια από ηφαιστειακή στάχτη που ο αέρας έχει σκαλίσει σαν γλυπτά. Σας περιμένει καφές και ένα σύντομο briefing από τον καπετάνιο.</t-el>
+                      <t-en>Boarding at the marina, between cliffs of volcanic ash the wind has carved like sculpture. Coffee is waiting, along with a short briefing from the skipper.</t-en>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="stop-card reveal">
+              <div class="bezel-dark">
+                <div class="core bg-navy hairline-top">
+                  <div class="stop-img aspect-[16/10] overflow-hidden img-fallback">
+                    <img class="w-full h-full object-cover object-[50%_60%]" loading="lazy" decoding="async"
+                         src="https://images.unsplash.com/photo-1786541133109-015093624adb?w=1200&q=75&auto=format&fit=crop"
+                         alt="Κατάρτια σκαφών μπροστά στα κόκκινα ηφαιστειακά βράχια" data-el-alt="Κατάρτια σκαφών μπροστά στα κόκκινα ηφαιστειακά βράχια" data-en-alt="Boat masts in front of the red volcanic cliffs">
+                  </div>
+                  <div class="p-6 md:p-8">
+                    <div class="flex items-center gap-3 mb-5">
+                      <span class="stop-num w-9 h-9 rounded-full grid place-items-center text-[13px] font-bold bg-foam/10">2</span>
+                      <span class="text-[13px] text-foam/55">10:45 <t-el>Κολύμπι</t-el><t-en>Swim stop</t-en></span>
+                    </div>
+                    <h3 class="stop-title font-display text-[30px] md:text-[34px] leading-[1.1]"><t-el>Κόκκινη Παραλία</t-el><t-en>Red Beach</t-en></h3>
+                    <p class="mt-3 text-[15.5px] leading-[1.75] text-foam/70 max-w-lg">
+                      <t-el>Αγκυροβολούμε μπροστά στα κόκκινα ηφαιστειακά βράχια. Από το σκάφος βλέπετε ολόκληρη την παραλία, χωρίς τον κόσμο της ακτής.</t-el>
+                      <t-en>We anchor off the red volcanic cliffs. From the boat you see the whole beach, without the crowd on the shore.</t-en>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="stop-card reveal">
+              <div class="bezel-dark">
+                <div class="core bg-navy hairline-top">
+                  <div class="stop-img aspect-[16/10] overflow-hidden img-fallback">
+                    <img class="w-full h-full object-cover" loading="lazy" decoding="async"
+                         src="https://images.unsplash.com/photo-1736618626516-674d438a6bf1?w=1200&q=75&auto=format&fit=crop"
+                         alt="Η Άσπρη Παραλία κάτω από ανοιχτόχρωμα βράχια" data-el-alt="Η Άσπρη Παραλία κάτω από ανοιχτόχρωμα βράχια" data-en-alt="White Beach beneath pale cliffs">
+                  </div>
+                  <div class="p-6 md:p-8">
+                    <div class="flex items-center gap-3 mb-5">
+                      <span class="stop-num w-9 h-9 rounded-full grid place-items-center text-[13px] font-bold bg-foam/10">3</span>
+                      <span class="text-[13px] text-foam/55">11:45 Snorkeling</span>
+                    </div>
+                    <h3 class="stop-title font-display text-[30px] md:text-[34px] leading-[1.1]"><t-el>Άσπρη Παραλία</t-el><t-en>White Beach</t-en></h3>
+                    <p class="mt-3 text-[15.5px] leading-[1.75] text-foam/70 max-w-lg">
+                      <t-el>Μια παραλία κάτω από λευκά βράχια, που φτάνεις μόνο από τη θάλασσα. Εδώ το νερό είναι το πιο καθαρό της ημέρας, ιδανικό για snorkeling.</t-el>
+                      <t-en>A beach beneath white cliffs that you can only reach by sea. The clearest water of the day, made for snorkeling.</t-en>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="stop-card reveal">
+              <div class="bezel-dark">
+                <div class="core bg-navy hairline-top">
+                  <div class="stop-img aspect-[16/10] overflow-hidden img-fallback">
+                    <img class="w-full h-full object-cover" loading="lazy" decoding="async"
+                         src="https://images.unsplash.com/photo-1785526264311-99b29d3ae716?w=1200&q=75&auto=format&fit=crop"
+                         alt="Το ηφαίστειο της Νέας Καμένης μέσα στην καλντέρα" data-el-alt="Το ηφαίστειο της Νέας Καμένης μέσα στην καλντέρα" data-en-alt="The Nea Kameni volcano inside the caldera">
+                  </div>
+                  <div class="p-6 md:p-8">
+                    <div class="flex items-center gap-3 mb-5">
+                      <span class="stop-num w-9 h-9 rounded-full grid place-items-center text-[13px] font-bold bg-foam/10">4</span>
+                      <span class="text-[13px] text-foam/55">13:15 <t-el>Κολύμπι και μεσημεριανό</t-el><t-en>Swim and lunch</t-en></span>
+                    </div>
+                    <h3 class="stop-title font-display text-[30px] md:text-[34px] leading-[1.1]"><t-el>Θερμές Πηγές</t-el><t-en>Hot Springs</t-en></h3>
+                    <p class="mt-3 text-[15.5px] leading-[1.75] text-foam/70 max-w-lg">
+                      <t-el>Κολυμπάμε ως τον κολπίσκο της Παλαιάς Καμένης, όπου το ηφαίστειο ζεσταίνει το νερό και του δίνει χρώμα σκουριάς. Στο μεταξύ, ο σεφ ανάβει τη σχάρα.</t-el>
+                      <t-en>We swim into the small cove of Palea Kameni, where the volcano warms the water and turns it rust-coloured. Meanwhile the chef fires up the grill.</t-en>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="stop-card reveal">
+              <div class="bezel-dark">
+                <div class="core bg-navy hairline-top">
+                  <div class="stop-img aspect-[16/10] overflow-hidden img-fallback">
+                    <img class="w-full h-full object-cover object-[50%_55%]" loading="lazy" decoding="async"
+                         src="https://images.unsplash.com/photo-1561499537-638d6402e83b?w=1200&q=75&auto=format&fit=crop"
+                         alt="Ο Φάρος του Ακρωτηρίου πάνω στον βράχο" data-el-alt="Ο Φάρος του Ακρωτηρίου πάνω στον βράχο" data-en-alt="Akrotiri Lighthouse on the cliff">
+                  </div>
+                  <div class="p-6 md:p-8">
+                    <div class="flex items-center gap-3 mb-5">
+                      <span class="stop-num w-9 h-9 rounded-full grid place-items-center text-[13px] font-bold bg-foam/10">5</span>
+                      <span class="text-[13px] text-foam/55"><t-el>Στην κρουαζιέρα ηλιοβασιλέματος</t-el><t-en>On the sunset cruise</t-en></span>
+                    </div>
+                    <h3 class="stop-title font-display text-[30px] md:text-[34px] leading-[1.1]"><t-el>Φάρος Ακρωτηρίου</t-el><t-en>Akrotiri Lighthouse</t-en></h3>
+                    <p class="mt-3 text-[15.5px] leading-[1.75] text-foam/70 max-w-lg">
+                      <t-el>Σβήνουμε τις μηχανές κάτω από τον φάρο, στο νοτιοδυτικό άκρο του νησιού, με ένα ποτήρι Ασύρτικο, την ώρα που ο ήλιος βουτάει στη θάλασσα.</t-el>
+                      <t-en>We cut the engines beneath the lighthouse at the island's southwestern tip, glass of Assyrtiko in hand, as the sun dips into the sea.</t-en>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <div class="bg-foam border-b border-ink/10 py-7 md:py-9 overflow-hidden" aria-hidden="true">
+      <div class="marquee-track font-display italic font-light text-[clamp(2rem,4.2vw,3.6rem)] leading-none text-ink">
+        <div class="flex items-center gap-10 pr-10">
+          <span><t-el>Κόκκινη Παραλία</t-el><t-en>Red Beach</t-en></span><svg class="ico text-sun" style="width:.55em;height:.55em"><use href="#i-sun"/></svg>
+          <span><t-el>Άσπρη Παραλία</t-el><t-en>White Beach</t-en></span><svg class="ico text-sun" style="width:.55em;height:.55em"><use href="#i-sun"/></svg>
+          <span><t-el>Θερμές Πηγές</t-el><t-en>Hot Springs</t-en></span><svg class="ico text-sun" style="width:.55em;height:.55em"><use href="#i-sun"/></svg>
+          <span><t-el>Φάρος Ακρωτηρίου</t-el><t-en>Akrotiri Lighthouse</t-en></span><svg class="ico text-sun" style="width:.55em;height:.55em"><use href="#i-sun"/></svg>
+          <span><t-el>Βλυχάδα</t-el><t-en>Vlychada</t-en></span><svg class="ico text-sun" style="width:.55em;height:.55em"><use href="#i-sun"/></svg>
+        </div>
+        <div class="flex items-center gap-10 pr-10">
+          <span><t-el>Κόκκινη Παραλία</t-el><t-en>Red Beach</t-en></span><svg class="ico text-sun" style="width:.55em;height:.55em"><use href="#i-sun"/></svg>
+          <span><t-el>Άσπρη Παραλία</t-el><t-en>White Beach</t-en></span><svg class="ico text-sun" style="width:.55em;height:.55em"><use href="#i-sun"/></svg>
+          <span><t-el>Θερμές Πηγές</t-el><t-en>Hot Springs</t-en></span><svg class="ico text-sun" style="width:.55em;height:.55em"><use href="#i-sun"/></svg>
+          <span><t-el>Φάρος Ακρωτηρίου</t-el><t-en>Akrotiri Lighthouse</t-en></span><svg class="ico text-sun" style="width:.55em;height:.55em"><use href="#i-sun"/></svg>
+          <span><t-el>Βλυχάδα</t-el><t-en>Vlychada</t-en></span><svg class="ico text-sun" style="width:.55em;height:.55em"><use href="#i-sun"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ CRUISES ============ -->
+    <section id="cruises" class="bg-foam py-24 md:py-36">
+      <div class="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-10">
+        <div class="grid lg:grid-cols-12 gap-8 items-end mb-12 md:mb-16">
+          <h2 class="reveal lg:col-span-7 font-display font-light text-[clamp(2.3rem,4.6vw,4.4rem)] leading-[1.05] tracking-[-0.015em]">
+            <t-el>Τρεις τρόποι να <em>βγείτε στη θάλασσα.</em></t-el><t-en>Three ways <em>out to sea.</em></t-en>
+          </h2>
+          <p class="reveal lg:col-span-5 text-[16px] leading-[1.75] text-stone max-w-md">
+            <t-el>Όλες οι κρουαζιέρες κρατούν πέντε ώρες και περιλαμβάνουν παραλαβή από το ξενοδοχείο, φαγητό, ποτά και εξοπλισμό snorkeling.</t-el>
+            <t-en>Every cruise lasts five hours and includes hotel pickup, food, drinks and snorkeling gear.</t-en>
+          </p>
+        </div>
+
+        <div class="reveal bezel">
+          <div id="cruiseAcc" class="cruise-acc">
+            <!-- Day -->
+            <article class="cruise img-fallback" data-cruise="day">
+              <div class="cruise-img"><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1718939047562-8c5483a7b96c?w=1600&q=75&auto=format&fit=crop" alt="Καταμαράν αγκυροβολημένο σε ήσυχο όρμο" data-el-alt="Καταμαράν αγκυροβολημένο σε ήσυχο όρμο" data-en-alt="A catamaran anchored in a quiet cove"></div>
+              <div class="cruise-shade"></div>
+              <button type="button" class="cruise-toggle" aria-expanded="false" aria-controls="cb-day">
+                <span class="cruise-top text-[13px] font-semibold text-foam/80">165 € <t-el>/ άτομο</t-el><t-en>/ person</t-en></span>
+                <span class="cruise-vert font-display text-[32px] leading-none"><t-el>Ημερήσια</t-el><t-en>Day cruise</t-en></span>
+              </button>
+              <div class="cruise-body" id="cb-day">
+                <p class="text-[13px] text-foam/70" style="--i:0">10:00 - 15:00</p>
+                <h3 class="mt-2 font-display text-[36px] md:text-[40px] leading-[1.05]" style="--i:1"><t-el>Ημερήσια κρουαζιέρα</t-el><t-en>Day cruise</t-en></h3>
+                <p class="mt-3 text-[15px] leading-[1.7] text-foam/80" style="--i:2"><t-el>Η κλασική διαδρομή στο φως του πρωινού: Κόκκινη, Άσπρη Παραλία, θερμές πηγές και μεσημεριανό από τη σχάρα.</t-el><t-en>The classic route in morning light: Red Beach, White Beach, the hot springs and lunch off the grill.</t-en></p>
+                <ul class="mt-5 grid grid-cols-2 gap-x-4 gap-y-2 text-[14px] text-foam/85" style="--i:3">
+                  <li class="flex items-center gap-2"><svg class="ico text-sun"><use href="#i-check"/></svg><t-el>Μεσημεριανό</t-el><t-en>Lunch</t-en></li>
+                  <li class="flex items-center gap-2"><svg class="ico text-sun"><use href="#i-check"/></svg><t-el>Κρασί και ποτά</t-el><t-en>Wine and drinks</t-en></li>
+                  <li class="flex items-center gap-2"><svg class="ico text-sun"><use href="#i-check"/></svg>Snorkeling</li>
+                  <li class="flex items-center gap-2"><svg class="ico text-sun"><use href="#i-check"/></svg><t-el>Παραλαβή</t-el><t-en>Pickup</t-en></li>
+                </ul>
+                <div class="mt-7 flex items-center justify-between gap-4" style="--i:4">
+                  <p><span class="font-display text-[34px] leading-none">165 €</span> <span class="text-[13px] text-foam/65"><t-el>/ άτομο</t-el><t-en>/ person</t-en></span></p>
+                  <a href="#book" data-cruise="day" class="btn btn-sun">
+                    <span><t-el>Επιλογή</t-el><t-en>Choose</t-en></span>
+                    <span class="btn-ico"><svg class="ico"><use href="#i-arrow-ur"/></svg></span>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Sunset -->
+            <article class="cruise is-open img-fallback" data-cruise="sunset">
+              <div class="cruise-img"><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1587587914411-99b15314dc84?w=1600&q=75&auto=format&fit=crop" alt="Ιστιοφόρο στη θάλασσα την ώρα του ηλιοβασιλέματος" data-el-alt="Ιστιοφόρο στη θάλασσα την ώρα του ηλιοβασιλέματος" data-en-alt="A sailing boat on the sea at sunset"></div>
+              <div class="cruise-shade"></div>
+              <button type="button" class="cruise-toggle" aria-expanded="true" aria-controls="cb-sunset">
+                <span class="cruise-top text-[13px] font-semibold text-foam/80">195 € <t-el>/ άτομο</t-el><t-en>/ person</t-en></span>
+                <span class="cruise-vert font-display text-[32px] leading-none"><t-el>Ηλιοβασίλεμα</t-el><t-en>Sunset</t-en></span>
+              </button>
+              <div class="cruise-body" id="cb-sunset">
+                <p class="text-[13px] text-foam/70" style="--i:0"><span class="inline-flex items-center gap-2 rounded-full bg-sun text-ink px-3 py-1 font-semibold mr-2"><t-el>Η πιο αγαπημένη</t-el><t-en>Most loved</t-en></span>15:00 - 20:00</p>
+                <h3 class="mt-3 font-display text-[36px] md:text-[40px] leading-[1.05]" style="--i:1"><t-el>Κρουαζιέρα ηλιοβασιλέματος</t-el><t-en>Sunset cruise</t-en></h3>
+                <p class="mt-3 text-[15px] leading-[1.7] text-foam/80" style="--i:2"><t-el>Η ίδια διαδρομή στο απογευματινό φως, με δείπνο στο κατάστρωμα και τον ήλιο να δύει κάτω από τον Φάρο του Ακρωτηρίου.</t-el><t-en>The same route in afternoon light, with dinner on deck and the sun setting beneath Akrotiri Lighthouse.</t-en></p>
+                <ul class="mt-5 grid grid-cols-2 gap-x-4 gap-y-2 text-[14px] text-foam/85" style="--i:3">
+                  <li class="flex items-center gap-2"><svg class="ico text-sun"><use href="#i-check"/></svg><t-el>Δείπνο</t-el><t-en>Dinner</t-en></li>
+                  <li class="flex items-center gap-2"><svg class="ico text-sun"><use href="#i-check"/></svg><t-el>Κρασί και ποτά</t-el><t-en>Wine and drinks</t-en></li>
+                  <li class="flex items-center gap-2"><svg class="ico text-sun"><use href="#i-check"/></svg><t-el>Ηλιοβασίλεμα</t-el><t-en>Sunset stop</t-en></li>
+                  <li class="flex items-center gap-2"><svg class="ico text-sun"><use href="#i-check"/></svg><t-el>Παραλαβή</t-el><t-en>Pickup</t-en></li>
+                </ul>
+                <div class="mt-7 flex items-center justify-between gap-4" style="--i:4">
+                  <p><span class="font-display text-[34px] leading-none">195 €</span> <span class="text-[13px] text-foam/65"><t-el>/ άτομο</t-el><t-en>/ person</t-en></span></p>
+                  <a href="#book" data-cruise="sunset" class="btn btn-sun">
+                    <span><t-el>Επιλογή</t-el><t-en>Choose</t-en></span>
+                    <span class="btn-ico"><svg class="ico"><use href="#i-arrow-ur"/></svg></span>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Private -->
+            <article class="cruise img-fallback" data-cruise="private">
+              <div class="cruise-img"><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1773594559238-1f4bcf8672a8?w=1600&q=75&auto=format&fit=crop" alt="Η πλώρη ενός σκάφους που πλέει προς ένα βραχώδες νησί" data-el-alt="Η πλώρη ενός σκάφους που πλέει προς ένα βραχώδες νησί" data-en-alt="The bow of a boat sailing towards a rocky island"></div>
+              <div class="cruise-shade"></div>
+              <button type="button" class="cruise-toggle" aria-expanded="false" aria-controls="cb-private">
+                <span class="cruise-top text-[13px] font-semibold text-foam/80"><t-el>από</t-el><t-en>from</t-en> 2.900 €</span>
+                <span class="cruise-vert font-display text-[32px] leading-none"><t-el>Ιδιωτική</t-el><t-en>Private</t-en></span>
+              </button>
+              <div class="cruise-body" id="cb-private">
+                <p class="text-[13px] text-foam/70" style="--i:0"><t-el>5 ώρες, όποια ώρα θέλετε</t-el><t-en>5 hours, any time you like</t-en></p>
+                <h3 class="mt-2 font-display text-[36px] md:text-[40px] leading-[1.05]" style="--i:1"><t-el>Ιδιωτική κρουαζιέρα</t-el><t-en>Private charter</t-en></h3>
+                <p class="mt-3 text-[15px] leading-[1.7] text-foam/80" style="--i:2"><t-el>Όλο το σκάφος για την παρέα σας, έως 20 άτομα. Διαλέγετε ώρα, στάσεις και μενού, για γενέθλια, πρόταση γάμου ή απλώς για ησυχία.</t-el><t-en>The whole boat for your group of up to 20. You choose the time, the stops and the menu, for a birthday, a proposal or simply some quiet.</t-en></p>
+                <ul class="mt-5 grid grid-cols-2 gap-x-4 gap-y-2 text-[14px] text-foam/85" style="--i:3">
+                  <li class="flex items-center gap-2"><svg class="ico text-sun"><use href="#i-check"/></svg><t-el>Δικό σας μενού</t-el><t-en>Your own menu</t-en></li>
+                  <li class="flex items-center gap-2"><svg class="ico text-sun"><use href="#i-check"/></svg><t-el>Ανοιχτό μπαρ</t-el><t-en>Open bar</t-en></li>
+                  <li class="flex items-center gap-2"><svg class="ico text-sun"><use href="#i-check"/></svg><t-el>Ευέλικτη ώρα</t-el><t-en>Flexible time</t-en></li>
+                  <li class="flex items-center gap-2"><svg class="ico text-sun"><use href="#i-check"/></svg><t-el>Παραλαβή</t-el><t-en>Pickup</t-en></li>
+                </ul>
+                <div class="mt-7 flex items-center justify-between gap-4" style="--i:4">
+                  <p><span class="text-[13px] text-foam/65"><t-el>από</t-el><t-en>from</t-en></span> <span class="font-display text-[34px] leading-none">2.900 €</span></p>
+                  <a href="#book" data-cruise="private" class="btn btn-sun">
+                    <span><t-el>Επιλογή</t-el><t-en>Choose</t-en></span>
+                    <span class="btn-ico"><svg class="ico"><use href="#i-arrow-ur"/></svg></span>
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ON BOARD (bento) ============ -->
+    <section id="onboard" class="bg-sand py-24 md:py-36">
+      <div class="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-10">
+        <h2 class="reveal font-display font-light text-[clamp(2.3rem,4.6vw,4.4rem)] leading-[1.05] tracking-[-0.015em] max-w-4xl mb-12 md:mb-16">
+          <t-el>Στο κατάστρωμα, <em>όλα είναι έτοιμα.</em></t-el><t-en>On deck, <em>it's all taken care of.</em></t-en>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 lg:auto-rows-[minmax(280px,auto)] grid-flow-dense gap-4">
+          <!-- A: food (7 cols x 2 rows) -->
+          <article class="reveal bezel md:col-span-2 lg:col-span-7 lg:row-span-2">
+            <div class="core core-lift h-full min-h-[460px] bg-ink text-foam flex flex-col justify-end group">
+              <div class="absolute inset-0 -z-10 img-fallback">
+                <img class="w-full h-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-105" loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1764397514746-e58523d0eaff?w=1400&q=75&auto=format&fit=crop" alt="Ψητό χταπόδι, σαλάτα και ένα ποτήρι λευκό κρασί" data-el-alt="Ψητό χταπόδι, σαλάτα και ένα ποτήρι λευκό κρασί" data-en-alt="Grilled octopus, salad and a glass of white wine">
+              </div>
+              <div class="absolute inset-0 -z-10 bg-gradient-to-t from-ink/90 via-ink/25 to-transparent"></div>
+              <div class="p-7 md:p-10 max-w-xl">
+                <h3 class="font-display text-[32px] md:text-[40px] leading-[1.08]"><t-el>Μεσημεριανό από τη σχάρα</t-el><t-en>Lunch off the grill</t-en></h3>
+                <p class="mt-3 text-[15.5px] leading-[1.7] text-foam/80"><t-el>Ο σεφ μας ψήνει στο σκάφος χταπόδι, φρέσκο ψάρι και σουβλάκι, με ντοματάκια Σαντορίνης και φάβα. Υπάρχουν πάντα επιλογές για χορτοφάγους.</t-el><t-en>Our chef grills octopus, fresh fish and souvlaki on board, served with Santorini cherry tomatoes and fava. There are always vegetarian options.</t-en></p>
+              </div>
+            </div>
+          </article>
+
+          <!-- B: wine (5 cols) -->
+          <article class="reveal bezel lg:col-span-5">
+            <div class="core core-lift h-full min-h-[300px] bg-ink text-foam flex flex-col justify-end group">
+              <div class="absolute inset-0 -z-10 img-fallback">
+                <img class="w-full h-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-105" loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1725305316443-4390d588ba01?w=1000&q=75&auto=format&fit=crop" alt="Ποτήρι κρασί πάνω σε σκάφος" data-el-alt="Ποτήρι κρασί πάνω σε σκάφος" data-en-alt="A glass of wine on a boat">
+              </div>
+              <div class="absolute inset-0 -z-10 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent"></div>
+              <div class="p-7">
+                <h3 class="font-display text-[28px] leading-[1.1]"><t-el>Κρασιά της Σαντορίνης</t-el><t-en>Santorini wines</t-en></h3>
+                <p class="mt-2 text-[15px] leading-[1.65] text-foam/80"><t-el>Ασύρτικο από ηφαιστειακά αμπέλια, μπίρες και αναψυκτικά, όσο κρατάει η κρουαζιέρα.</t-el><t-en>Assyrtiko from volcanic vineyards, beers and soft drinks for the whole cruise.</t-en></p>
+              </div>
+            </div>
+          </article>
+
+          <!-- C: snorkel (5 cols) -->
+          <article class="reveal bezel lg:col-span-5">
+            <div class="core core-lift h-full min-h-[300px] bg-ink text-foam flex flex-col justify-end group">
+              <div class="absolute inset-0 -z-10 img-fallback">
+                <img class="w-full h-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-105" loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1786339283329-575621173a36?w=1000&q=75&auto=format&fit=crop" alt="Δύο άνθρωποι κάνουν snorkeling σε καθαρά νερά δίπλα σε βράχια" data-el-alt="Δύο άνθρωποι κάνουν snorkeling σε καθαρά νερά δίπλα σε βράχια" data-en-alt="Two people snorkeling in clear water next to rocks">
+              </div>
+              <div class="absolute inset-0 -z-10 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent"></div>
+              <div class="p-7">
+                <h3 class="font-display text-[28px] leading-[1.1]"><t-el>Μάσκες και βατραχοπέδιλα</t-el><t-en>Masks and fins</t-en></h3>
+                <p class="mt-2 text-[15px] leading-[1.65] text-foam/80"><t-el>Εξοπλισμός snorkeling και πετσέτες για όλους, και ένας από το πλήρωμα πάντα στο νερό μαζί σας.</t-el><t-en>Snorkeling gear and towels for everyone, and a crew member always in the water with you.</t-en></p>
+              </div>
+            </div>
+          </article>
+
+          <!-- D: 20 guests (4 cols) -->
+          <article class="reveal bezel lg:col-span-4">
+            <div class="core core-lift h-full min-h-[300px] bg-foam p-7 md:p-8 flex flex-col justify-between">
+              <p class="font-display font-light text-[112px] leading-[.85] tracking-[-0.04em] text-ink">20</p>
+              <div>
+                <h3 class="font-display text-[26px] leading-[1.15]"><t-el>επιβάτες το πολύ</t-el><t-en>guests at most</t-en></h3>
+                <p class="mt-2 text-[15px] leading-[1.65] text-stone"><t-el>Ακόμα και στο ηλιοβασίλεμα. Υπάρχει χώρος για ξάπλωμα στα δίχτυα, σκιά στο σαλόνι και ησυχία.</t-el><t-en>Even at sunset. There is room to lie out on the nets, shade in the saloon and quiet.</t-en></p>
+              </div>
+            </div>
+          </article>
+
+          <!-- E: the boat (8 cols) -->
+          <article class="reveal bezel md:col-span-2 lg:col-span-8">
+            <div class="core core-lift h-full min-h-[340px] bg-ink text-foam grid md:grid-cols-2">
+              <div class="relative min-h-[240px] img-fallback overflow-hidden group">
+                <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-105" loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1778884477812-5d10b5b5d0c2?w=1000&q=75&auto=format&fit=crop" alt="Τα δίχτυα στην πλώρη ενός καταμαράν πάνω από το νερό" data-el-alt="Τα δίχτυα στην πλώρη ενός καταμαράν πάνω από το νερό" data-en-alt="The bow nets of a catamaran above the water">
+              </div>
+              <div class="p-7 md:p-9 flex flex-col justify-between gap-8">
+                <div>
+                  <h3 class="font-display text-[30px] leading-[1.1]"><t-el>Καταμαράν 52 ποδιών</t-el><t-en>A 52-foot catamaran</t-en></h3>
+                  <p class="mt-3 text-[15px] leading-[1.7] text-foam/75"><t-el>Σταθερό ακόμα και με μελτέμι, με δύο δίχτυα στην πλώρη, σκιερό σαλόνι, μπάνια με ντους και τέσσερις καμπίνες.</t-el><t-en>Steady even in the meltemi wind, with two bow nets, a shaded saloon, bathrooms with showers and four cabins.</t-en></p>
+                </div>
+                <dl class="grid grid-cols-3 gap-4 border-t border-foam/10 pt-6">
+                  <div><dt class="text-[12px] text-foam/55"><t-el>Μήκος</t-el><t-en>Length</t-en></dt><dd class="font-display text-[26px] leading-tight mt-1">15,8 <t-el>μ.</t-el><t-en>m</t-en></dd></div>
+                  <div><dt class="text-[12px] text-foam/55"><t-el>Καμπίνες</t-el><t-en>Cabins</t-en></dt><dd class="font-display text-[26px] leading-tight mt-1">4</dd></div>
+                  <div><dt class="text-[12px] text-foam/55"><t-el>Πλήρωμα</t-el><t-en>Crew</t-en></dt><dd class="font-display text-[26px] leading-tight mt-1">3</dd></div>
+                </dl>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SUNSET INTERLUDE ============ -->
+    <section id="sunset" class="relative bg-sand h-[160svh]" aria-label="Ηλιοβασίλεμα" data-el-aria-label="Ηλιοβασίλεμα" data-en-aria-label="Sunset">
+      <div class="sticky top-0 h-[100svh] overflow-hidden">
+        <div class="frame absolute inset-0 img-fallback overflow-hidden">
+          <img class="frame-img absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async"
+               src="https://images.unsplash.com/photo-1742523688717-f7467132b117?w=2200&q=78&auto=format&fit=crop"
+               srcset="https://images.unsplash.com/photo-1742523688717-f7467132b117?w=1000&q=75&auto=format&fit=crop 1000w, https://images.unsplash.com/photo-1742523688717-f7467132b117?w=2200&q=78&auto=format&fit=crop 2200w"
+               sizes="100vw" alt="Ηλιοβασίλεμα πάνω από τη θάλασσα με ένα νησί και ένα σκάφος" data-el-alt="Ηλιοβασίλεμα πάνω από τη θάλασσα με ένα νησί και ένα σκάφος" data-en-alt="Sunset over the sea with an island and a boat">
+          <div class="shade absolute inset-0 bg-gradient-to-b from-ink/30 via-ink/10 to-ink/60"></div>
+        </div>
+        <div class="relative h-full flex items-center justify-center px-6 text-center text-foam">
+          <p class="sunset-quote font-display font-light italic text-[clamp(2rem,4.8vw,4.6rem)] leading-[1.1] tracking-[-0.015em] max-w-5xl">
+            <t-el>Το ηλιοβασίλεμα το βλέπουμε από εκεί που δεν έχει κόσμο.</t-el>
+            <t-en>We watch the sunset from where the crowds aren't.</t-en>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ REVIEWS ============ -->
+    <section id="reviews" class="bg-foam py-24 md:py-36">
+      <div class="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-10 grid lg:grid-cols-12 gap-12 lg:gap-10">
+        <div class="lg:col-span-4 flex flex-col justify-between gap-10">
+          <h2 class="reveal font-display font-light text-[clamp(2.2rem,3.8vw,3.6rem)] leading-[1.06] tracking-[-0.015em]">
+            <t-el>Τι λένε όσοι <em>ήρθαν μαζί μας.</em></t-el><t-en>What our guests <em>tell us.</em></t-en>
+          </h2>
+          <div class="reveal flex items-center gap-3">
+            <button id="revPrev" type="button" class="w-12 h-12 rounded-full grid place-items-center bg-ink/5 shadow-[inset_0_0_0_1px_rgba(11,28,38,.1)] transition-[transform,background-color] duration-200 active:scale-95 hover:bg-ink/10" aria-label="Προηγούμενη κριτική" data-el-aria-label="Προηγούμενη κριτική" data-en-aria-label="Previous review">
+              <svg class="ico"><use href="#i-arrow-l"/></svg>
+            </button>
+            <button id="revNext" type="button" class="w-12 h-12 rounded-full grid place-items-center bg-ink text-foam transition-[transform,background-color] duration-200 active:scale-95 hover:bg-navy" aria-label="Επόμενη κριτική" data-el-aria-label="Επόμενη κριτική" data-en-aria-label="Next review">
+              <svg class="ico"><use href="#i-arrow-r"/></svg>
+            </button>
+            <span id="revCount" class="ml-3 text-[14px] tabular-nums text-stone" aria-live="polite">1 / 4</span>
+          </div>
+        </div>
+
+        <div class="lg:col-span-8 reveal">
+          <div class="bezel">
+            <div class="core bg-foam core-lift p-7 sm:p-10 md:p-14">
+              <div id="revStage" class="rev-stage grid" aria-roledescription="carousel">
+                <figure class="review is-active">
+                  <blockquote class="font-display font-light text-[clamp(1.4rem,2.1vw,1.95rem)] leading-[1.3] tracking-[-0.01em]">
+                    <t-el>«Περιμέναμε ωραία θέα. Δεν περιμέναμε να κολυμπήσουμε σε ζεστό νερό μέσα στο ηφαίστειο. Το πλήρωμα ήξερε κάθε βράχο.»</t-el>
+                    <t-en>"We expected a nice view. We didn't expect to swim in warm water inside the volcano. The crew knew every rock."</t-en>
+                  </blockquote>
+                  <figcaption class="mt-8 flex items-center gap-4">
+                    <span class="w-12 h-12 rounded-full bg-sand grid place-items-center font-display text-[18px]">ΜΝ</span>
+                    <span><span class="block font-semibold text-[15px]"><t-el>Μαρία και Νίκος, Θεσσαλονίκη</t-el><t-en>Maria and Nikos, Thessaloniki</t-en></span><span class="block text-[13.5px] text-stone"><t-el>Κρουαζιέρα ηλιοβασιλέματος</t-el><t-en>Sunset cruise</t-en></span></span>
+                  </figcaption>
+                </figure>
+                <figure class="review" aria-hidden="true">
+                  <blockquote class="font-display font-light text-[clamp(1.4rem,2.1vw,1.95rem)] leading-[1.3] tracking-[-0.01em]">
+                    <t-el>«Ο σεφ έψηνε χταπόδι όσο εμείς κάναμε snorkeling στην Άσπρη Παραλία. Οι καλύτερες πέντε ώρες του μήνα του μέλιτός μας.»</t-el>
+                    <t-en>"The chef grilled octopus while we snorkeled at White Beach. The best five hours of our honeymoon."</t-en>
+                  </blockquote>
+                  <figcaption class="mt-8 flex items-center gap-4">
+                    <span class="w-12 h-12 rounded-full bg-sand grid place-items-center font-display text-[18px]">HL</span>
+                    <span><span class="block font-semibold text-[15px]"><t-el>Hannah και Leo, Μόναχο</t-el><t-en>Hannah and Leo, Munich</t-en></span><span class="block text-[13.5px] text-stone"><t-el>Ημερήσια κρουαζιέρα</t-el><t-en>Day cruise</t-en></span></span>
+                  </figcaption>
+                </figure>
+                <figure class="review" aria-hidden="true">
+                  <blockquote class="font-display font-light text-[clamp(1.4rem,2.1vw,1.95rem)] leading-[1.3] tracking-[-0.01em]">
+                    <t-el>«Νοικιάσαμε όλο το σκάφος για τα εξηκοστά γενέθλια της μητέρας μου. Φρόντισαν τα πάντα, από την τούρτα μέχρι τη μουσική.»</t-el>
+                    <t-en>"We booked the whole boat for my mother's sixtieth. They took care of everything, from the cake to the music."</t-en>
+                  </blockquote>
+                  <figcaption class="mt-8 flex items-center gap-4">
+                    <span class="w-12 h-12 rounded-full bg-sand grid place-items-center font-display text-[18px]">SR</span>
+                    <span><span class="block font-semibold text-[15px]"><t-el>Sofia R., Μιλάνο</t-el><t-en>Sofia R., Milan</t-en></span><span class="block text-[13.5px] text-stone"><t-el>Ιδιωτική κρουαζιέρα</t-el><t-en>Private charter</t-en></span></span>
+                  </figcaption>
+                </figure>
+                <figure class="review" aria-hidden="true">
+                  <blockquote class="font-display font-light text-[clamp(1.4rem,2.1vw,1.95rem)] leading-[1.3] tracking-[-0.01em]">
+                    <t-el>«Μικρή ομάδα, καμία βιασύνη, αληθινό κρασί της Σαντορίνης. Ακριβώς όπως φανταζόμασταν το νησί.»</t-el>
+                    <t-en>"Small group, no rush, real Santorini wine. Exactly how we had imagined the island."</t-en>
+                  </blockquote>
+                  <figcaption class="mt-8 flex items-center gap-4">
+                    <span class="w-12 h-12 rounded-full bg-sand grid place-items-center font-display text-[18px]">JO</span>
+                    <span><span class="block font-semibold text-[15px]"><t-el>James O., Λονδίνο</t-el><t-en>James O., London</t-en></span><span class="block text-[13.5px] text-stone"><t-el>Κρουαζιέρα ηλιοβασιλέματος</t-el><t-en>Sunset cruise</t-en></span></span>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+          <p class="mt-4 text-[12.5px] text-stone/80"><t-el>Οι κριτικές είναι ενδεικτικές, για τις ανάγκες του demo.</t-el><t-en>Reviews are illustrative, for demo purposes.</t-en></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BOOKING ============ -->
+    <section id="book" class="bg-ink text-foam py-24 md:py-36">
+      <div class="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-10 grid lg:grid-cols-12 gap-12 lg:gap-12">
+        <div class="lg:col-span-5">
+          <div class="lg:sticky lg:top-28">
+            <h2 class="reveal font-display font-light text-[clamp(2.3rem,4.4vw,4.2rem)] leading-[1.05] tracking-[-0.015em]">
+              <t-el>Κλείστε θέση <em>στο κατάστρωμα.</em></t-el><t-en>Save your place <em>on deck.</em></t-en>
+            </h2>
+            <p class="reveal mt-6 text-[16px] leading-[1.75] text-foam/70 max-w-md">
+              <t-el>Στείλτε μας το αίτημά σας και θα επιβεβαιώσουμε τη διαθεσιμότητα με email μέσα σε δύο ώρες. Δεν χρειάζεται πληρωμή τώρα.</t-el>
+              <t-en>Send us your request and we'll confirm availability by email within two hours. No payment needed now.</t-en>
+            </p>
+            <ul class="reveal mt-9 space-y-4 text-[15px] text-foam/85">
+              <li class="flex gap-3"><svg class="ico text-sun mt-0.5"><use href="#i-shield"/></svg><span><t-el>Δωρεάν ακύρωση έως 48 ώρες πριν την αναχώρηση.</t-el><t-en>Free cancellation up to 48 hours before departure.</t-en></span></li>
+              <li class="flex gap-3"><svg class="ico text-sun mt-0.5"><use href="#i-wave"/></svg><span><t-el>Αν ο καιρός δεν το επιτρέπει, νέα ημερομηνία ή πλήρης επιστροφή χρημάτων.</t-el><t-en>If the weather says no, a new date or a full refund.</t-en></span></li>
+              <li class="flex gap-3"><svg class="ico text-sun mt-0.5"><use href="#i-van"/></svg><span><t-el>Παραλαβή και επιστροφή στο ξενοδοχείο σας, σε όλο το νησί.</t-el><t-en>Pickup and drop-off at your hotel, anywhere on the island.</t-en></span></li>
+            </ul>
+            <div class="reveal-img mt-10 hidden lg:block bezel-dark">
+              <div class="core aspect-[16/10] img-fallback">
+                <img class="w-full h-full object-cover" loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1572164025411-8a045959bfe7?w=1000&q=75&auto=format&fit=crop" alt="Σκάφη σε όρμο με κόκκινα βράχια" data-el-alt="Σκάφη σε όρμο με κόκκινα βράχια" data-en-alt="Boats in a cove with red rocks">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 reveal">
+          <div class="bezel-dark">
+            <div class="core bg-navy hairline-top p-5 sm:p-8 md:p-10">
+
+              <form id="bookForm" class="panel-swap" novalidate>
+                <fieldset>
+                  <legend class="field-label"><t-el>Κρουαζιέρα</t-el><t-en>Cruise</t-en></legend>
+                  <div class="grid sm:grid-cols-3 gap-2.5">
+                    <label class="opt">
+                      <input class="sr-only" type="radio" name="cruise" value="day">
+                      <span class="opt-card">
+                        <span class="flex items-center justify-between"><span class="font-semibold text-[15px]"><t-el>Ημερήσια</t-el><t-en>Day</t-en></span><span class="opt-dot"></span></span>
+                        <span class="block mt-2 text-[13px] text-foam/60">10:00 - 15:00</span>
+                        <span class="block mt-1 text-[14px]">165 € <span class="text-foam/55"><t-el>/ άτομο</t-el><t-en>/ person</t-en></span></span>
+                      </span>
+                    </label>
+                    <label class="opt">
+                      <input class="sr-only" type="radio" name="cruise" value="sunset" checked>
+                      <span class="opt-card">
+                        <span class="flex items-center justify-between"><span class="font-semibold text-[15px]"><t-el>Ηλιοβασίλεμα</t-el><t-en>Sunset</t-en></span><span class="opt-dot"></span></span>
+                        <span class="block mt-2 text-[13px] text-foam/60">15:00 - 20:00</span>
+                        <span class="block mt-1 text-[14px]">195 € <span class="text-foam/55"><t-el>/ άτομο</t-el><t-en>/ person</t-en></span></span>
+                      </span>
+                    </label>
+                    <label class="opt">
+                      <input class="sr-only" type="radio" name="cruise" value="private">
+                      <span class="opt-card">
+                        <span class="flex items-center justify-between"><span class="font-semibold text-[15px]"><t-el>Ιδιωτική</t-el><t-en>Private</t-en></span><span class="opt-dot"></span></span>
+                        <span class="block mt-2 text-[13px] text-foam/60"><t-el>Ώρα της επιλογής σας</t-el><t-en>Time of your choice</t-en></span>
+                        <span class="block mt-1 text-[14px]">2.900 € <span class="text-foam/55"><t-el>/ σκάφος</t-el><t-en>/ boat</t-en></span></span>
+                      </span>
+                    </label>
+                  </div>
+                </fieldset>
+
+                <div class="mt-7 grid sm:grid-cols-2 gap-x-4 gap-y-6">
+                  <div class="sm:col-span-2">
+                    <label class="field-label" for="date"><t-el>Ημερομηνία</t-el><t-en>Date</t-en></label>
+                    <input class="field" type="date" id="date" name="date" required aria-describedby="err-date">
+                    <p class="err" id="err-date" aria-live="polite"></p>
+                  </div>
+
+                  <div>
+                    <span class="field-label" id="lbl-adults"><t-el>Ενήλικες</t-el><t-en>Adults</t-en></span>
+                    <div class="stepper" data-field="adults" role="group" aria-labelledby="lbl-adults">
+                      <button type="button" data-step="-1" aria-label="Λιγότεροι ενήλικες" data-el-aria-label="Λιγότεροι ενήλικες" data-en-aria-label="Fewer adults"><svg class="ico"><use href="#i-minus"/></svg></button>
+                      <output class="text-[17px] font-semibold tabular-nums" aria-live="polite">2</output>
+                      <button type="button" data-step="1" aria-label="Περισσότεροι ενήλικες" data-el-aria-label="Περισσότεροι ενήλικες" data-en-aria-label="More adults"><svg class="ico"><use href="#i-plus"/></svg></button>
+                      <input type="hidden" name="adults" value="2">
+                    </div>
+                  </div>
+                  <div>
+                    <span class="field-label" id="lbl-children"><t-el>Παιδιά 4-12 ετών</t-el><t-en>Children aged 4-12</t-en></span>
+                    <div class="stepper" data-field="children" role="group" aria-labelledby="lbl-children">
+                      <button type="button" data-step="-1" aria-label="Λιγότερα παιδιά" data-el-aria-label="Λιγότερα παιδιά" data-en-aria-label="Fewer children"><svg class="ico"><use href="#i-minus"/></svg></button>
+                      <output class="text-[17px] font-semibold tabular-nums" aria-live="polite">0</output>
+                      <button type="button" data-step="1" aria-label="Περισσότερα παιδιά" data-el-aria-label="Περισσότερα παιδιά" data-en-aria-label="More children"><svg class="ico"><use href="#i-plus"/></svg></button>
+                      <input type="hidden" name="children" value="0">
+                    </div>
+                  </div>
+
+                  <div>
+                    <label class="field-label" for="pickup"><t-el>Παραλαβή από</t-el><t-en>Pickup from</t-en></label>
+                    <select class="field" id="pickup" name="pickup">
+                      <option value="fira" data-el-text="Φηρά" data-en-text="Fira">Φηρά</option>
+                      <option value="imerovigli" data-el-text="Ημεροβίγλι" data-en-text="Imerovigli">Ημεροβίγλι</option>
+                      <option value="oia" data-el-text="Οία" data-en-text="Oia">Οία</option>
+                      <option value="kamari" data-el-text="Καμάρι" data-en-text="Kamari">Καμάρι</option>
+                      <option value="perissa" data-el-text="Περίσσα και Περίβολος" data-en-text="Perissa and Perivolos">Περίσσα και Περίβολος</option>
+                      <option value="akrotiri" data-el-text="Ακρωτήρι" data-en-text="Akrotiri">Ακρωτήρι</option>
+                      <option value="other" data-el-text="Άλλη περιοχή" data-en-text="Somewhere else">Άλλη περιοχή</option>
+                      <option value="none" data-el-text="Χωρίς παραλαβή, έρχομαι στη μαρίνα" data-en-text="No pickup, I'll come to the marina">Χωρίς παραλαβή, έρχομαι στη μαρίνα</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="field-label" for="hotel"><t-el>Ξενοδοχείο (προαιρετικό)</t-el><t-en>Hotel (optional)</t-en></label>
+                    <input class="field" type="text" id="hotel" name="hotel" autocomplete="off" placeholder="π.χ. Villa Thira" data-el-placeholder="π.χ. Villa Thira" data-en-placeholder="e.g. Villa Thira">
+                  </div>
+
+                  <div class="sm:col-span-2">
+                    <label class="field-label" for="name"><t-el>Ονοματεπώνυμο</t-el><t-en>Full name</t-en></label>
+                    <input class="field" type="text" id="name" name="name" autocomplete="name" required aria-describedby="err-name">
+                    <p class="err" id="err-name" aria-live="polite"></p>
+                  </div>
+                  <div>
+                    <label class="field-label" for="email">Email</label>
+                    <input class="field" type="email" id="email" name="email" autocomplete="email" inputmode="email" autocapitalize="none" autocorrect="off" spellcheck="false" required aria-describedby="err-email">
+                    <p class="err" id="err-email" aria-live="polite"></p>
+                  </div>
+                  <div>
+                    <label class="field-label" for="phone"><t-el>Κινητό (για WhatsApp)</t-el><t-en>Mobile (for WhatsApp)</t-en></label>
+                    <input class="field" type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" required aria-describedby="err-phone">
+                    <p class="err" id="err-phone" aria-live="polite"></p>
+                  </div>
+                  <div class="sm:col-span-2">
+                    <label class="field-label" for="notes"><t-el>Σημειώσεις (αλλεργίες, γενέθλια, ό,τι θέλετε να ξέρουμε)</t-el><t-en>Notes (allergies, birthdays, anything we should know)</t-en></label>
+                    <textarea class="field" id="notes" name="notes" rows="3" enterkeyhint="done"></textarea>
+                  </div>
+                </div>
+
+                <!-- Live summary -->
+                <div class="mt-8 rounded-[16px] bg-ink/60 shadow-[inset_0_0_0_1px_rgba(245,241,234,.08)] p-5 sm:p-6">
+                  <div class="flex items-start justify-between gap-6">
+                    <div class="min-w-0">
+                      <p id="sumCruise" class="font-semibold text-[15px]"></p>
+                      <p id="sumMeta" class="mt-1 text-[13.5px] leading-[1.6] text-foam/60"></p>
+                    </div>
+                    <div class="text-right shrink-0">
+                      <p class="text-[12px] text-foam/55"><t-el>Σύνολο</t-el><t-en>Total</t-en></p>
+                      <p id="sumTotal" class="font-display text-[34px] leading-none mt-1 tabular-nums">390 €</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-7 flex flex-col sm:flex-row sm:items-center gap-4 sm:justify-between">
+                  <p class="text-[13px] text-foam/55 max-w-xs"><t-el>Θα σας απαντήσουμε με email. Δεν γίνεται χρέωση τώρα.</t-el><t-en>We'll reply by email. You won't be charged now.</t-en></p>
+                  <span class="magnet self-stretch sm:self-auto"><button id="submitBtn" type="submit" class="btn btn-sun w-full justify-between sm:w-auto text-[15px]">
+                    <span id="submitLabel"><t-el>Αίτηση κράτησης</t-el><t-en>Request booking</t-en></span>
+                    <span class="btn-ico"><svg class="ico" id="submitIco"><use href="#i-arrow-ur"/></svg></span>
+                  </button></span>
+                </div>
+              </form>
+
+              <!-- Success state -->
+              <div id="bookSuccess" class="panel-swap is-out hidden" tabindex="-1" role="status">
+                <svg viewBox="0 0 56 56" class="w-14 h-14 text-sun" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle class="check-circle" cx="28" cy="28" r="25"/>
+                  <path class="check-path" d="m17 29 7.5 7.5L39.5 21"/>
+                </svg>
+                <h3 class="mt-6 font-display font-light text-[clamp(2rem,3.4vw,2.9rem)] leading-[1.08]">
+                  <t-el>Ευχαριστούμε, <span data-fill="first"></span>.</t-el><t-en>Thank you, <span data-fill="first"></span>.</t-en>
+                </h3>
+                <p class="mt-4 text-[16px] leading-[1.75] text-foam/75 max-w-lg">
+                  <t-el>Λάβαμε το αίτημά σας για <span data-fill="cruise" class="text-foam"></span> στις <span data-fill="date" class="text-foam"></span>. Θα σας επιβεβαιώσουμε τη διαθεσιμότητα στο <span data-fill="email" class="text-foam"></span> μέσα σε δύο ώρες.</t-el>
+                  <t-en>We've received your request for the <span data-fill="cruise" class="text-foam"></span> on <span data-fill="date" class="text-foam"></span>. We'll confirm availability at <span data-fill="email" class="text-foam"></span> within two hours.</t-en>
+                </p>
+                <dl class="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-5 rounded-[16px] bg-ink/60 shadow-[inset_0_0_0_1px_rgba(245,241,234,.08)] p-5 sm:p-6">
+                  <div><dt class="text-[12px] text-foam/55"><t-el>Κωδικός</t-el><t-en>Reference</t-en></dt><dd class="mt-1 font-semibold tracking-wide" data-fill="ref"></dd></div>
+                  <div><dt class="text-[12px] text-foam/55"><t-el>Άτομα</t-el><t-en>Guests</t-en></dt><dd class="mt-1 font-semibold" data-fill="guests"></dd></div>
+                  <div><dt class="text-[12px] text-foam/55"><t-el>Σύνολο</t-el><t-en>Total</t-en></dt><dd class="mt-1 font-semibold" data-fill="total"></dd></div>
+                </dl>
+                <div class="mt-8 flex flex-col sm:flex-row gap-3">
+                  <button id="icsBtn" type="button" class="btn btn-sun justify-between">
+                    <span><t-el>Προσθήκη στο ημερολόγιο</t-el><t-en>Add to calendar</t-en></span>
+                    <span class="btn-ico"><svg class="ico"><use href="#i-calendar"/></svg></span>
+                  </button>
+                  <button id="againBtn" type="button" class="btn btn-glass btn-plain justify-center"><t-el>Νέα κράτηση</t-el><t-en>New booking</t-en></button>
+                </div>
+                <p class="mt-6 text-[12.5px] text-foam/45"><t-el>Demo: δεν στάλθηκε πραγματικό αίτημα.</t-el><t-en>Demo: no real request was sent.</t-en></p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section id="faq" class="bg-foam py-24 md:py-36">
+      <div class="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-10 grid lg:grid-cols-12 gap-12 lg:gap-10">
+        <div class="lg:col-span-5">
+          <h2 class="reveal font-display font-light text-[clamp(2.2rem,4vw,3.8rem)] leading-[1.06] tracking-[-0.015em] lg:sticky lg:top-28">
+            <t-el>Πριν ανεβείτε <em>στο σκάφος.</em></t-el><t-en>Before you <em>step aboard.</em></t-en>
+          </h2>
+        </div>
+        <div class="lg:col-span-7 reveal">
+          <div class="divide-y divide-ink/10 border-y border-ink/10">
+            <div class="faq-item">
+              <button type="button" class="faq-q w-full flex items-center justify-between gap-6 py-6 text-left" aria-expanded="false">
+                <span class="font-display text-[22px] md:text-[25px] leading-snug"><t-el>Τι να φέρω μαζί μου;</t-el><t-en>What should I bring?</t-en></span>
+                <span class="faq-plus w-10 h-10 shrink-0 rounded-full grid place-items-center bg-ink/5"><svg class="ico"><use href="#i-plus"/></svg></span>
+              </button>
+              <div class="faq-a"><div><p class="pb-7 pr-12 text-[15.5px] leading-[1.75] text-stone"><t-el>Μαγιό, αντηλιακό, καπέλο και μια ζακέτα για το βράδυ. Πετσέτες και εξοπλισμός snorkeling υπάρχουν στο σκάφος.</t-el><t-en>Swimwear, sunscreen, a hat and a light jacket for the evening. Towels and snorkeling gear are on board.</t-en></p></div></div>
+            </div>
+            <div class="faq-item">
+              <button type="button" class="faq-q w-full flex items-center justify-between gap-6 py-6 text-left" aria-expanded="false">
+                <span class="font-display text-[22px] md:text-[25px] leading-snug"><t-el>Τι γίνεται αν έχει αέρα;</t-el><t-en>What if it's windy?</t-en></span>
+                <span class="faq-plus w-10 h-10 shrink-0 rounded-full grid place-items-center bg-ink/5"><svg class="ico"><use href="#i-plus"/></svg></span>
+              </button>
+              <div class="faq-a"><div><p class="pb-7 pr-12 text-[15.5px] leading-[1.75] text-stone"><t-el>Ο καπετάνιος αλλάζει τη διαδρομή προς τους προστατευμένους όρμους. Αν το λιμεναρχείο απαγορεύσει τον απόπλου, σας προτείνουμε άλλη ημερομηνία ή σας επιστρέφουμε όλο το ποσό.</t-el><t-en>The skipper reroutes to sheltered coves. If the port authority stops departures, we offer another date or a full refund.</t-en></p></div></div>
+            </div>
+            <div class="faq-item">
+              <button type="button" class="faq-q w-full flex items-center justify-between gap-6 py-6 text-left" aria-expanded="false">
+                <span class="font-display text-[22px] md:text-[25px] leading-snug"><t-el>Μπορώ να ακυρώσω;</t-el><t-en>Can I cancel?</t-en></span>
+                <span class="faq-plus w-10 h-10 shrink-0 rounded-full grid place-items-center bg-ink/5"><svg class="ico"><use href="#i-plus"/></svg></span>
+              </button>
+              <div class="faq-a"><div><p class="pb-7 pr-12 text-[15.5px] leading-[1.75] text-stone"><t-el>Ναι, δωρεάν έως 48 ώρες πριν την αναχώρηση. Μετά από αυτό κρατάμε την προκαταβολή.</t-el><t-en>Yes, free of charge up to 48 hours before departure. After that we keep the deposit.</t-en></p></div></div>
+            </div>
+            <div class="faq-item">
+              <button type="button" class="faq-q w-full flex items-center justify-between gap-6 py-6 text-left" aria-expanded="false">
+                <span class="font-display text-[22px] md:text-[25px] leading-snug"><t-el>Είναι κατάλληλη για παιδιά;</t-el><t-en>Is it suitable for children?</t-en></span>
+                <span class="faq-plus w-10 h-10 shrink-0 rounded-full grid place-items-center bg-ink/5"><svg class="ico"><use href="#i-plus"/></svg></span>
+              </button>
+              <div class="faq-a"><div><p class="pb-7 pr-12 text-[15.5px] leading-[1.75] text-stone"><t-el>Απολύτως. Έχουμε παιδικά σωσίβια, τα παιδιά 4 έως 12 ετών πληρώνουν μισό εισιτήριο και τα μικρότερα ταξιδεύουν δωρεάν.</t-el><t-en>Absolutely. We have children's life jackets, kids aged 4 to 12 pay half price and younger ones sail free.</t-en></p></div></div>
+            </div>
+            <div class="faq-item">
+              <button type="button" class="faq-q w-full flex items-center justify-between gap-6 py-6 text-left" aria-expanded="false">
+                <span class="font-display text-[22px] md:text-[25px] leading-snug"><t-el>Έχετε επιλογές για αλλεργίες ή χορτοφάγους;</t-el><t-en>Do you cater for allergies or vegetarians?</t-en></span>
+                <span class="faq-plus w-10 h-10 shrink-0 rounded-full grid place-items-center bg-ink/5"><svg class="ico"><use href="#i-plus"/></svg></span>
+              </button>
+              <div class="faq-a"><div><p class="pb-7 pr-12 text-[15.5px] leading-[1.75] text-stone"><t-el>Ναι. Γράψτε μας στις σημειώσεις της κράτησης και ο σεφ θα ετοιμάσει ξεχωριστό πιάτο.</t-el><t-en>Yes. Tell us in the booking notes and the chef will prepare a separate dish.</t-en></p></div></div>
+            </div>
+            <div class="faq-item">
+              <button type="button" class="faq-q w-full flex items-center justify-between gap-6 py-6 text-left" aria-expanded="false">
+                <span class="font-display text-[22px] md:text-[25px] leading-snug"><t-el>Από πού ξεκινάμε;</t-el><t-en>Where do we depart from?</t-en></span>
+                <span class="faq-plus w-10 h-10 shrink-0 rounded-full grid place-items-center bg-ink/5"><svg class="ico"><use href="#i-plus"/></svg></span>
+              </button>
+              <div class="faq-a"><div><p class="pb-7 pr-12 text-[15.5px] leading-[1.75] text-stone"><t-el>Από τη Μαρίνα της Βλυχάδας, στη νότια ακτή. Αν δεν θέλετε παραλαβή, ελάτε 20 λεπτά πριν την αναχώρηση.</t-el><t-en>From Vlychada Marina on the south coast. If you don't need a pickup, arrive 20 minutes before departure.</t-en></p></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA + FOOTER ============ -->
+    <footer class="relative bg-ink text-foam overflow-hidden">
+      <div class="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-10 pt-28 md:pt-40">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-10">
+          <h2 class="reveal font-display font-light text-[clamp(3rem,8vw,7.5rem)] leading-[.98] tracking-[-0.025em]">
+            <t-el>Ώρα για <em>θάλασσα.</em></t-el><t-en>Time for <em>the sea.</em></t-en>
+          </h2>
+          <div class="reveal shrink-0">
+            <span class="magnet"><a href="#book" class="btn btn-sun text-[16px]">
+              <span><t-el>Κλείστε θέσεις</t-el><t-en>Book your seats</t-en></span>
+              <span class="btn-ico"><svg class="ico"><use href="#i-arrow-ur"/></svg></span>
+            </a></span>
+          </div>
+        </div>
+
+        <div class="mt-20 md:mt-28 grid grid-cols-2 md:grid-cols-4 gap-10 border-t border-foam/10 pt-12 text-[14.5px]">
+          <div class="col-span-2 md:col-span-1">
+            <a href="#top" class="inline-flex items-center gap-2.5" aria-label="Ostria">
+              <svg class="ico text-sun" style="width:22px;height:22px"><use href="#i-sail"/></svg>
+              <span class="font-display text-[24px] leading-none">Ostria</span>
+            </a>
+            <p class="mt-4 text-foam/55 leading-[1.7] max-w-[16rem]"><t-el>Κρουαζιέρες με καταμαράν στη Σαντορίνη.</t-el><t-en>Catamaran cruises in Santorini.</t-en></p>
+          </div>
+          <div>
+            <p class="text-foam/45 text-[12px] mb-3"><t-el>Αναχώρηση</t-el><t-en>Departure</t-en></p>
+            <p class="leading-[1.7] text-foam/85"><t-el>Μαρίνα Βλυχάδας<br>Σαντορίνη 847 00</t-el><t-en>Vlychada Marina<br>Santorini 847 00</t-en></p>
+          </div>
+          <div>
+            <p class="text-foam/45 text-[12px] mb-3"><t-el>Σεζόν</t-el><t-en>Season</t-en></p>
+            <p class="leading-[1.7] text-foam/85"><t-el>15 Απριλίου - 31 Οκτωβρίου<br>Καθημερινά</t-el><t-en>15 April - 31 October<br>Every day</t-en></p>
+          </div>
+          <div>
+            <p class="text-foam/45 text-[12px] mb-3"><t-el>Σελίδες</t-el><t-en>Pages</t-en></p>
+            <ul class="space-y-1.5 text-foam/85">
+              <li><a class="hover:text-sun transition-colors duration-200" href="#route"><t-el>Διαδρομή</t-el><t-en>Route</t-en></a></li>
+              <li><a class="hover:text-sun transition-colors duration-200" href="#cruises"><t-el>Κρουαζιέρες</t-el><t-en>Cruises</t-en></a></li>
+              <li><a class="hover:text-sun transition-colors duration-200" href="#faq"><t-el>Ερωτήσεις</t-el><t-en>FAQ</t-en></a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-14 flex flex-col md:flex-row justify-between gap-3 text-[12.5px] text-foam/40 pb-[calc(env(safe-area-inset-bottom,0px)+28px)]">
+          <p>© <span id="year">2026</span> Ostria. <t-el>Demo ιστοσελίδα για portfolio, η επιχείρηση είναι φανταστική.</t-el><t-en>Portfolio demo website, the business is fictional.</t-en></p>
+          <p><t-el>Φωτογραφίες: Unsplash. Χάρτης: © OpenStreetMap contributors.</t-el><t-en>Photos: Unsplash. Map: © OpenStreetMap contributors.</t-en></p>
+        </div>
+      </div>
+      <p class="pointer-events-none select-none font-display font-light text-[clamp(7rem,27vw,25rem)] leading-[.72] tracking-[-0.04em] text-foam/[0.05] text-center -mb-[0.06em]" aria-hidden="true">Ostria</p>
+    </footer>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script>
+  (() => {
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const hasGsap = !!(window.gsap && window.ScrollTrigger);
+    if (hasGsap) gsap.registerPlugin(ScrollTrigger);
+
+    /* =========================================================
+       i18n: text lives in <t-el>/<t-en>; strings built in JS live here
+       ========================================================= */
+    const I18N = {
+      el: {
+        title: 'Ostria | Κρουαζιέρες με καταμαράν στη Σαντορίνη',
+        desc: 'Πεντάωρες κρουαζιέρες με καταμαράν από τη Βλυχάδα: Κόκκινη και Άσπρη Παραλία, θερμές πηγές του ηφαιστείου και ηλιοβασίλεμα στον Φάρο του Ακρωτηρίου.',
+        locale: 'el-GR',
+        cruise: { day: 'Ημερήσια κρουαζιέρα', sunset: 'Κρουαζιέρα ηλιοβασιλέματος', private: 'Ιδιωτική κρουαζιέρα' },
+        cruiseAcc: { day: 'την ημερήσια κρουαζιέρα', sunset: 'την κρουαζιέρα ηλιοβασιλέματος', private: 'την ιδιωτική κρουαζιέρα' },
+        time: { day: '10:00 - 15:00', sunset: '15:00 - 20:00', private: 'ώρα της επιλογής σας' },
+        pickDate: 'Διαλέξτε ημερομηνία',
+        adults: n => n === 1 ? '1 ενήλικας' : `${n} ενήλικες`,
+        kids: n => n === 1 ? '1 παιδί' : `${n} παιδιά`,
+        perBoat: 'για όλο το σκάφος',
+        sending: 'Αποστολή...',
+        err: {
+          date: 'Διαλέξτε ημερομηνία.',
+          past: 'Διαλέξτε ημερομηνία από αύριο και μετά.',
+          season: 'Οι κρουαζιέρες γίνονται από 15 Απριλίου έως 31 Οκτωβρίου.',
+          far: 'Δεχόμαστε κρατήσεις έως έναν χρόνο μπροστά.',
+          name: 'Γράψτε το ονοματεπώνυμό σας.',
+          email: 'Γράψτε ένα έγκυρο email.',
+          phone: 'Γράψτε ένα κινητό με τουλάχιστον 8 ψηφία.'
+        },
+        icsTitle: 'Ostria: ',
+        icsLoc: 'Μαρίνα Βλυχάδας, Σαντορίνη'
+      },
+      en: {
+        title: 'Ostria | Catamaran cruises in Santorini',
+        desc: 'Five-hour catamaran cruises from Vlychada: Red and White Beach, the volcano hot springs and sunset at Akrotiri Lighthouse.',
+        locale: 'en-GB',
+        cruise: { day: 'Day cruise', sunset: 'Sunset cruise', private: 'Private charter' },
+        cruiseAcc: { day: 'day cruise', sunset: 'sunset cruise', private: 'private charter' },
+        time: { day: '10:00 - 15:00', sunset: '15:00 - 20:00', private: 'time of your choice' },
+        pickDate: 'Pick a date',
+        adults: n => n === 1 ? '1 adult' : `${n} adults`,
+        kids: n => n === 1 ? '1 child' : `${n} children`,
+        perBoat: 'for the whole boat',
+        sending: 'Sending...',
+        err: {
+          date: 'Please pick a date.',
+          past: 'Please pick a date from tomorrow onwards.',
+          season: 'Cruises run from 15 April to 31 October.',
+          far: 'We take bookings up to one year ahead.',
+          name: 'Please enter your full name.',
+          email: 'Please enter a valid email.',
+          phone: 'Please enter a mobile number with at least 8 digits.'
+        },
+        icsTitle: 'Ostria: ',
+        icsLoc: 'Vlychada Marina, Santorini'
+      }
+    };
+    let lang = 'el';
+    const T = () => I18N[lang];
+
+    function applyLang(next) {
+      lang = next === 'en' ? 'en' : 'el';
+      document.documentElement.lang = lang;
+      document.title = T().title;
+      $('meta[name="description"]').setAttribute('content', T().desc);
+      ['placeholder', 'aria-label', 'alt', 'title'].forEach(attr => {
+        $$(`[data-${lang}-${attr}]`).forEach(el => el.setAttribute(attr, el.getAttribute(`data-${lang}-${attr}`)));
+      });
+      $$(`[data-${lang}-text]`).forEach(el => { el.textContent = el.getAttribute(`data-${lang}-text`); });
+      $$('[data-lang-btn]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.langBtn === lang)));
+      try { localStorage.setItem('ostria-lang', lang); } catch (e) {}
+      document.dispatchEvent(new CustomEvent('langchange'));
+      if (hasGsap) requestAnimationFrame(() => ScrollTrigger.refresh());
+    }
+    let initialLang = 'el';
+    try {
+      const q = new URLSearchParams(location.search).get('lang');
+      initialLang = q || localStorage.getItem('ostria-lang') || 'el';
+    } catch (e) {}
+    applyLang(initialLang);
+    $$('[data-lang-btn]').forEach(b => b.addEventListener('click', () => { if (b.dataset.langBtn !== lang) applyLang(b.dataset.langBtn); }));
+
+    $('#year').textContent = new Date().getFullYear();
+
+    /* Broken images fall back to the gradient behind them */
+    $$('img').forEach(img => {
+      const mark = () => img.classList.add('is-broken');
+      if (img.complete && img.naturalWidth === 0 && img.currentSrc) mark();
+      img.addEventListener('error', mark);
+    });
+
+    /* =========================================================
+       Smooth scroll (desktop pointers only, never with reduced motion)
+       ========================================================= */
+    let lenis = null;
+    if (window.Lenis && finePointer && !reduce) {
+      lenis = new Lenis({ lerp: 0.1 });
+      if (hasGsap) {
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add(t => lenis.raf(t * 1000));
+        gsap.ticker.lagSmoothing(0);
+      } else {
+        const raf = t => { lenis.raf(t); requestAnimationFrame(raf); };
+        requestAnimationFrame(raf);
+      }
+    }
+
+    /* =========================================================
+       Nav + mobile menu
+       ========================================================= */
+    const nav = $('#nav');
+    const burger = $('#burger');
+    const menu = $('#menu');
+    let menuOpen = false;
+
+    function openMenu() {
+      menuOpen = true;
+      menu.removeAttribute('inert');
+      menu.classList.add('is-open');
+      burger.setAttribute('aria-expanded', 'true');
+      nav.classList.remove('is-hidden');
+      document.documentElement.classList.add('menu-open');
+      if (lenis) lenis.stop();
+      setTimeout(() => { const first = $('a', menu); if (first) first.focus({ preventScroll: true }); }, 60);
+    }
+    function closeMenu(returnFocus) {
+      if (!menuOpen) return;
+      menuOpen = false;
+      menu.classList.remove('is-open');
+      menu.setAttribute('inert', '');
+      burger.setAttribute('aria-expanded', 'false');
+      document.documentElement.classList.remove('menu-open');
+      if (lenis) lenis.start();
+      if (returnFocus) burger.focus();
+    }
+    burger.addEventListener('click', () => (menuOpen ? closeMenu(true) : openMenu()));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && menuOpen) closeMenu(true); });
+    matchMedia('(min-width: 1024px)').addEventListener('change', e => { if (e.matches) closeMenu(false); });
+    nav.addEventListener('focusin', () => nav.classList.remove('is-hidden'));
+
+    /* In-page links: smooth scroll, close menu, preselect cruise */
+    document.addEventListener('click', e => {
+      const a = e.target.closest('a[href^="#"]');
+      if (!a) return;
+      const id = a.getAttribute('href');
+      const target = id.length > 1 ? document.getElementById(id.slice(1)) : null;
+      if (!target) return;
+      e.preventDefault();
+      closeMenu(false);
+      if (a.dataset.cruise) selectCruise(a.dataset.cruise);
+      if (lenis) lenis.scrollTo(target, { duration: 1.5 });
+      else target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      history.replaceState(null, '', id === '#top' ? location.pathname + location.search : id);
+      if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+      target.focus({ preventScroll: true });
+    });
+
+    /* =========================================================
+       Scroll reveals (IntersectionObserver, staggered per parent)
+       ========================================================= */
+    const revealEls = $$('.reveal, .reveal-img');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.01 });
+      revealEls.forEach(el => {
+        const sibs = [...el.parentElement.children].filter(c => c.classList.contains('reveal') || c.classList.contains('reveal-img'));
+        el.style.setProperty('--rd', Math.min(sibs.indexOf(el), 5) * 70 + 'ms');
+        io.observe(el);
+      });
+    } else {
+      revealEls.forEach(el => el.classList.add('is-in'));
+    }
+
+    /* =========================================================
+       Cruise accordion (desktop: hover/click expands, mobile: all open)
+       ========================================================= */
+    const panels = $$('#cruiseAcc .cruise');
+    let hoverTimer = null;
+    function openPanel(p) {
+      panels.forEach(x => {
+        const on = x === p;
+        x.classList.toggle('is-open', on);
+        x.querySelector('.cruise-toggle').setAttribute('aria-expanded', String(on));
+      });
+    }
+    panels.forEach(p => {
+      p.querySelector('.cruise-toggle').addEventListener('click', () => openPanel(p));
+      p.addEventListener('focusin', () => openPanel(p));
+      if (finePointer) {
+        p.addEventListener('pointerenter', () => { clearTimeout(hoverTimer); hoverTimer = setTimeout(() => openPanel(p), 90); });
+        p.addEventListener('pointerleave', () => clearTimeout(hoverTimer));
+      }
+    });
+
+    /* =========================================================
+       Reviews carousel
+       ========================================================= */
+    const slides = $$('#revStage .review');
+    let ri = 0;
+    function showReview(n) {
+      ri = (n + slides.length) % slides.length;
+      slides.forEach((s, i) => {
+        const on = i === ri;
+        s.classList.toggle('is-active', on);
+        s.setAttribute('aria-hidden', String(!on));
+      });
+      $('#revCount').textContent = `${ri + 1} / ${slides.length}`;
+    }
+    $('#revPrev').addEventListener('click', () => showReview(ri - 1));
+    $('#revNext').addEventListener('click', () => showReview(ri + 1));
+    (() => {
+      const stage = $('#revStage');
+      let x0 = null;
+      stage.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse') x0 = e.clientX; });
+      stage.addEventListener('pointerup', e => {
+        if (x0 === null) return;
+        const dx = e.clientX - x0; x0 = null;
+        if (Math.abs(dx) > 40) showReview(ri + (dx < 0 ? 1 : -1));
+      });
+      stage.addEventListener('pointercancel', () => { x0 = null; });
+    })();
+
+    /* =========================================================
+       FAQ accordion
+       ========================================================= */
+    let faqRefresh = null;
+    $$('.faq-q').forEach(btn => btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      btn.closest('.faq-item').classList.toggle('is-open', !open);
+      if (hasGsap) { clearTimeout(faqRefresh); faqRefresh = setTimeout(() => ScrollTrigger.refresh(), 360); }
+    }));
+
+    /* =========================================================
+       Booking form
+       ========================================================= */
+    const PRICES = { day: 165, sunset: 195, private: 2900 };
+    const MAX_GUESTS = 20;
+    const form = $('#bookForm');
+    const dateInput = $('#date');
+    const pad = n => String(n).padStart(2, '0');
+    const isoDate = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+    const parseDate = v => { const [y, m, d] = v.split('-').map(Number); return new Date(y, m - 1, d); };
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const tomorrow = new Date(today); tomorrow.setDate(today.getDate() + 1);
+    const maxDay = new Date(today); maxDay.setFullYear(today.getFullYear() + 1);
+    dateInput.min = isoDate(tomorrow);
+    dateInput.max = isoDate(maxDay);
+
+    const money = v => new Intl.NumberFormat(T().locale, { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(v);
+    const longDate = d => new Intl.DateTimeFormat(T().locale, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }).format(d);
+    const plainDate = d => new Intl.DateTimeFormat(T().locale, { day: 'numeric', month: 'long', year: 'numeric' }).format(d);
+
+    const getCruise = () => (form.querySelector('input[name="cruise"]:checked') || {}).value || 'sunset';
+    const getCount = f => Number(form.querySelector(`input[name="${f}"]`).value);
+
+    function totalFor(cruise, adults, kids) {
+      return cruise === 'private' ? PRICES.private : adults * PRICES[cruise] + kids * Math.round(PRICES[cruise] / 2);
+    }
+
+    function guestsText(a, k) { return k ? `${T().adults(a)}, ${T().kids(k)}` : T().adults(a); }
+
+    let shownTotal = null, totalRaf = 0;
+    function animateTotal(to) {
+      const el = $('#sumTotal');
+      if (shownTotal === null || reduce || shownTotal === to) { cancelAnimationFrame(totalRaf); shownTotal = to; el.textContent = money(to); return; }
+      const from = shownTotal, start = performance.now(), dur = 280;
+      cancelAnimationFrame(totalRaf);
+      const step = now => {
+        const k = Math.min(1, (now - start) / dur);
+        const v = Math.round(from + (to - from) * (1 - Math.pow(1 - k, 3)));
+        shownTotal = v; el.textContent = money(v);
+        if (k < 1) totalRaf = requestAnimationFrame(step);
+      };
+      totalRaf = requestAnimationFrame(step);
+    }
+
+    function updateSummary() {
+      const c = getCruise(), a = getCount('adults'), k = getCount('children');
+      $('#sumCruise').textContent = T().cruise[c];
+      const when = dateInput.value ? longDate(parseDate(dateInput.value)) : T().pickDate;
+      const time = T().time[c];
+      const who = c === 'private' ? `${guestsText(a, k)}, ${T().perBoat}` : guestsText(a, k);
+      $('#sumMeta').textContent = `${when}, ${time}. ${who}.`;
+      animateTotal(totalFor(c, a, k));
+    }
+
+    function syncSteppers() {
+      const total = getCount('adults') + getCount('children');
+      $$('.stepper', form).forEach(st => {
+        const f = st.dataset.field, v = getCount(f), min = f === 'adults' ? 1 : 0;
+        st.querySelector('output').textContent = v;
+        st.querySelector('[data-step="-1"]').disabled = v <= min;
+        st.querySelector('[data-step="1"]').disabled = total >= MAX_GUESTS;
+      });
+    }
+    $$('.stepper', form).forEach(st => {
+      st.addEventListener('click', e => {
+        const b = e.target.closest('button[data-step]');
+        if (!b || b.disabled) return;
+        const input = st.querySelector('input[type="hidden"]');
+        input.value = Math.max(0, Number(input.value) + Number(b.dataset.step));
+        syncSteppers(); updateSummary();
+      });
+    });
+
+    function selectCruise(v) {
+      const r = form.querySelector(`input[name="cruise"][value="${v}"]`);
+      if (r) { r.checked = true; updateSummary(); }
+    }
+    form.addEventListener('change', e => {
+      if (e.target.name === 'cruise') updateSummary();
+      if (e.target === dateInput) { setError('date', dateError()); updateSummary(); }
+    });
+
+    function dateError() {
+      const v = dateInput.value;
+      if (!v) return T().err.date;
+      const d = parseDate(v);
+      if (d < tomorrow) return T().err.past;
+      if (d > maxDay) return T().err.far;
+      const md = (d.getMonth() + 1) * 100 + d.getDate();
+      if (md < 415 || md > 1031) return T().err.season;
+      return '';
+    }
+    function setError(field, msg) {
+      const input = form.elements[field];
+      const p = $(`#err-${field}`);
+      if (p) p.textContent = msg || '';
+      if (input) input.setAttribute('aria-invalid', msg ? 'true' : 'false');
+    }
+    function validate() {
+      const errs = {
+        date: dateError(),
+        name: form.elements.name.value.trim().length >= 3 ? '' : T().err.name,
+        email: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(form.elements.email.value.trim()) ? '' : T().err.email,
+        phone: (form.elements.phone.value.match(/\d/g) || []).length >= 8 ? '' : T().err.phone
+      };
+      Object.entries(errs).forEach(([f, m]) => setError(f, m));
+      return errs;
+    }
+    ['name', 'email', 'phone'].forEach(f => form.elements[f].addEventListener('input', () => {
+      if (form.elements[f].getAttribute('aria-invalid') === 'true') setError(f, validate()[f]);
+    }));
+
+    let lastBooking = null;
+    function fillSuccess() {
+      if (!lastBooking) return;
+      const b = lastBooking;
+      const vals = {
+        first: b.name.split(/\s+/)[0],
+        cruise: T().cruiseAcc[b.cruise],
+        date: plainDate(parseDate(b.date)),
+        email: b.email,
+        ref: b.ref,
+        guests: String(b.adults + b.children),
+        total: money(b.total)
+      };
+      $$('[data-fill]').forEach(el => { el.textContent = vals[el.dataset.fill] ?? ''; });
+    }
+
+    const success = $('#bookSuccess');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const errs = validate();
+      const firstBad = ['date', 'name', 'email', 'phone'].find(f => errs[f]);
+      if (firstBad) { form.elements[firstBad].focus(); return; }
+
+      const btn = $('#submitBtn');
+      btn.disabled = true;
+      const label = $('#submitLabel');
+      const labelHTML = label.innerHTML;
+      label.textContent = T().sending;
+      btn.querySelector('.btn-ico').innerHTML = '<span class="spinner" aria-hidden="true"></span>';
+
+      const c = getCruise(), a = getCount('adults'), k = getCount('children');
+      const d = parseDate(dateInput.value);
+      const ref = 'OS-' + String(d.getFullYear()).slice(2) + pad(d.getMonth() + 1) + pad(d.getDate()) + '-' + Math.random().toString(36).slice(2, 6).toUpperCase();
+      lastBooking = { cruise: c, adults: a, children: k, date: dateInput.value, name: form.elements.name.value.trim(), email: form.elements.email.value.trim(), ref, total: totalFor(c, a, k) };
+
+      setTimeout(() => {
+        fillSuccess();
+        form.classList.add('is-out');
+        setTimeout(() => {
+          form.classList.add('hidden');
+          success.classList.remove('hidden');
+          requestAnimationFrame(() => requestAnimationFrame(() => { success.classList.remove('is-out'); success.classList.add('is-shown'); }));
+          success.focus({ preventScroll: true });
+          btn.disabled = false;
+          label.innerHTML = labelHTML;
+          btn.querySelector('.btn-ico').innerHTML = '<svg class="ico"><use href="#i-arrow-ur"/></svg>';
+          if (hasGsap) ScrollTrigger.refresh();
+        }, 450);
+      }, 1100);
+    });
+
+    $('#againBtn').addEventListener('click', () => {
+      success.classList.add('is-out');
+      success.classList.remove('is-shown');
+      setTimeout(() => {
+        success.classList.add('hidden');
+        form.reset();
+        form.querySelector('input[name="adults"]').value = 2;
+        form.querySelector('input[name="children"]').value = 0;
+        ['date', 'name', 'email', 'phone'].forEach(f => setError(f, ''));
+        syncSteppers(); updateSummary();
+        form.classList.remove('hidden');
+        requestAnimationFrame(() => requestAnimationFrame(() => form.classList.remove('is-out')));
+        if (hasGsap) ScrollTrigger.refresh();
+      }, 450);
+    });
+
+    $('#icsBtn').addEventListener('click', () => {
+      if (!lastBooking) return;
+      const b = lastBooking;
+      const day = b.date.replace(/-/g, '');
+      const [h1, h2] = b.cruise === 'day' ? ['100000', '150000'] : b.cruise === 'sunset' ? ['150000', '200000'] : ['110000', '160000'];
+      const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+/, '');
+      const ics = [
+        'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Ostria//Demo//EN', 'CALSCALE:GREGORIAN',
+        'BEGIN:VEVENT', `UID:${b.ref}@ostria.demo`, `DTSTAMP:${stamp}`,
+        `DTSTART:${day}T${h1}`, `DTEND:${day}T${h2}`,
+        `SUMMARY:${T().icsTitle}${T().cruise[b.cruise]}`,
+        `LOCATION:${T().icsLoc}`,
+        `DESCRIPTION:${b.ref}`,
+        'END:VEVENT', 'END:VCALENDAR'
+      ].join('\r\n');
+      const url = URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' }));
+      const a = Object.assign(document.createElement('a'), { href: url, download: `ostria-${b.ref}.ics` });
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    });
+
+    document.addEventListener('langchange', () => {
+      updateSummary();
+      fillSuccess();
+      $$('.err').forEach(p => { if (p.textContent) setError(p.id.replace('err-', ''), p.id === 'err-date' ? dateError() : validate()[p.id.replace('err-', '')]); });
+    });
+    syncSteppers();
+    updateSummary();
+
+    /* =========================================================
+       Route map: line draws and boat sails as the stops scroll by
+       ========================================================= */
+    const mapSvg = $('#mapSvg');
+    const maskPath = $('#routeMaskPath');
+    const boat = $('#boat');
+    const pins = $$('#pins .pin');
+    const cards = $$('#stops .stop-card');
+    const mapNum = $('#mapNum');
+    const mapCaption = $('#mapCaption');
+    const routeLen = maskPath.getTotalLength();
+    maskPath.style.strokeDasharray = routeLen;
+
+    const mobileMap = matchMedia('(max-width: 1023px)');
+    const setViewBox = () => mapSvg.setAttribute('viewBox', mobileMap.matches ? '30 210 258 208' : '14 8 366 412');
+    setViewBox();
+    mobileMap.addEventListener('change', setViewBox);
+
+    // Length along the route where each stop sits (searched in order)
+    const samples = [];
+    for (let i = 0; i <= 600; i++) { const l = routeLen * i / 600; const p = maskPath.getPointAtLength(l); samples.push({ l, x: p.x, y: p.y }); }
+    const stopLens = [0];
+    for (let s = 1; s < pins.length - 1; s++) {
+      const tx = +pins[s].dataset.x, ty = +pins[s].dataset.y;
+      let best = Infinity, bl = stopLens[s - 1];
+      samples.forEach(sm => {
+        if (sm.l <= stopLens[s - 1] + 4) return;
+        const d = (sm.x - tx) ** 2 + (sm.y - ty) ** 2;
+        if (d < best) { best = d; bl = sm.l; }
+      });
+      stopLens.push(bl);
+    }
+    stopLens.push(routeLen);
+
+    function drawRoute(len) {
+      maskPath.style.strokeDashoffset = routeLen - len;
+      const p = maskPath.getPointAtLength(Math.max(0.01, Math.min(routeLen, len)));
+      boat.setAttribute('transform', `translate(${p.x.toFixed(2)} ${p.y.toFixed(2)})`);
+    }
+
+    let activeStop = -1;
+    function setActiveStop(i) {
+      if (i === activeStop) return;
+      activeStop = i;
+      pins.forEach((p, n) => { p.classList.toggle('is-active', n === i); p.classList.toggle('is-past', n < i); });
+      cards.forEach((c, n) => c.classList.toggle('is-active', n === i));
+      mapCaption.classList.add('is-swapping');
+      setTimeout(() => {
+        mapCaption.innerHTML = cards[i].querySelector('.stop-title').innerHTML;
+        mapNum.textContent = pad(i + 1);
+        mapCaption.classList.remove('is-swapping');
+      }, reduce ? 0 : 200);
+    }
+
+    let centers = [];
+    const measureStops = () => { centers = cards.map(c => { const r = c.getBoundingClientRect(); return r.top + scrollY + r.height / 2; }); };
+    function updateRoute() {
+      if (!centers.length) return;
+      const focus = scrollY + innerHeight * (mobileMap.matches ? 0.66 : 0.5);
+      let len;
+      if (focus <= centers[0]) len = 0;
+      else if (focus >= centers[centers.length - 1]) len = routeLen;
+      else {
+        let i = 0;
+        while (focus > centers[i + 1]) i++;
+        const t = (focus - centers[i]) / (centers[i + 1] - centers[i]);
+        len = stopLens[i] + (stopLens[i + 1] - stopLens[i]) * t;
+      }
+      drawRoute(len);
+      let idx = 0, bd = Infinity;
+      centers.forEach((c, i) => { const d = Math.abs(c - focus); if (d < bd) { bd = d; idx = i; } });
+      setActiveStop(idx);
+    }
+
+    if (hasGsap) {
+      measureStops();
+      updateRoute();
+      ScrollTrigger.create({
+        trigger: '#stops', start: 'top bottom', end: 'bottom top',
+        onUpdate: updateRoute,
+        onRefresh: () => { measureStops(); updateRoute(); }
+      });
+    } else {
+      drawRoute(routeLen);
+      setActiveStop(0);
+    }
+
+    /* =========================================================
+       GSAP scroll choreography (skipped with reduced motion)
+       ========================================================= */
+    if (hasGsap && !reduce) {
+      // Nav hides on the way down, returns on the way up
+      ScrollTrigger.create({
+        start: 0, end: 'max',
+        onUpdate: self => {
+          const y = self.scroll();
+          nav.classList.toggle('is-scrolled', y > 40);
+          if (menuOpen) return;
+          if (self.direction === 1 && y > innerHeight * 0.8) nav.classList.add('is-hidden');
+          else if (self.direction === -1) nav.classList.remove('is-hidden');
+        }
+      });
+
+      // Hero: image drifts slower than the page, copy lifts away
+      gsap.to('.hero-media', { yPercent: 14, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+      gsap.to('.hero-content', { yPercent: -10, opacity: 0, ease: 'none', scrollTrigger: { trigger: '.hero', start: '20% top', end: '75% top', scrub: true } });
+
+      // Manifesto: words brighten one by one as you read down
+      const scrub = $('#manifesto .scrub');
+      [...scrub.children].forEach(block => {
+        const words = splitWords(block);
+        gsap.fromTo(words, { opacity: 0.13 }, {
+          opacity: 1, ease: 'none', stagger: 0.08,
+          scrollTrigger: { trigger: scrub, start: 'top 82%', end: 'bottom 48%', scrub: 0.5 }
+        });
+      });
+
+      // Sunset: framed photo opens to full bleed, quote resolves
+      const mm = gsap.matchMedia();
+      mm.add({ wide: '(min-width: 768px)', narrow: '(max-width: 767px)' }, ctx => {
+        const inset = ctx.conditions.wide ? 'inset(13% 9% 13% 9% round 28px)' : 'inset(9% 4% 9% 4% round 22px)';
+        const tl = gsap.timeline({ scrollTrigger: { trigger: '#sunset', start: 'top bottom', end: 'bottom bottom', scrub: true } });
+        tl.fromTo('#sunset .frame', { clipPath: inset }, { clipPath: 'inset(0% 0% 0% 0% round 0px)', ease: 'none', duration: 1 }, 0.35)
+          .fromTo('#sunset .frame-img', { scale: 1.22 }, { scale: 1, ease: 'none', duration: 1.35 }, 0)
+          .fromTo('#sunset .sunset-quote', { opacity: 0, yPercent: 30, filter: 'blur(8px)' }, { opacity: 1, yPercent: 0, filter: 'blur(0px)', ease: 'none', duration: 0.45 }, 0.8);
+      });
+
+      // Magnetic CTAs (desktop pointers only)
+      if (finePointer) {
+        $$('.magnet').forEach(m => {
+          const xTo = gsap.quickTo(m, 'x', { duration: 0.6, ease: 'elastic.out(1, 0.45)' });
+          const yTo = gsap.quickTo(m, 'y', { duration: 0.6, ease: 'elastic.out(1, 0.45)' });
+          m.addEventListener('pointermove', e => {
+            const r = m.getBoundingClientRect();
+            xTo((e.clientX - (r.left + r.width / 2)) * 0.22);
+            yTo((e.clientY - (r.top + r.height / 2)) * 0.3);
+          });
+          m.addEventListener('pointerleave', () => { xTo(0); yTo(0); });
+        });
+      }
+
+      window.addEventListener('load', () => ScrollTrigger.refresh());
+    }
+
+    function splitWords(root) {
+      const walk = node => {
+        [...node.childNodes].forEach(n => {
+          if (n.nodeType === 3) {
+            const frag = document.createDocumentFragment();
+            n.textContent.split(/(\s+)/).forEach(part => {
+              if (!part) return;
+              if (/^\s+$/.test(part)) frag.appendChild(document.createTextNode(part));
+              else { const s = document.createElement('span'); s.className = 'w'; s.textContent = part; frag.appendChild(s); }
+            });
+            n.replaceWith(frag);
+          } else if (n.nodeType === 1) {
+            if (n.classList.contains('pill-img')) n.classList.add('w');
+            else walk(n);
+          }
+        });
+      };
+      walk(root);
+      return $$('.w', root);
+    }
+  })();
+  </script>
+</body>
+</html>
