@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Aethra Residences</title>
+  <meta name="description" content="Τέσσερις κατοικίες στο Κουκάκι, έξι λεπτά με τα πόδια από το Μουσείο Ακρόπολης. Βεράντες με θέα, self check-in και κράτηση απευθείας.">
+  <meta name="theme-color" content="#121819">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Aethra Residences — Αθήνα">
+  <meta property="og:description" content="Τέσσερις κατοικίες κάτω από την Ακρόπολη.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23121819'/%3E%3Cpath d='M9 24 16 7l7 17M11.6 18h8.8' fill='none' stroke='%23b8935a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <!-- Και οι τρεις οικογένειες έχουν ελληνικό subset (επαληθευμένο):
+       GFS Didot για τίτλους, Literata Italic για λίγες πινελιές, Commissioner για κείμενο. -->
+  <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@300;400;500;600&family=GFS+Didot&family=Literata:ital,opsz,wght@1,7..72,300&display=swap" rel="stylesheet">
+
+  <script>document.documentElement.classList.add('js');</script>
+
+  <style>
+    /* Layout: φυλλάδιο κατοικίας. Ολόσωμη εικόνα στο άνοιγμα, μετά εναλλαγή
+       ανάμεσα σε φωτεινές «μαρμάρινες» σελίδες και σκούρες «νυχτερινές» ζώνες,
+       με την οριζόντια βόλτα στις κατοικίες ως κεντρική στιγμή. */
+    :root {
+      --marble: #e9e6df;   /* φόντο: ψυχρό μάρμαρο, όχι κρεμ */
+      --paper:  #f4f2ed;   /* επιφάνειες */
+      --ink:    #171b1c;   /* κείμενο */
+      --night:  #121819;   /* σκούρες ζώνες: αθηναϊκή νύχτα */
+      --olive:  #5c6350;   /* δευτερεύον: φύλλο ελιάς */
+      --brass:  #b8935a;   /* μοναδικό accent, με φειδώ */
+      --mute:   #6e6c64;   /* βοηθητικό κείμενο σε φωτεινό */
+      --mute-d: #9a9a90;   /* βοηθητικό κείμενο σε σκούρο */
+      --line:   rgba(23, 27, 28, .14);
+      --line-d: rgba(233, 230, 223, .14);
+
+      --f-display: "GFS Didot", "Didot", "Bodoni 72", Georgia, serif;
+      --f-accent:  "Literata", Georgia, serif;
+      --f-body:    "Commissioner", "Segoe UI", system-ui, sans-serif;
+
+      --s-12: .75rem; --s-14: .875rem; --s-16: 1rem; --s-18: 1.125rem;
+      --s-22: 1.375rem; --s-30: 1.875rem; --s-44: clamp(2.1rem, 4.2vw, 2.75rem);
+      --s-64: clamp(2.6rem, 6.4vw, 4.25rem); --s-hero: clamp(3.1rem, 9.5vw, 7.6rem);
+
+      --gutter: max(20px, env(safe-area-inset-left, 0px));
+      --gutter-r: max(20px, env(safe-area-inset-right, 0px));
+      --ease: cubic-bezier(.22, 1, .36, 1);
+      --ease-io: cubic-bezier(.76, 0, .24, 1);
+      color-scheme: light;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--marble); color: var(--ink);
+      font: 400 var(--s-16)/1.65 var(--f-body);
+      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    h1, h2, h3 { font-family: var(--f-display); font-weight: 400; margin: 0; text-wrap: balance; letter-spacing: -.005em; }
+    p { margin: 0; }
+    a { color: inherit; }
+    em.it { font-family: var(--f-accent); font-style: italic; font-weight: 300; }
+    .num { font-variant-numeric: tabular-nums lining-nums; }
+    .wrap { max-width: 1240px; margin-inline: auto; padding-left: var(--gutter); padding-right: var(--gutter-r); }
+    .eyebrow { font-size: var(--s-12); letter-spacing: .22em; text-transform: uppercase; font-weight: 500; color: var(--olive); }
+    .on-dark .eyebrow { color: var(--brass); }
+    :focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; border-radius: 2px; }
+
+    /* ---------- Αυλαία φόρτωσης (μόνο CSS: ανεβαίνει μόνη της ακόμη κι αν αποτύχει το JS) ---------- */
+    .curtain {
+      position: fixed; inset: 0; z-index: 100; background: var(--night);
+      display: grid; place-items: center; pointer-events: none;
+      animation: curtain-up 1.15s var(--ease-io) .75s forwards;
+    }
+    .curtain span {
+      font-family: var(--f-display); color: var(--marble); font-size: var(--s-30);
+      letter-spacing: .5em; padding-left: .5em; opacity: 0;
+      animation: curtain-word 1.1s var(--ease) .05s forwards;
+    }
+    @keyframes curtain-word { 0% { opacity: 0; letter-spacing: .9em; } 60% { opacity: 1; } 100% { opacity: 1; letter-spacing: .5em; } }
+    @keyframes curtain-up { to { transform: translateY(-100%); } }
+
+    /* ---------- Demo banner ---------- */
+    .demo {
+      background: var(--night); color: var(--mute-d); overflow: hidden;
+      font-size: var(--s-12); line-height: 1.4; text-align: center; padding-block: 6px;
+      padding-left: var(--gutter); padding-right: var(--gutter-r);
+      max-height: 60px; transition: max-height .5s var(--ease), padding .5s var(--ease);
+    }
+    .hdr.solid .demo, .menu-open .demo { max-height: 0; padding-block: 0; }
+
+    /* ---------- Header ---------- */
+    .hdr {
+      position: fixed; left: 0; right: 0; top: 0; z-index: 50;
+      border-top: env(safe-area-inset-top, 0px) solid var(--night);
+      color: var(--marble);
+      transition: background .5s var(--ease), color .5s var(--ease), transform .6s var(--ease), box-shadow .5s;
+    }
+    .hdr.solid { background: rgba(233, 230, 223, .92); color: var(--ink); box-shadow: 0 1px 0 var(--line); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+    .hdr.hide { transform: translateY(-110%); }
+    .hdr .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 76px; }
+    .brand { text-decoration: none; display: flex; align-items: baseline; gap: 10px; }
+    .brand b { font-family: var(--f-display); font-weight: 400; font-size: 1.45rem; letter-spacing: .32em; }
+    .brand small { font-size: 10px; letter-spacing: .3em; text-transform: uppercase; opacity: .7; }
+    .nav { display: flex; gap: 34px; font-size: var(--s-14); }
+    .nav a { text-decoration: none; position: relative; padding-block: 6px; }
+    .nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .5s var(--ease); }
+    .nav a:hover::after { transform: scaleX(1); transform-origin: left; }
+    .hdr-cta { display: flex; align-items: center; gap: 14px; }
+    .menu-btn { display: none; background: none; border: 0; color: inherit; padding: 10px; cursor: pointer; }
+    .menu-btn span { display: block; width: 24px; height: 1px; background: currentColor; transition: transform .4s var(--ease); }
+    .menu-btn span + span { margin-top: 7px; }
+    .menu-btn[aria-expanded="true"] span:first-child { transform: translateY(4px) rotate(45deg); }
+    .menu-btn[aria-expanded="true"] span:last-child { transform: translateY(-4px) rotate(-45deg); }
+
+    .mnav {
+      position: fixed; inset: 0; z-index: 45; background: var(--night); color: var(--marble);
+      display: flex; flex-direction: column; justify-content: center; gap: 6px;
+      padding-left: var(--gutter); padding-right: var(--gutter-r);
+      clip-path: inset(0 0 100% 0); transition: clip-path .8s var(--ease-io); visibility: hidden;
+    }
+    .mnav.open { clip-path: inset(0 0 0 0); visibility: visible; }
+    .mnav a { font-family: var(--f-display); font-size: 2.4rem; text-decoration: none; line-height: 1.35;
+      opacity: 0; transform: translateY(24px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
+    .mnav.open a { opacity: 1; transform: none; }
+    .mnav.open a:nth-child(2) { transition-delay: .06s; } .mnav.open a:nth-child(3) { transition-delay: .12s; }
+    .mnav.open a:nth-child(4) { transition-delay: .18s; } .mnav.open a:nth-child(5) { transition-delay: .24s; }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      --bg: var(--brass); --fg: var(--night);
+      position: relative; display: inline-flex; align-items: center; gap: 12px; overflow: hidden; isolation: isolate;
+      padding: 15px 26px; border-radius: 999px; border: 1px solid var(--bg);
+      background: var(--bg); color: var(--fg); text-decoration: none; cursor: pointer;
+      font: 500 var(--s-14)/1 var(--f-body); letter-spacing: .06em;
+      transition: color .5s var(--ease), border-color .5s var(--ease);
+    }
+    .btn::before {
+      content: ""; position: absolute; inset: 0; z-index: -1; background: var(--night);
+      transform: translateY(101%); border-radius: inherit; transition: transform .6s var(--ease);
+    }
+    .btn:hover::before { transform: none; }
+    .btn:hover { color: var(--marble); border-color: var(--night); }
+    .btn.ghost { --bg: transparent; --fg: currentColor; border-color: currentColor; }
+    .btn.ghost::before { background: var(--marble); }
+    .btn.ghost:hover { color: var(--night); border-color: var(--marble); }
+    .btn .arr { transition: transform .5s var(--ease); }
+    .btn:hover .arr { transform: translateX(4px); }
+    .hdr .btn { padding: 11px 20px; }
+    .hdr:not(.solid) .btn:hover { color: var(--night); }
+    .hdr:not(.solid) .btn::before { background: var(--marble); }
+
+    /* ---------- Fallback εικόνων: τονικό πάνελ αν η φωτογραφία δεν φορτώσει ---------- */
+    .ph { position: relative; overflow: hidden; background:
+      radial-gradient(120% 90% at 20% 15%, rgba(184,147,90,.22), transparent 55%),
+      linear-gradient(160deg, #2b3532 0%, #182021 60%, #121819 100%); }
+    .ph img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ---------- Hero ---------- */
+    .hero { position: relative; min-height: max(640px, 92svh); display: grid; align-items: end; color: var(--marble); overflow: hidden; }
+    .hero .ph { position: absolute; inset: 0; }
+    .hero .ph img { transform: scale(1.14); animation: hero-in 2.6s var(--ease) .9s forwards; will-change: transform; }
+    @keyframes hero-in { to { transform: scale(1.02); } }
+    .hero::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(180deg, rgba(18,24,25,.55) 0%, rgba(18,24,25,.12) 34%, rgba(18,24,25,.25) 60%, rgba(18,24,25,.86) 100%); }
+    .hero-in { position: relative; z-index: 2; padding-bottom: clamp(48px, 9vh, 96px); padding-top: 140px; width: 100%; }
+    .hero h1 { font-size: var(--s-hero); line-height: .98; max-width: 11ch; }
+    .line { display: block; overflow: hidden; padding-bottom: .06em; }
+    .line > span { display: block; transform: translateY(105%); animation: rise 1.25s var(--ease) forwards; }
+    .hero h1 .line:nth-child(1) > span { animation-delay: 1.15s; }
+    .hero h1 .line:nth-child(2) > span { animation-delay: 1.27s; }
+    .hero h1 .line:nth-child(3) > span { animation-delay: 1.39s; }
+    @keyframes rise { to { transform: none; } }
+    .hero-row { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 32px; margin-top: 36px; }
+    .hero-lede { max-width: 40ch; font-size: var(--s-18); font-weight: 300; color: rgba(233,230,223,.88); }
+    .hero-meta { display: flex; gap: 36px; flex-wrap: wrap; }
+    .hero-meta div { border-top: 1px solid var(--line-d); padding-top: 12px; min-width: 120px; }
+    .hero-meta b { display: block; font-family: var(--f-display); font-weight: 400; font-size: var(--s-30); line-height: 1.1; }
+    .hero-meta span { display: block; margin-top: 6px; font-size: var(--s-12); line-height: 1.4; letter-spacing: .14em; text-transform: uppercase; color: var(--mute-d); }
+    .fade-late { opacity: 0; transform: translateY(16px); animation: fade-late 1.1s var(--ease) 1.65s forwards; }
+    @keyframes fade-late { to { opacity: 1; transform: none; } }
+    .scroll-cue { position: absolute; z-index: 2; right: var(--gutter-r); bottom: 32px; width: 1px; height: 64px; background: var(--line-d); overflow: hidden; }
+    .scroll-cue::after { content: ""; position: absolute; left: 0; top: -40%; width: 1px; height: 40%; background: var(--brass); animation: cue 2.2s var(--ease-io) 2s infinite; }
+    @keyframes cue { to { top: 100%; } }
+
+    /* ---------- Scroll reveals (με JS μόνο, ώστε χωρίς JS όλα να είναι ορατά) ---------- */
+    .js .rv { opacity: 0; transform: translateY(34px); transition: opacity 1s var(--ease), transform 1.1s var(--ease); transition-delay: var(--d, 0s); }
+    .js .rv.in { opacity: 1; transform: none; }
+    .js .rv-line { display: block; overflow: hidden; }
+    .js .rv-line > span { display: block; transform: translateY(105%); transition: transform 1.15s var(--ease); transition-delay: var(--d, 0s); }
+    .js .rv-line.in > span { transform: none; }
+    .js .unveil > .ph { clip-path: inset(100% 0 0 0); transition: clip-path 1.4s var(--ease-io); transition-delay: var(--d, 0s); }
+    .js .unveil img { transform: scale(1.18); transition: transform 1.9s var(--ease); transition-delay: var(--d, 0s); }
+    .js .unveil.in > .ph { clip-path: inset(0 0 0 0); }
+    .js .unveil.in img { transform: scale(1); }
+
+    /* ---------- Intro ---------- */
+    .intro { padding-block: clamp(96px, 14vw, 180px); }
+    .intro-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
+    .intro h2 { font-size: var(--s-64); line-height: 1.04; }
+    .intro-copy { display: grid; gap: 22px; max-width: 58ch; padding-top: 14px; }
+    .intro-copy p { font-size: var(--s-18); font-weight: 300; color: #2e3233; }
+    .intro-copy p:first-child::first-letter { font-family: var(--f-display); float: left; font-size: 4.4em; line-height: .82; padding: 6px 12px 0 0; color: var(--olive); }
+    .facts { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: clamp(64px, 9vw, 120px); border-top: 1px solid var(--line); }
+    .facts div { padding: 26px 20px 0 0; display: grid; gap: 6px; }
+    .facts b { font-family: var(--f-display); font-weight: 400; font-size: var(--s-44); line-height: 1; }
+    .facts span { font-size: var(--s-14); color: var(--mute); }
+
+    /* ---------- Κατοικίες: οριζόντια βόλτα (desktop) / swipe (κινητό) ---------- */
+    .res { background: var(--night); color: var(--marble); }
+    .res-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; padding-top: clamp(80px, 10vw, 130px); }
+    .res-head h2 { font-size: var(--s-64); line-height: 1.02; max-width: 14ch; }
+    .res-head p { max-width: 38ch; color: var(--mute-d); font-weight: 300; }
+    .res-progress { display: flex; align-items: center; gap: 18px; font-size: var(--s-12); letter-spacing: .18em; color: var(--mute-d); }
+    .res-bar { position: relative; width: 160px; height: 1px; background: var(--line-d); }
+    .res-bar i { position: absolute; inset: 0; background: var(--brass); transform-origin: left; transform: scaleX(.25); }
+
+    .res-pin { position: relative; }
+    .res-sticky { padding-block: 56px clamp(80px, 9vw, 120px); }
+    .res-track { display: flex; gap: clamp(20px, 2.6vw, 36px); padding-left: var(--gutter); padding-right: var(--gutter-r);
+      overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; }
+    .res-track::-webkit-scrollbar { display: none; }
+    .card { flex: 0 0 min(84vw, 520px); scroll-snap-align: start; display: grid; gap: 22px; align-content: start; color: inherit; text-decoration: none; }
+    .card .ph { aspect-ratio: 4 / 5; border-radius: 2px; max-width: 100%; }
+    .card .ph img { transition: transform 1.4s var(--ease); }
+    .card:hover .ph img { transform: scale(1.06); }
+    .card-tag { position: absolute; left: 18px; top: 18px; z-index: 2; font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+      padding: 7px 12px; border-radius: 999px; background: rgba(18,24,25,.55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: var(--marble); }
+    .card-top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+    .card h3 { font-size: var(--s-30); line-height: 1.1; }
+    .card-price { white-space: nowrap; font-size: var(--s-14); color: var(--mute-d); }
+    .card-price b { font-family: var(--f-display); font-weight: 400; font-size: var(--s-22); color: var(--marble); }
+    .card-specs { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: var(--s-14); color: var(--mute-d); border-top: 1px solid var(--line-d); padding-top: 14px; }
+    .card-specs span { display: inline-flex; gap: 8px; align-items: center; }
+    .card-specs span::before { content: ""; width: 4px; height: 4px; border-radius: 50%; background: var(--brass); }
+    .card-go { font-size: var(--s-14); display: inline-flex; gap: 10px; align-items: center; color: var(--brass); }
+    .card-go .arr { transition: transform .5s var(--ease); }
+    .card:hover .card-go .arr { transform: translateX(6px); }
+
+    /* Desktop: η ενότητα «καρφώνεται» και το scroll μετακινεί τις κάρτες οριζόντια */
+    .res.pinned .res-sticky { position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; justify-content: center; overflow: hidden; padding-block: 84px 28px; }
+    .res.pinned .res-head { padding-top: 0; }
+    .res.pinned .res-head h2 { font-size: var(--s-44); }
+    .res.pinned .res-track { overflow: visible; scroll-snap-type: none; will-change: transform; margin-top: 34px; }
+    .res.pinned .card { flex-basis: clamp(340px, 30vw, 440px); gap: 18px; }
+    /* --ph: ίδιο ύψος φωτογραφίας για όλες τις κάρτες, υπολογισμένο ώστε να χωράνε στην οθόνη (βλ. layoutPin) */
+    .res.pinned .card .ph { aspect-ratio: auto; height: var(--ph, 420px); }
+
+    /* ---------- Γειτονιά: απόσταση με τα πόδια, σχεδιασμένη σε κλίμακα ---------- */
+    .walk { padding-block: clamp(96px, 13vw, 170px); }
+    .walk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 90px); align-items: center; }
+    .walk h2 { font-size: var(--s-64); line-height: 1.03; }
+    .walk-copy { display: grid; gap: 20px; max-width: 46ch; }
+    .walk-copy p { font-weight: 300; font-size: var(--s-18); color: #2e3233; }
+    .walk .ph { aspect-ratio: 5 / 4; max-width: 100%; }
+    .scale { margin-top: clamp(72px, 10vw, 120px); }
+    .scale-cap { display: flex; justify-content: space-between; font-size: var(--s-12); letter-spacing: .14em; text-transform: uppercase; color: var(--mute); margin-bottom: 16px; }
+    .scale-track { position: relative; height: 150px; }
+    .scale-axis { position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--ink); transform-origin: left; }
+    .js .scale-axis { transform: scaleX(0); transition: transform 1.8s var(--ease-io); }
+    .js .scale.in .scale-axis { transform: scaleX(1); }
+    .stop { position: absolute; top: 50%; left: var(--x); width: 0; }
+    .stop::before { content: ""; position: absolute; left: -5px; top: -5px; width: 10px; height: 10px; border-radius: 50%; background: var(--marble); border: 1px solid var(--ink); }
+    .stop.home::before { background: var(--brass); border-color: var(--brass); }
+    .stop div { position: absolute; left: 0; transform: translateX(-50%); white-space: nowrap; text-align: center; font-size: var(--s-14); line-height: 1.3; }
+    .stop.up div { bottom: 18px; } .stop.down div { top: 18px; }
+    .stop b { display: block; font-family: var(--f-display); font-weight: 400; font-size: var(--s-22); }
+    .stop span { color: var(--mute); }
+    .js .stop { opacity: 0; transition: opacity .8s var(--ease); transition-delay: calc(.4s + var(--i) * .16s); }
+    .js .scale.in .stop { opacity: 1; }
+    .scale-list { display: none; }
+
+    /* ---------- Τι περιλαμβάνεται ---------- */
+    .incl { background: var(--paper); padding-block: clamp(90px, 12vw, 150px); }
+    .incl-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: clamp(48px, 6vw, 72px); }
+    .incl h2 { font-size: var(--s-44); line-height: 1.08; max-width: 18ch; }
+    .incl-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+    .incl-item { padding: 32px 32px 34px 0; border-bottom: 1px solid var(--line); display: grid; gap: 10px; align-content: start; }
+    .incl-item:not(:nth-child(3n)) { border-right: 1px solid var(--line); }
+    .incl-item:not(:nth-child(3n+1)) { padding-left: 32px; }
+    .incl-item h3 { font-size: var(--s-22); }
+    .incl-item p { color: var(--mute); font-weight: 300; max-width: 34ch; }
+    .incl-item svg { width: 26px; height: 26px; stroke: var(--olive); fill: none; stroke-width: 1.2; margin-bottom: 8px; }
+
+    /* ---------- Κριτικές ---------- */
+    .rev { background: var(--night); color: var(--marble); padding-block: clamp(96px, 13vw, 170px); overflow: hidden; }
+    .rev-top { display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; }
+    .rev-score { font-family: var(--f-display); font-size: clamp(4rem, 11vw, 8.5rem); line-height: .9; }
+    .rev-sub { color: var(--mute-d); font-size: var(--s-14); }
+    .rev-stage { position: relative; margin-top: clamp(48px, 7vw, 80px); min-height: 300px; }
+    .quote { position: absolute; inset: 0 0 auto 0; opacity: 0; transform: translateY(20px); transition: opacity .9s var(--ease), transform .9s var(--ease); pointer-events: none; }
+    .quote.on { opacity: 1; transform: none; pointer-events: auto; position: relative; }
+    .quote blockquote { margin: 0; font-family: var(--f-display); font-size: clamp(1.6rem, 3.4vw, 2.6rem); line-height: 1.25; max-width: 30ch; text-wrap: balance; }
+    .quote figcaption { margin-top: 28px; font-size: var(--s-14); color: var(--mute-d); }
+    .quote figcaption b { color: var(--marble); font-weight: 500; }
+    .rev-nav { display: flex; align-items: center; gap: 22px; margin-top: 40px; }
+    .rev-dots { display: flex; gap: 10px; }
+    .rev-dots button { width: 34px; height: 22px; padding: 0; border: 0; background: none; cursor: pointer; position: relative; }
+    .rev-dots button::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--line-d); }
+    .rev-dots button::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--brass); transform: scaleX(0); transform-origin: left; }
+    .rev-dots button[aria-current="true"]::after { animation: dot-fill 7s linear forwards; }
+    @keyframes dot-fill { to { transform: scaleX(1); } }
+    .rev-note { font-size: var(--s-12); color: var(--mute-d); opacity: .7; }
+
+    /* ---------- Κράτηση ---------- */
+    .book { padding-block: clamp(96px, 13vw, 170px); }
+    .book-grid { display: grid; grid-template-columns: 1fr minmax(0, 520px); gap: clamp(36px, 6vw, 100px); align-items: start; }
+    .book h2 { font-size: var(--s-64); line-height: 1.03; }
+    .book-copy { display: grid; gap: 24px; max-width: 44ch; }
+    .book-copy > p { font-weight: 300; font-size: var(--s-18); color: #2e3233; }
+    .rules { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); margin-top: 12px; }
+    .rules div { padding: 18px 16px 18px 0; border-bottom: 1px solid var(--line); display: grid; gap: 2px; align-content: start; }
+    .rules span { font-size: var(--s-12); letter-spacing: .14em; text-transform: uppercase; color: var(--mute); }
+    .rules b { font-family: var(--f-display); font-weight: 400; font-size: var(--s-22); }
+
+    .panel { background: var(--paper); border: 1px solid var(--line); padding: clamp(24px, 3vw, 36px); display: grid; gap: 18px; box-shadow: 0 30px 60px -40px rgba(18,24,25,.45); }
+    .panel h3 { font-size: var(--s-30); }
+    .fld { display: grid; gap: 6px; min-width: 0; }
+    .fld label { font-size: var(--s-12); letter-spacing: .14em; text-transform: uppercase; color: var(--mute); }
+    .fld input, .fld select {
+      width: 100%; min-width: 0; font: 400 var(--s-16)/1.2 var(--f-body); color: var(--ink);
+      background: var(--marble); border: 1px solid var(--line); border-radius: 0; padding: 13px 14px; appearance: none; -webkit-appearance: none;
+      transition: border-color .3s;
+    }
+    .fld select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23171b1c' stroke-width='1.2'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 38px; }
+    .fld input:focus, .fld select:focus { border-color: var(--brass); outline: none; }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .quote-box { border-top: 1px solid var(--line); padding-top: 16px; display: grid; gap: 8px; font-size: var(--s-14); }
+    .quote-box div { display: flex; justify-content: space-between; gap: 16px; color: var(--mute); }
+    .quote-box div span:last-child { color: var(--ink); }
+    .quote-box .total { border-top: 1px solid var(--line); padding-top: 12px; margin-top: 4px; align-items: baseline; color: var(--ink); }
+    .quote-box .total b { font-family: var(--f-display); font-weight: 400; font-size: var(--s-30); }
+    .msg { font-size: var(--s-14); min-height: 1.4em; }
+    .msg.err { color: #8a3b2a; } .msg.ok { color: var(--olive); }
+    .panel .btn { justify-content: center; width: 100%; }
+    .panel .fine { font-size: var(--s-12); color: var(--mute); }
+
+    /* ---------- FAQ ---------- */
+    .faq { background: var(--paper); padding-block: clamp(90px, 12vw, 150px); }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: clamp(32px, 6vw, 96px); }
+    .faq h2 { font-size: var(--s-44); line-height: 1.08; }
+    .faq-list { border-top: 1px solid var(--line); }
+    details { border-bottom: 1px solid var(--line); }
+    summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 20px; align-items: center; padding-block: 24px; font-size: var(--s-18); }
+    summary::-webkit-details-marker { display: none; }
+    summary i { position: relative; flex: 0 0 14px; height: 14px; }
+    summary i::before, summary i::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--ink); transition: transform .5s var(--ease); }
+    summary i::after { transform: rotate(90deg); }
+    details[open] summary i::after { transform: rotate(0); }
+    details .ans { padding-bottom: 26px; color: var(--mute); font-weight: 300; max-width: 60ch; }
+    details[open] .ans { animation: ans-in .6s var(--ease); }
+    @keyframes ans-in { from { opacity: 0; transform: translateY(-8px); } }
+
+    /* ---------- Footer ---------- */
+    .ft { background: var(--night); color: var(--marble); padding-block: clamp(80px, 10vw, 120px) 36px; overflow: hidden; }
+    .ft-big { font-family: var(--f-display); font-size: clamp(3.4rem, 15vw, 13rem); line-height: .85; letter-spacing: .06em; white-space: nowrap; color: transparent; -webkit-text-stroke: 1px rgba(233,230,223,.35); }
+    .ft-row { display: flex; justify-content: space-between; gap: 28px; flex-wrap: wrap; margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--line-d); font-size: var(--s-14); color: var(--mute-d); }
+    .ft-row a { text-decoration: none; } .ft-row a:hover { color: var(--marble); }
+    .ft-cols { display: flex; gap: 48px; flex-wrap: wrap; }
+    .ft-cols div { display: grid; gap: 6px; }
+    .ft-cols b { font-weight: 500; color: var(--marble); font-size: var(--s-12); letter-spacing: .16em; text-transform: uppercase; margin-bottom: 4px; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 960px) {
+      .nav, .hdr .btn { display: none; }
+      .menu-btn { display: block; }
+      .intro-grid, .walk-grid, .book-grid, .faq-grid { grid-template-columns: 1fr; }
+      .facts { grid-template-columns: repeat(2, 1fr); row-gap: 28px; }
+      .incl-grid { grid-template-columns: 1fr 1fr; }
+      .incl-item, .incl-item:not(:nth-child(3n+1)) { padding: 28px 22px 28px 0; border-right: 0; }
+      .incl-item:nth-child(odd) { border-right: 1px solid var(--line); }
+      .incl-item:nth-child(even) { padding-left: 22px; }
+    }
+    @media (max-width: 640px) {
+      .incl-grid { grid-template-columns: 1fr; }
+      .incl-item, .incl-item:nth-child(even) { padding: 24px 0; border-right: 0 !important; }
+      .scale-track, .scale-cap { display: none; }
+      .scale-list { display: grid; list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line); }
+      .scale-list li { display: flex; justify-content: space-between; gap: 16px; padding-block: 14px; border-bottom: 1px solid var(--line); }
+      .scale-list b { font-family: var(--f-display); font-weight: 400; font-size: var(--s-22); white-space: nowrap; }
+      .rules, .row2 { grid-template-columns: 1fr; }
+      .hero-meta { gap: 20px; }
+      .hero-meta div { min-width: 0; flex: 1 1 40%; }
+    }
+
+    /* ---------- Λιγότερη κίνηση: όλα στη θέση τους, χωρίς animations ---------- */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .001s !important; animation-delay: 0s !important; transition-duration: .001s !important; transition-delay: 0s !important; }
+      .curtain { display: none; }
+      .js .rv, .js .rv-line > span, .js .unveil > .ph, .js .unveil img, .js .stop, .js .scale-axis { opacity: 1; transform: none; clip-path: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="curtain" aria-hidden="true"><span>AETHRA</span></div>
+
+  <!-- ===== HEADER (με το demo banner μέσα του) ===== -->
+  <header class="hdr" id="hdr">
+    <div class="demo">Demo / πρόταση σχεδιασμού · δεν είναι το επίσημο website κάποιου καταλύματος</div>
+    <div class="wrap">
+      <a href="#top" class="brand" aria-label="Aethra Residences, αρχή σελίδας"><b>AETHRA</b><small>Residences</small></a>
+      <nav class="nav" aria-label="Κύρια πλοήγηση">
+        <a href="#residences">Κατοικίες</a>
+        <a href="#neighbourhood">Η γειτονιά</a>
+        <a href="#included">Παροχές</a>
+        <a href="#reviews">Κριτικές</a>
+        <a href="#faq">Ερωτήσεις</a>
+      </nav>
+      <div class="hdr-cta">
+        <a href="#booking" class="btn" data-magnetic>Κράτηση <span class="arr" aria-hidden="true">→</span></a>
+        <button class="menu-btn" id="menuBtn" aria-label="Άνοιγμα μενού" aria-expanded="false" aria-controls="mnav"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mnav" id="mnav" aria-label="Μενού κινητού">
+    <a href="#residences">Κατοικίες</a>
+    <a href="#neighbourhood">Η γειτονιά</a>
+    <a href="#included">Παροχές</a>
+    <a href="#reviews">Κριτικές</a>
+    <a href="#booking">Κράτηση</a>
+  </nav>
+
+  <main id="top">
+    <!-- ===== HERO ===== -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="ph" data-parallax>
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=80"
+             alt="Φωτεινό σαλόνι με καναπέ και μεγάλα παράθυρα" width="2000" height="1333" fetchpriority="high" data-img>
+      </div>
+      <div class="hero-in wrap">
+        <p class="eyebrow fade-late" style="color: var(--brass)">Κουκάκι · Αθήνα</p>
+        <h1 id="hero-title" style="margin-top: 22px">
+          <span class="line"><span>Ξυπνάς</span></span>
+          <span class="line"><span>κάτω από την</span></span>
+          <span class="line"><span><em class="it">Ακρόπολη.</em></span></span>
+        </h1>
+        <div class="hero-row fade-late">
+          <p class="hero-lede">Τέσσερις κατοικίες σε ένα ανακαινισμένο κτίριο του 1938. Έξι λεπτά με τα πόδια από το Μουσείο Ακρόπολης, με βεράντες που κοιτάζουν τον Παρθενώνα.</p>
+          <div class="hero-meta">
+            <div><b class="num">4,96</b><span>Μέση βαθμολογία</span></div>
+            <div><b class="num">6′</b><span>Από το Μουσείο</span></div>
+          </div>
+        </div>
+      </div>
+      <span class="scroll-cue" aria-hidden="true"></span>
+    </section>
+
+    <!-- ===== INTRO ===== -->
+    <section class="intro">
+      <div class="wrap">
+        <div class="intro-grid">
+          <div>
+            <p class="eyebrow rv">Το κτίριο</p>
+            <h2 style="margin-top: 22px">
+              <span class="rv-line"><span>Μια πολυκατοικία</span></span>
+              <span class="rv-line" style="--d:.1s"><span>του μεσοπολέμου,</span></span>
+              <span class="rv-line" style="--d:.2s"><span><em class="it">ξανά σπίτι.</em></span></span>
+            </h2>
+          </div>
+          <div class="intro-copy">
+            <p class="rv">Κρατήσαμε ό,τι έκανε το κτίριο ξεχωριστό: τα μωσαϊκά δάπεδα, τα ψηλά ταβάνια, τη μαρμάρινη σκάλα με το σφυρήλατο κάγκελο. Όλα τα υπόλοιπα τα φτιάξαμε από την αρχή, με ησυχία και άνεση για όσους μένουν περισσότερες από μία νύχτες.</p>
+            <p class="rv" style="--d:.1s">Κάθε κατοικία έχει πλήρη κουζίνα, κλιματισμό σε κάθε δωμάτιο και στρώματα που διαλέξαμε μετά από δοκιμές. Το κλειδί είναι ένας κωδικός που λαμβάνετε την ημέρα της άφιξης, οπότε φτάνετε όποια ώρα θέλετε.</p>
+          </div>
+        </div>
+        <div class="facts">
+          <div class="rv"><b class="num" data-count="1938">1938</b><span>Έτος κατασκευής</span></div>
+          <div class="rv" style="--d:.08s"><b class="num" data-count="4">4</b><span>Κατοικίες, όχι ξενοδοχείο</span></div>
+          <div class="rv" style="--d:.16s"><b class="num" data-count="345">345</b><span>Τ.μ. συνολικά</span></div>
+          <div class="rv" style="--d:.24s"><b class="num">24/7</b><span>Υποστήριξη επισκεπτών</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ΚΑΤΟΙΚΙΕΣ ===== -->
+    <section class="res on-dark" id="residences" aria-labelledby="res-title">
+      <div class="res-pin" id="resPin">
+        <div class="res-sticky">
+          <div class="wrap res-head">
+            <div>
+              <p class="eyebrow">Οι κατοικίες</p>
+              <h2 id="res-title" style="margin-top: 18px">Τέσσερις τρόποι να <em class="it">μείνετε.</em></h2>
+            </div>
+            <div style="display:grid; gap:18px">
+              <p>Από σουίτα για δύο μέχρι ρετιρέ για παρέα τεσσάρων. Πατήστε σε μια κατοικία για να τη διαλέξετε στην κράτηση.</p>
+              <div class="res-progress" aria-hidden="true"><span class="num" id="resCount">01 / 04</span><span class="res-bar"><i id="resBar"></i></span></div>
+            </div>
+          </div>
+
+          <div class="res-track" id="resTrack">
+            <a class="card" href="#booking" data-res="suite">
+              <div class="ph"><span class="card-tag">Θέα Ακρόπολη</span>
+                <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1000&q=80" alt="Υπνοδωμάτιο με διπλό κρεβάτι και λευκά σεντόνια" width="1000" height="1250" loading="lazy" data-img>
+              </div>
+              <div class="card-top"><h3>Σουίτα Παρθενώνας</h3><span class="card-price">από <b class="num">240€</b> / νύχτα</span></div>
+              <div class="card-specs"><span class="num">58 τ.μ.</span><span>5ος όροφος</span><span>2 επισκέπτες</span><span>Ιδιωτική βεράντα</span></div>
+              <span class="card-go">Επιλογή για κράτηση <span class="arr" aria-hidden="true">→</span></span>
+            </a>
+            <a class="card" href="#booking" data-res="loft">
+              <div class="ph"><span class="card-tag">Διώροφο</span>
+                <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1000&q=80" alt="Ανοιχτό σαλόνι με τραπεζαρία και μεγάλα παράθυρα" width="1000" height="1250" loading="lazy" data-img>
+              </div>
+              <div class="card-top"><h3>Loft Φιλοπάππου</h3><span class="card-price">από <b class="num">210€</b> / νύχτα</span></div>
+              <div class="card-specs"><span class="num">72 τ.μ.</span><span>4ος–5ος όροφος</span><span>3 επισκέπτες</span><span>Πατάρι εργασίας</span></div>
+              <span class="card-go">Επιλογή για κράτηση <span class="arr" aria-hidden="true">→</span></span>
+            </a>
+            <a class="card" href="#booking" data-res="residence">
+              <div class="ph"><span class="card-tag">2 υπνοδωμάτια</span>
+                <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1000&q=80" alt="Σαλόνι διαμερίσματος με καναπέ και φυτά" width="1000" height="1250" loading="lazy" data-img>
+              </div>
+              <div class="card-top"><h3>Κατοικία Κουκάκι</h3><span class="card-price">από <b class="num">290€</b> / νύχτα</span></div>
+              <div class="card-specs"><span class="num">95 τ.μ.</span><span>3ος όροφος</span><span>4 επισκέπτες</span><span>2 μπάνια</span></div>
+              <span class="card-go">Επιλογή για κράτηση <span class="arr" aria-hidden="true">→</span></span>
+            </a>
+            <a class="card" href="#booking" data-res="penthouse">
+              <div class="ph"><span class="card-tag">Ρετιρέ με τζακούζι</span>
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80" alt="Μοντέρνος χώρος με πισίνα και ξαπλώστρες το σούρουπο" width="1000" height="1250" loading="lazy" data-img>
+              </div>
+              <div class="card-top"><h3>Ρετιρέ Αίθρα</h3><span class="card-price">από <b class="num">420€</b> / νύχτα</span></div>
+              <div class="card-specs"><span class="num">120 τ.μ.</span><span>6ος όροφος</span><span>4 επισκέπτες</span><span>Ταράτσα 60 τ.μ.</span></div>
+              <span class="card-go">Επιλογή για κράτηση <span class="arr" aria-hidden="true">→</span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ΓΕΙΤΟΝΙΑ ===== -->
+    <section class="walk" id="neighbourhood" aria-labelledby="walk-title">
+      <div class="wrap">
+        <div class="walk-grid">
+          <div class="walk-copy">
+            <p class="eyebrow rv">Η γειτονιά</p>
+            <h2 id="walk-title">
+              <span class="rv-line"><span>Όλα όσα ήρθατε</span></span>
+              <span class="rv-line" style="--d:.1s"><span>να δείτε, <em class="it">με τα πόδια.</em></span></span>
+            </h2>
+            <p class="rv">Το Κουκάκι είναι γειτονιά που ζει όλη μέρα: φούρνοι το πρωί, μικρά καφέ στον πεζόδρομο της Γεωργίου Ολυμπίου, ταβέρνες με τραπέζια στο πεζοδρόμιο το βράδυ. Και ο λόφος του Φιλοπάππου για το ηλιοβασίλεμα, πέντε στενά πιο πάνω.</p>
+          </div>
+          <div class="unveil"><div class="ph">
+            <img src="https://images.unsplash.com/photo-1555993539-1732b0258235?auto=format&fit=crop&w=1400&q=80" alt="Ο Παρθενώνας στην Ακρόπολη υπό καθαρό ουρανό" width="1400" height="1120" loading="lazy" data-img>
+          </div></div>
+        </div>
+
+        <!-- Σε κλίμακα: κάθε στάση τοποθετείται στο (λεπτά / 15) του άξονα -->
+        <div class="scale" id="scale">
+          <div class="scale-cap"><span>Με τα πόδια από την πόρτα σας</span><span class="num">0 – 15 λεπτά</span></div>
+          <div class="scale-track" aria-hidden="true">
+            <div class="scale-axis"></div>
+            <div class="stop home up" style="--x:0%; --i:0"><div style="transform:none; text-align:left"><b>Aethra</b><span>Κουκάκι</span></div></div>
+            <div class="stop up"   style="--x:26.67%; --i:1"><div><b class="num">4′</b><span>Μετρό «Ακρόπολη»</span></div></div>
+            <div class="stop down" style="--x:40%;    --i:2"><div><b class="num">6′</b><span>Μουσείο Ακρόπολης</span></div></div>
+            <div class="stop up"   style="--x:53.33%; --i:3"><div><b class="num">8′</b><span>Λόφος Φιλοπάππου</span></div></div>
+            <div class="stop down" style="--x:73.33%; --i:4"><div><b class="num">11′</b><span>Είσοδος Ακρόπολης</span></div></div>
+            <div class="stop up"   style="--x:100%;   --i:5"><div style="transform:translateX(-100%); text-align:right"><b class="num">15′</b><span>Πλάκα</span></div></div>
+          </div>
+          <ul class="scale-list">
+            <li><span>Μετρό «Ακρόπολη»</span><b class="num">4′</b></li>
+            <li><span>Μουσείο Ακρόπολης</span><b class="num">6′</b></li>
+            <li><span>Λόφος Φιλοπάππου</span><b class="num">8′</b></li>
+            <li><span>Είσοδος Ακρόπολης</span><b class="num">11′</b></li>
+            <li><span>Πλάκα</span><b class="num">15′</b></li>
+          </ul>
+          <p class="rv" style="margin-top:18px; font-size: var(--s-12); color: var(--mute)">Ενδεικτικοί χρόνοι με κανονικό βήμα (demo).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ΠΑΡΟΧΕΣ ===== -->
+    <section class="incl" id="included" aria-labelledby="incl-title">
+      <div class="wrap">
+        <div class="incl-head">
+          <div>
+            <p class="eyebrow rv">Σε κάθε κατοικία</p>
+            <h2 id="incl-title" class="rv" style="margin-top:18px; --d:.08s">Όσα θα περιμένατε από ξενοδοχείο, <em class="it">σε σπίτι.</em></h2>
+          </div>
+        </div>
+        <div class="incl-grid">
+          <div class="incl-item rv">
+            <svg viewBox="0 0 26 26" aria-hidden="true"><rect x="7" y="3" width="12" height="20" rx="2"/><circle cx="13" cy="15" r="2.4"/><path d="M13 12.6V9"/></svg>
+            <h3>Self check-in</h3><p>Κωδικός πόρτας στο κινητό σας την ημέρα της άφιξης. Φτάνετε στις 15:00 ή στις 2 τα ξημερώματα.</p>
+          </div>
+          <div class="incl-item rv" style="--d:.08s">
+            <svg viewBox="0 0 26 26" aria-hidden="true"><path d="M3 17h20M5 17V9a8 8 0 0 1 16 0v8M9 21h8"/></svg>
+            <h3>Ξενοδοχειακά λευκά είδη</h3><p>Βαμβακερά σεντόνια 300 κλωστών, πετσέτες και μπουρνούζια. Αλλαγή κάθε τρεις νύχτες.</p>
+          </div>
+          <div class="incl-item rv" style="--d:.16s">
+            <svg viewBox="0 0 26 26" aria-hidden="true"><path d="M4 11h18v4a6 6 0 0 1-6 6h-6a6 6 0 0 1-6-6zM22 12h1.5a2 2 0 0 1 0 4H21M9 4v4M13 3v5M17 4v4"/></svg>
+            <h3>Espresso &amp; πρωινό καλάθι</h3><p>Μηχανή espresso με κάψουλες, και καλάθι με τοπικά προϊόντα για το πρώτο πρωινό.</p>
+          </div>
+          <div class="incl-item rv">
+            <svg viewBox="0 0 26 26" aria-hidden="true"><path d="M3 9.5a14 14 0 0 1 20 0M6.5 13a9 9 0 0 1 13 0M10 16.5a4 4 0 0 1 6 0"/><circle cx="13" cy="20" r="1"/></svg>
+            <h3>Ίνα 500 Mbps</h3><p>Γρήγορο Wi-Fi και γραφείο εργασίας σε κάθε κατοικία, για όσους δουλεύουν από απόσταση.</p>
+          </div>
+          <div class="incl-item rv" style="--d:.08s">
+            <svg viewBox="0 0 26 26" aria-hidden="true"><path d="M3 15h20l-2 6H5zM6 15V8l7-4 7 4v7"/></svg>
+            <h3>Μεταφορά από αεροδρόμιο</h3><p>Ιδιωτικό αυτοκίνητο από το «Ελ. Βενιζέλος» κατόπιν αιτήματος, με σταθερή τιμή.</p>
+          </div>
+          <div class="incl-item rv" style="--d:.16s">
+            <svg viewBox="0 0 26 26" aria-hidden="true"><path d="M13 3a7 7 0 0 1 7 7c0 5-7 13-7 13S6 15 6 10a7 7 0 0 1 7-7z"/><circle cx="13" cy="10" r="2.5"/></svg>
+            <h3>Οδηγός γειτονιάς</h3><p>Οι προτάσεις μας για φαγητό, μουσεία και βόλτες, σε έναν ψηφιακό οδηγό που ενημερώνουμε κάθε μήνα.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ΚΡΙΤΙΚΕΣ ===== -->
+    <section class="rev on-dark" id="reviews" aria-labelledby="rev-title">
+      <div class="wrap">
+        <p class="eyebrow rv" id="rev-title">Κριτικές επισκεπτών</p>
+        <div class="rev-top rv" style="margin-top:22px">
+          <span class="rev-score num">4,96</span>
+          <span class="rev-sub">από 5 · <span class="num">312</span> κριτικές</span>
+        </div>
+        <div class="rev-stage" id="revStage" aria-live="polite">
+          <figure class="quote on">
+            <blockquote>«Ανοίξαμε την μπαλκονόπορτα και ο Παρθενώνας ήταν εκεί, φωτισμένος. Δεν θέλαμε να βγούμε για δείπνο.»</blockquote>
+            <figcaption><b>Claire M.</b> · Λυών · Σουίτα Παρθενώνας</figcaption>
+          </figure>
+          <figure class="quote">
+            <blockquote>«Πεντακάθαρο, ήσυχο και πιο όμορφο από τις φωτογραφίες. Ο οδηγός γειτονιάς μάς γλίτωσε από κάθε τουριστική παγίδα.»</blockquote>
+            <figcaption><b>Δημήτρης Κ.</b> · Θεσσαλονίκη · Κατοικία Κουκάκι</figcaption>
+          </figure>
+          <figure class="quote">
+            <blockquote>«Δουλέψαμε δύο εβδομάδες από το loft. Γρήγορο ίντερνετ, καλή καρέκλα, και ηλιοβασίλεμα στον Φιλοπάππου κάθε απόγευμα.»</blockquote>
+            <figcaption><b>Jonas &amp; Mira</b> · Βερολίνο · Loft Φιλοπάππου</figcaption>
+          </figure>
+        </div>
+        <div class="rev-nav">
+          <div class="rev-dots" id="revDots" role="tablist" aria-label="Επιλογή κριτικής">
+            <button type="button" aria-label="Κριτική 1" aria-current="true"></button>
+            <button type="button" aria-label="Κριτική 2"></button>
+            <button type="button" aria-label="Κριτική 3"></button>
+          </div>
+          <span class="rev-note">Ενδεικτικές κριτικές (demo)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ΚΡΑΤΗΣΗ ===== -->
+    <section class="book" id="booking" aria-labelledby="book-title">
+      <div class="wrap book-grid">
+        <div class="book-copy">
+          <p class="eyebrow rv">Απευθείας κράτηση</p>
+          <h2 id="book-title">
+            <span class="rv-line"><span>Κλείστε απευθείας,</span></span>
+            <span class="rv-line" style="--d:.1s"><span><em class="it">χωρίς προμήθεια.</em></span></span>
+          </h2>
+          <p class="rv">Η τιμή που βλέπετε είναι η τελική. Περιλαμβάνει τον καθαρισμό και το τέλος ανθεκτικότητας στην κλιματική κρίση, που ορίζει το κράτος ανά νύχτα.</p>
+          <div class="rules rv">
+            <div><span>Άφιξη</span><b class="num">από 15:00</b></div>
+            <div><span>Αναχώρηση</span><b class="num">έως 11:00</b></div>
+            <div><span>Ελάχιστη διαμονή</span><b class="num">2 νύχτες</b></div>
+            <div><span>Ακύρωση</span><b>Δωρεάν έως 14 ημέρες πριν</b></div>
+          </div>
+        </div>
+
+        <form class="panel rv" id="bookForm" novalidate>
+          <h3>Διαθεσιμότητα &amp; τιμή</h3>
+          <div class="fld">
+            <label for="bRes">Κατοικία</label>
+            <select id="bRes" name="residence"></select>
+          </div>
+          <div class="row2">
+            <div class="fld"><label for="bIn">Άφιξη</label><input id="bIn" name="checkin" type="date" required></div>
+            <div class="fld"><label for="bOut">Αναχώρηση</label><input id="bOut" name="checkout" type="date" required></div>
+          </div>
+          <div class="row2">
+            <div class="fld"><label for="bGuests">Επισκέπτες</label><select id="bGuests" name="guests"></select></div>
+            <div class="fld"><label for="bName">Ονοματεπώνυμο</label><input id="bName" name="name" type="text" autocomplete="name" placeholder="Όπως στο διαβατήριο" required></div>
+          </div>
+          <div class="fld"><label for="bEmail">Email</label><input id="bEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" required></div>
+
+          <div class="quote-box" aria-live="polite" id="quoteBox">
+            <div><span id="qNightsLbl">— νύχτες × —</span><span class="num" id="qStay">—</span></div>
+            <div><span>Καθαρισμός</span><span class="num" id="qClean">—</span></div>
+            <div><span>Τέλος ανθεκτικότητας</span><span class="num" id="qFee">—</span></div>
+            <div class="total"><span>Σύνολο</span><b class="num" id="qTotal">—</b></div>
+          </div>
+          <p class="msg" id="bMsg" role="status"></p>
+          <button class="btn" type="submit" data-magnetic>Αίτημα κράτησης <span class="arr" aria-hidden="true">→</span></button>
+          <p class="fine">Demo φόρμα: δεν αποστέλλονται στοιχεία και δεν γίνεται χρέωση.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="faq" id="faq" aria-labelledby="faq-title">
+      <div class="wrap faq-grid">
+        <div>
+          <p class="eyebrow rv">Ερωτήσεις</p>
+          <h2 id="faq-title" class="rv" style="margin-top:18px; --d:.08s">Πριν <em class="it">φτάσετε.</em></h2>
+        </div>
+        <div class="faq-list rv">
+          <details>
+            <summary>Πώς έρχομαι από το αεροδρόμιο; <i aria-hidden="true"></i></summary>
+            <p class="ans">Με το μετρό (γραμμή 3 ως το Σύνταγμα, αλλαγή στη γραμμή 2 ως τη στάση «Ακρόπολη») χρειάζεστε περίπου 50 λεπτά. Με ιδιωτικό αυτοκίνητο που κανονίζουμε εμείς, περίπου 40 λεπτά ανάλογα με την κίνηση.</p>
+          </details>
+          <details>
+            <summary>Υπάρχει ασανσέρ; <i aria-hidden="true"></i></summary>
+            <p class="ans">Ναι. Το κτίριο έχει ασανσέρ ως τον 5ο όροφο. Για το Ρετιρέ Αίθρα υπάρχει μία σκάλα μετά τον 5ο.</p>
+          </details>
+          <details>
+            <summary>Τι είναι το τέλος ανθεκτικότητας; <i aria-hidden="true"></i></summary>
+            <p class="ans">Τέλος που ορίζει το ελληνικό κράτος για κάθε νύχτα διαμονής σε κατάλυμα βραχυχρόνιας μίσθωσης: 8€ τη νύχτα από Απρίλιο έως Οκτώβριο και 2€ από Νοέμβριο έως Μάρτιο. Το συμπεριλαμβάνουμε ήδη στο σύνολο.</p>
+          </details>
+          <details>
+            <summary>Μπορώ να αφήσω τις αποσκευές μου; <i aria-hidden="true"></i></summary>
+            <p class="ans">Ναι, στην αποθήκη του ισογείου, από τις 9:00 την ημέρα της άφιξης ως τις 18:00 την ημέρα της αναχώρησης.</p>
+          </details>
+          <details>
+            <summary>Είναι κατάλληλο για παιδιά; <i aria-hidden="true"></i></summary>
+            <p class="ans">Η Κατοικία Κουκάκι και το Ρετιρέ Αίθρα έχουν χώρο για οικογένεια. Παρέχουμε βρεφικό κρεβάτι και καρέκλα φαγητού χωρίς χρέωση, αν μας ενημερώσετε από πριν.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="ft">
+    <div class="wrap">
+      <div class="ft-big" aria-hidden="true">AETHRA</div>
+      <div class="ft-row">
+        <div class="ft-cols">
+          <div><b>Διεύθυνση</b><span>Κουκάκι, 117 42 Αθήνα</span></div>
+          <div><b>Επικοινωνία</b><span>stay@aethra.example</span><span class="num">+30 210 000 0000</span></div>
+          <div><b>Μητρώο</b><span class="num">ΑΜΑ 00000000000 (demo)</span></div>
+        </div>
+        <div style="display:grid; gap:6px; align-content:end">
+          <a href="#top">Επιστροφή στην αρχή ↑</a>
+          <span>Demo / πρόταση σχεδιασμού · © 2026</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (() => {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    /* ---------- Εικόνες: αν αποτύχουν, μένει το τονικό πάνελ από κάτω ----------
+       Ελέγχουμε και όσες απέτυχαν πριν τρέξει αυτό το script. */
+    document.querySelectorAll('img[data-img]').forEach((img) => {
+      const hide = () => { img.style.visibility = 'hidden'; };
+      img.addEventListener('error', hide);
+      if (img.complete && img.naturalWidth === 0) hide();
+    });
+
+    /* ---------- Header: διαφανές πάνω από το hero, κρύβεται στο scroll προς τα κάτω ---------- */
+    const hdr = document.getElementById('hdr');
+    let lastY = scrollY;
+    const onHeader = () => {
+      const y = scrollY;
+      hdr.classList.toggle('solid', y > innerHeight * 0.6);
+      hdr.classList.toggle('hide', y > lastY && y > innerHeight && !document.body.classList.contains('menu-open'));
+      lastY = y;
+    };
+
+    /* ---------- Mobile μενού ---------- */
+    const menuBtn = document.getElementById('menuBtn');
+    const mnav = document.getElementById('mnav');
+    const setMenu = (open) => {
+      mnav.classList.toggle('open', open);
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.setAttribute('aria-label', open ? 'Κλείσιμο μενού' : 'Άνοιγμα μενού');
+      document.body.classList.toggle('menu-open', open);
+      hdr.classList.toggle('solid', open ? false : scrollY > innerHeight * 0.6);
+      document.body.style.overflow = open ? 'hidden' : '';
+    };
+    menuBtn.addEventListener('click', () => setMenu(!mnav.classList.contains('open')));
+    mnav.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
+    addEventListener('keydown', (e) => { if (e.key === 'Escape' && mnav.classList.contains('open')) setMenu(false); });
+
+    /* ---------- Reveals στο scroll ---------- */
+    const counters = new Set(document.querySelectorAll('[data-count]'));
+    const countUp = (el) => {
+      const end = Number(el.dataset.count);
+      if (reduce || end < 10) return;
+      const t0 = performance.now(), dur = 1600;
+      const tick = (t) => {
+        const p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 4);
+        el.textContent = Math.round(end * e);
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    const targets = document.querySelectorAll('.rv, .rv-line, .unveil, .scale');
+    if ('IntersectionObserver' in window && !reduce) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((en) => {
+          if (!en.isIntersecting) return;
+          en.target.classList.add('in');
+          en.target.querySelectorAll('[data-count]').forEach((c) => { if (counters.delete(c)) countUp(c); });
+          io.unobserve(en.target);
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
+      targets.forEach((el) => io.observe(el));
+    } else {
+      targets.forEach((el) => el.classList.add('in'));
+    }
+
+    /* ---------- Οριζόντια βόλτα στις κατοικίες (μόνο σε μεγάλη οθόνη, χωρίς reduced motion) ---------- */
+    const res = document.getElementById('residences');
+    const pin = document.getElementById('resPin');
+    const track = document.getElementById('resTrack');
+    const bar = document.getElementById('resBar');
+    const count = document.getElementById('resCount');
+    const cards = [...track.children];
+    const desktopMQ = matchMedia('(min-width: 961px) and (min-height: 620px)');
+    let distance = 0;
+
+    const layoutPin = () => {
+      const on = desktopMQ.matches && !reduce;
+      res.classList.toggle('pinned', on);
+      track.style.transform = '';
+      if (!on) { pin.style.height = ''; return; }
+      // Το scrollWidth δεν μετράει το δεξί padding σε flex: το προσθέτουμε για να μείνει περιθώριο στο τέλος
+      // Ύψος φωτογραφίας = ό,τι περισσεύει από την οθόνη μετά τον τίτλο και το ψηλότερο κείμενο κάρτας
+      const sticky = res.querySelector('.res-sticky'), head = res.querySelector('.res-head');
+      const st = getComputedStyle(sticky);
+      const textH = Math.max(...cards.map((c) => c.offsetHeight - c.querySelector('.ph').offsetHeight));
+      const avail = innerHeight - parseFloat(st.paddingTop) - parseFloat(st.paddingBottom)
+        - head.offsetHeight - parseFloat(getComputedStyle(track).marginTop) - textH;
+      res.style.setProperty('--ph', Math.round(Math.min(540, Math.max(160, avail))) + 'px');
+      distance = Math.max(0, track.scrollWidth - innerWidth + parseFloat(getComputedStyle(track).paddingRight));
+      pin.style.height = (innerHeight + distance) + 'px';
+    };
+    const setProgress = (p) => {
+      const i = Math.min(cards.length - 1, Math.round(p * (cards.length - 1)));
+      bar.style.transform = `scaleX(${(i + 1) / cards.length})`;
+      count.textContent = `${String(i + 1).padStart(2, '0')} / ${String(cards.length).padStart(2, '0')}`;
+    };
+    const onPin = () => {
+      if (!res.classList.contains('pinned')) return;
+      const top = pin.getBoundingClientRect().top;
+      const p = Math.min(1, Math.max(0, -top / (pin.offsetHeight - innerHeight || 1)));
+      track.style.transform = `translate3d(${-p * distance}px,0,0)`;
+      setProgress(p);
+    };
+    // Στο κινητό ο δείκτης ακολουθεί το swipe
+    track.addEventListener('scroll', () => {
+      if (res.classList.contains('pinned')) return;
+      const max = track.scrollWidth - track.clientWidth;
+      setProgress(max > 0 ? track.scrollLeft / max : 0);
+    }, { passive: true });
+
+    /* ---------- Parallax στο hero ---------- */
+    const heroImg = document.querySelector('[data-parallax]');
+    const onParallax = () => {
+      if (reduce) return;
+      const y = scrollY;
+      if (y < innerHeight * 1.2) heroImg.style.transform = `translate3d(0, ${y * 0.28}px, 0)`;
+    };
+
+    let ticking = false;
+    addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => { onHeader(); onPin(); onParallax(); ticking = false; });
+    }, { passive: true });
+    addEventListener('resize', () => { layoutPin(); onPin(); });
+    desktopMQ.addEventListener?.('change', () => { layoutPin(); onPin(); });
+    addEventListener('load', () => { layoutPin(); onPin(); });
+    layoutPin(); onHeader(); onPin();
+
+    /* ---------- Magnetic κουμπιά (μόνο με ποντίκι) ---------- */
+    if (finePointer && !reduce) {
+      document.querySelectorAll('[data-magnetic]').forEach((b) => {
+        b.style.transition += ', transform .6s cubic-bezier(.22,1,.36,1)';
+        b.addEventListener('pointermove', (e) => {
+          const r = b.getBoundingClientRect();
+          const x = (e.clientX - r.left - r.width / 2) * 0.22, y = (e.clientY - r.top - r.height / 2) * 0.35;
+          b.style.transform = `translate(${x}px, ${y}px)`;
+        });
+        b.addEventListener('pointerleave', () => { b.style.transform = ''; });
+      });
+    }
+
+    /* ---------- Κριτικές: αυτόματη εναλλαγή κάθε 7 δευτερόλεπτα ---------- */
+    const quotes = [...document.querySelectorAll('#revStage .quote')];
+    const dots = [...document.querySelectorAll('#revDots button')];
+    let qi = 0, qTimer;
+    const showQuote = (n) => {
+      qi = (n + quotes.length) % quotes.length;
+      quotes.forEach((q, i) => q.classList.toggle('on', i === qi));
+      dots.forEach((d, i) => { d.removeAttribute('aria-current'); void d.offsetWidth; if (i === qi) d.setAttribute('aria-current', 'true'); });
+      clearTimeout(qTimer);
+      if (!reduce) qTimer = setTimeout(() => showQuote(qi + 1), 7000);
+    };
+    dots.forEach((d, i) => d.addEventListener('click', () => showQuote(i)));
+    showQuote(0);
+
+    /* ---------- Κράτηση: υπολογισμός τελικής τιμής ---------- */
+    const RES = {
+      suite:     { name: 'Σουίτα Παρθενώνας', rate: 240, clean: 45, max: 2 },
+      loft:      { name: 'Loft Φιλοπάππου',   rate: 210, clean: 50, max: 3 },
+      residence: { name: 'Κατοικία Κουκάκι',  rate: 290, clean: 65, max: 4 },
+      penthouse: { name: 'Ρετιρέ Αίθρα',      rate: 420, clean: 80, max: 4 },
+    };
+    const MIN_NIGHTS = 2;
+    const DAY = 86400000;
+    // Τέλος ανθεκτικότητας για βραχυχρόνια μίσθωση: 8€ / νύχτα Απρ–Οκτ, 2€ / νύχτα Νοε–Μαρ.
+    const climateFee = (utcMs) => { const m = new Date(utcMs).getUTCMonth(); return (m >= 3 && m <= 9) ? 8 : 2; };
+    const parseISO = (s) => { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || ''); return m ? Date.UTC(+m[1], +m[2] - 1, +m[3]) : NaN; };
+    const toISO = (ms) => new Date(ms).toISOString().slice(0, 10);
+
+    // Καθαρή συνάρτηση: επιστρέφει { error } ή την ανάλυση της τιμής
+    function quote(resKey, inISO, outISO) {
+      const r = RES[resKey];
+      const a = parseISO(inISO), b = parseISO(outISO);
+      if (!r) return { error: 'Διαλέξτε κατοικία.' };
+      if (Number.isNaN(a) || Number.isNaN(b)) return { error: 'Διαλέξτε ημερομηνίες άφιξης και αναχώρησης.' };
+      const nights = Math.round((b - a) / DAY);
+      if (nights <= 0) return { error: 'Η αναχώρηση πρέπει να είναι μετά την άφιξη.' };
+      if (nights < MIN_NIGHTS) return { error: `Η ελάχιστη διαμονή είναι ${MIN_NIGHTS} νύχτες.` };
+      let fee = 0;
+      for (let t = a; t < b; t += DAY) fee += climateFee(t);
+      const stay = nights * r.rate;
+      return { nights, rate: r.rate, stay, clean: r.clean, fee, total: stay + r.clean + fee };
+    }
+    window.__aethraQuote = quote; // για έλεγχο
+
+    const eur = new Intl.NumberFormat('el-GR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
+    const $ = (id) => document.getElementById(id);
+    const fRes = $('bRes'), fIn = $('bIn'), fOut = $('bOut'), fGuests = $('bGuests'), msg = $('bMsg');
+
+    Object.entries(RES).forEach(([k, r]) => fRes.add(new Option(`${r.name} · ${r.rate}€`, k)));
+    const fillGuests = () => {
+      const max = RES[fRes.value].max, prev = Number(fGuests.value) || 2;
+      fGuests.innerHTML = '';
+      for (let g = 1; g <= max; g++) fGuests.add(new Option(g === 1 ? '1 επισκέπτης' : `${g} επισκέπτες`, g));
+      fGuests.value = String(Math.min(prev, max));
+    };
+
+    // Προεπιλογή: άφιξη σε 3 εβδομάδες, 3 νύχτες, ώστε το panel να δείχνει πραγματική τιμή από την αρχή
+    const now = new Date();
+    const today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+    fIn.min = toISO(today);
+    fIn.value = toISO(today + 21 * DAY);
+    fOut.value = toISO(today + 24 * DAY);
+    fOut.min = toISO(parseISO(fIn.value) + DAY);
+    fRes.value = 'suite';
+    fillGuests();
+
+    const render = () => {
+      const q = quote(fRes.value, fIn.value, fOut.value);
+      if (q.error) {
+        ['qStay', 'qClean', 'qFee', 'qTotal'].forEach((id) => { $(id).textContent = '—'; });
+        $('qNightsLbl').textContent = '— νύχτες';
+        msg.className = 'msg err'; msg.textContent = q.error;
+        return q;
+      }
+      $('qNightsLbl').textContent = `${q.nights} ${q.nights === 1 ? 'νύχτα' : 'νύχτες'} × ${eur.format(q.rate)}`;
+      $('qStay').textContent = eur.format(q.stay);
+      $('qClean').textContent = eur.format(q.clean);
+      $('qFee').textContent = eur.format(q.fee);
+      $('qTotal').textContent = eur.format(q.total);
+      if (msg.classList.contains('err')) { msg.className = 'msg'; msg.textContent = ''; }
+      return q;
+    };
+
+    fRes.addEventListener('change', () => { fillGuests(); render(); });
+    fIn.addEventListener('change', () => {
+      const a = parseISO(fIn.value);
+      if (!Number.isNaN(a)) {
+        fOut.min = toISO(a + DAY);
+        if (!(parseISO(fOut.value) > a)) fOut.value = toISO(a + MIN_NIGHTS * DAY);
+      }
+      render();
+    });
+    fOut.addEventListener('change', render);
+    render();
+
+    // Κάρτα κατοικίας → επιλογή στη φόρμα
+    cards.forEach((c) => c.addEventListener('click', () => { fRes.value = c.dataset.res; fillGuests(); render(); }));
+
+    $('bookForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const q = render();
+      if (q.error) return;
+      const name = $('bName'), email = $('bEmail');
+      if (!name.value.trim()) { msg.className = 'msg err'; msg.textContent = 'Συμπληρώστε το ονοματεπώνυμό σας.'; name.focus(); return; }
+      if (!email.checkValidity() || !email.value) { msg.className = 'msg err'; msg.textContent = 'Το email δεν φαίνεται σωστό. Ελέγξτε το και ξαναδοκιμάστε.'; email.focus(); return; }
+      msg.className = 'msg ok';
+      msg.textContent = `Λάβαμε το αίτημα για ${RES[fRes.value].name}, ${q.nights} νύχτες, σύνολο ${eur.format(q.total)}. Θα απαντήσουμε στο ${email.value} μέσα σε λίγες ώρες.`;
+    });
+  })();
+  </script>
+</body>
+</html>
